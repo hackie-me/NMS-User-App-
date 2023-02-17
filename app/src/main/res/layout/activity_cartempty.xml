@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout android:gravity="center_horizontal"
+        android:id="@+id/linearActivitycartem"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        style="@style/groupStylewhite_A700">
+
+        <ImageView android:id="@+id/imageGroupFive"
+            android:layout_gravity="start"
+            android:layout_height="@dimen/_14pxh"
+            android:layout_marginEnd="@dimen/_28pxh"
+            android:layout_marginStart="@dimen/_28pxh"
+            android:layout_marginTop="@dimen/_29pxv"
+            android:layout_width="@dimen/_14pxh"
+            android:scaleType="fitXY"
+            android:src="@drawable/back_arrow"
+            tools:ignore="ContentDescription"/>
+
+        <ImageView
+            android:id="@+id/imageGroup6215"
+            android:layout_width="@dimen/_295pxh"
+            android:layout_height="@dimen/_270pxh"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="@dimen/_28pxh"
+            android:layout_marginTop="@dimen/_150pxv"
+            android:layout_marginEnd="@dimen/_28pxh"
+            android:scaleType="fitXY"
+            android:src="@drawable/cart_empty_img"
+            tools:ignore="ContentDescription,ImageContrastCheck" />
+
+        <TextView android:ellipsize="end" android:id="@+id/txtWhoops"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_28pxh"
+            android:layout_marginStart="@dimen/_28pxh"
+            android:layout_marginTop="@dimen/_25pxv"
+            android:layout_width="wrap_content"
+            android:singleLine="true"
+            android:text="@string/lbl_whoops"
+            android:textSize="16sp"
+            style="@style/txtAbelregular16"/>
+
+        <TextView
+            android:id="@+id/txtYourcartisem"
+            style="@style/txtOverpassromanmedium14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="@dimen/_28pxh"
+            android:layout_marginTop="@dimen/_5pxv"
+            android:layout_marginEnd="@dimen/_28pxh"
+            android:layout_marginBottom="@dimen/_20pxv"
+            android:textSize="18sp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="@string/msg_your_cart_is_em"
+            android:textColor="#757575" />
+    </LinearLayout>
+</LinearLayout>

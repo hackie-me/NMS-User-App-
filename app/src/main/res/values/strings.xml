@@ -1,0 +1,103 @@
+<resources>
+    <string name="app_name">Nilkanth Medical</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="enter_email">Enter email</string>
+    <string name="enter_password">Enter password</string>
+    <string name="login">Login</string>
+    <string name="dp" />
+
+    <string name="lbl_nilkanth_medical">Nilkanth Medical</string>
+
+    <string name="msg_view_and_buy_me">View and buy Medicine online</string>
+    <string name="msg_etiam_mollis_me">Etiam mollis metus non purus faucibus sollicitudin. Pellentesque sagittis mi. Integer.</string>
+    <string name="lbl_skip">Skip</string>
+    <string name="lbl_next">Next</string>
+    <string name="online_medical_healthcar">Online medical &amp; Healthcar</string>
+
+    <string name="msg_phone_number_ve">Phone Number Verified</string>
+    <string name="msg_congradulations">Congradulations, your phone number has been verified. You can start using the app</string>
+    <string name="lbl_continue">CONTINUE</string>
+
+    <string name="lbl_whoops">Whoops</string>
+    <string name="msg_your_cart_is_em">Your cart is empty!</string>
+
+    <string name="lbl_try_again">Try again</string>
+    <string name="msg_no_network_conn">No network connection</string>
+
+    <string name="lbl_resend_code">Resend Code</string>
+    <string name="msg_the_verify_code">The verify code will expire in 00:59</string>
+    <string name="lbl_submit_code">SUBMIT CODE</string>
+    <string name="lbl_02">0</string>
+    <string name="msg_we_just_send_yo">We just send you a verification code via phone +65 556 798 241</string>
+    <string name="msg_enter_the_verif">Enter the verify code</string>
+
+    <string name="lbl_pay_now_185_00">Pay Now $185.00</string>
+    <string name="msg_cash_on_deliver">Cash on Delivery</string>
+    <string name="lbl_payment_method">Payment method</string>
+    <string name="lbl_add_address">Add Address</string>
+    <string name="msg_delivery_addres">Delivery Address</string>
+    <string name="lbl_185_00">$185.00</string>
+    <string name="lbl_total2">TOTAL</string>
+    <string name="msg_2_items_in_your">2 Items in your cart</string>
+    <string name="lbl_checkout">Checkout</string>
+    <string name="lbl_home">Home</string>
+    <string name="lbl_205_555_024">(205) 555-024</string>
+    <string name="msg_1786_wheeler_br">1786 Wheeler Bridge</string>
+    <string name="lbl_hi_rahul">Hi, Rahul</string>
+    <string name="msg_welcome_to_medt">Welcome to Nilkanth Medical</string>
+    <string name="lbl_top_categories">Top Categories</string>
+    <!--    <string name="lbl_dental"/>-->
+    <!--    <string name="lbl_wellness" />-->
+    <!--    <string name="lbl_skin_hair" />-->
+    <!--    <string name="lbl_eye_care" />-->
+    <!--    <string name="msg_search_medicine" />-->
+    <!--    <string name="lbl_homeo" />-->
+    <!--    <string name="msg_deals_of_the_da" />-->
+    <!--    <string name="lbl_more" />-->
+    <!--    <string name="msg_himalaya_welln" />-->
+    <!--    <string name="lbl_vlcc" />-->
+    <!--    <string name="lbl_protinex" />-->
+    <string name="msg_name"></string>
+    <string name="lbl_price">$122</string>
+    <string name="lbl_reting">4.2</string>
+    <!--    <string name="course_name" />-->
+    <!--    <string name="course_rating" />-->
+    <string name="notification">Notification</string>
+    <string name="clear_all">Clear all</string>
+    <string name="lbl_my_orders">My orders</string>
+    <string name="lbl_billing">Billing</string>
+    <string name="lbl_faq">Faq</string>
+    <string name="todo">TODO</string>
+    <string name="search_medicine_products">Search Medicine products</string>
+    <string name="lbl_my_profile">My Profile</string>
+    <string name="lbl_hi_user">Hi, rahul Kanjariya</string>
+
+    <string name="lbl_private_account">Private Account</string>
+
+    <string name="msg_cart">bottle of 500 pellets</string>
+    <string name="cart_name">Sugar free gold</string>
+    <string name="Your_cart">Your cart</string>
+    <string name="lbl_add_more">Add more</string>
+    <string name="msg_sugar_free_gold">Sugar Free Gold Low Calories</string>
+    <string name="msg_etiam_mollis_me2">"Etiam mollis metus non purus "</string>
+    <string name="lbl_etiam_mollis">Etiam mollis</string>
+    <string name="lbl_add_to_cart">Add to cart</string>
+    <string name="lbl_package_size">Package size</string>
+    <string name="lbl_pellets">500 pellets</string>
+    <string name="lbl_product_details">Product Details</string>
+    <string name="msg_product">Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi ut nisi odio. Nulla facilisi. Nunc risus massa, gravida id egestas a, pretium vel tellus. Praesent feugiat diam sit amet pulvinar finibus. Etiam et nisi aliquet, accumsan nisi sit.</string>
+    <string name="msg_rating_and_revi">Rating and Reviews</string>
+    <string name="get_delivery_on_time">Get Delivery on time</string>
+    <string name="welcome_back">Welcome Back!</string>
+    <string name="enter_you_mobile_number">Enter you mobile number</string>
+    <string name="forget_password">Forget Password?</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="register">Register</string>
+    <string name="welcome_to_nilkanth_medical">welcome to nilkanth medical</string>
+    <string name="enter_your_full_name">Enter your full name</string>
+    <string name="create_password">Create password</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="let_s_help_you_meet_up_your_tasks">Let’s help you meet up your tasks.</string>
+    <string name="enter_your_mobile_number">Enter your mobile number</string>
+</resources>

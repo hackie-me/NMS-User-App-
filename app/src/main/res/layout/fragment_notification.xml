@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.nms.NotificationFragment"
+    android:background="@color/backgroundColor">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/_10pxh">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back_arrow"
+            android:layout_marginTop="1sp"
+
+            android:layout_marginStart="@dimen/_15pxh"
+            android:contentDescription="@string/todo" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/notification"
+        android:layout_marginStart="@dimen/_30pxh"
+        android:textSize="@dimen/_15sp"
+        android:fontFamily="@font/overpass"
+        android:textStyle="bold"
+        android:textColor="@color/black" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/clear_all"
+                android:layout_gravity="right"
+                android:layout_marginStart="@dimen/_140sp"
+                android:textSize="@dimen/_14sp"
+                android:fontFamily="@font/overpass"
+                android:textStyle="bold"
+                android:textColor="@color/primery" />
+        </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="15sp"
+        android:background="#A19A9A9A"/>
+    <ListView
+        android:id="@+id/lstPersons"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

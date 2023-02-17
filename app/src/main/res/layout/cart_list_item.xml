@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_110pxh"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginTop="1dp"
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="@dimen/_8pxh"
+    app:cardPreventCornerOverlap="true"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/linearRowbottleof500p"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal">
+
+        <ImageView android:id="@+id/imageImage134"
+            android:layout_height="@dimen/_80pxh"
+            android:layout_width="@dimen/_70pxh"
+            android:scaleType="fitXY"
+            tools:ignore="ContentDescription"
+            android:src="@drawable/img_card_items"/>
+
+        <LinearLayout
+            android:gravity="start"
+            android:id="@+id/linearColumnsugarfreegold"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_16pxh"
+            android:layout_weight="0.77"
+            android:layout_width="0dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/linearRowsugarfreegold"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:ellipsize="end"
+                    android:id="@+id/txtSugarfreegold"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_2pxv"
+                    android:layout_marginTop="@dimen/_3pxv"
+                    android:layout_weight="0.83"
+                    android:layout_width="0dp"
+                    android:lineSpacingExtra="@dimen/_1pxh"
+                    android:text="@string/cart_name"
+                    style="@style/txtOverpasssemibold14"/>
+
+                <ImageView
+                    android:id="@+id/imageGroup1159"
+                    android:layout_height="@dimen/_20pxh"
+                    android:layout_marginEnd="@dimen/_10pxh"
+                    android:layout_width="@dimen/_20pxh"
+                    android:layout_marginTop="@dimen/_4pxh"
+                    android:src="@drawable/ic_cancel"
+                    tools:ignore="ContentDescription"/>
+
+            </LinearLayout>
+            <TextView
+                android:ellipsize="end"
+                android:id="@+id/txtBottleof500p"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_10pxh"
+                android:layout_marginTop="@dimen/_3pxv"
+                android:layout_width="match_parent"
+
+                android:text="@string/msg_cart"
+                style="@style/txtOverpassregular13"/>
+
+            <LinearLayout
+                android:id="@+id/linearRowprice"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_5pxh"
+                android:layout_marginTop="@dimen/_10pxv"
+                android:layout_width="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:ellipsize="end"
+                    android:id="@+id/txtPrice"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.26"
+                    android:layout_width="0dp"
+                    android:lineSpacingExtra="@dimen/_1pxh"
+                    android:text="$25"
+                    style="@style/txtOverpassbold18"/>
+
+                <LinearLayout
+                    android:id="@+id/linearRowvector"
+                    android:layout_height="@dimen/_32sp"
+                    android:layout_marginStart="@dimen/_103pxh"
+                    android:layout_weight="0.4"
+                    android:layout_width="0dp"
+                    android:orientation="horizontal"
+                    style="@style/groupStylegray_105cornerRadius">
+
+                    <FrameLayout
+                        android:id="@+id/frameStackvector"
+                        android:layout_height="@dimen/_38pxv"
+                        android:layout_width="@dimen/_32pxh"
+                        style="@style/groupStyleindigo_50cornerRadius">
+
+                        <ImageView
+                            android:id="@+id/imageVector"
+                            android:layout_gravity="center"
+                            android:layout_height="@dimen/_2pxh"
+                            android:layout_marginEnd="@dimen/_10pxh"
+                            android:layout_marginStart="@dimen/_10pxh"
+                            android:layout_width="@dimen/_13pxh"
+                            android:src="@drawable/img_subtraction"
+                            tools:ignore="ContentDescription"/>
+
+                    </FrameLayout>
+                    <TextView
+                        android:ellipsize="end"
+                        android:id="@+id/txtOne"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_marginStart="@dimen/_10pxh"
+                        android:layout_marginTop="@dimen/_5pxv"
+                        android:layout_weight="0.1"
+                        android:layout_width="0dp"
+
+                        android:text="1"
+                        style="@style/txtSofiaProbold16"/>
+                    <FrameLayout
+                        android:id="@+id/frameStackgroup3639One"
+                        android:layout_height="@dimen/_38pxv"
+                        android:layout_marginStart="@dimen/_13pxh"
+                        android:layout_width="@dimen/_32pxh"
+                        style="@style/groupStyleindigo_A100cornerRadius">
+                        <ImageView
+                            android:id="@+id/imageGroup3639One"
+                            android:layout_gravity="center"
+                            android:layout_height="@dimen/_12pxh"
+                            android:layout_marginHorizontal="@dimen/_10pxh"
+                            android:layout_marginVertical="@dimen/_10pxv"
+                            android:layout_width="@dimen/_12pxh"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/img_plus"
+                            tools:ignore="ContentDescription"/>
+
+                    </FrameLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

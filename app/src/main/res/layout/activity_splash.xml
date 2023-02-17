@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SplashActivity">
+
+    <FrameLayout
+        android:id="@+id/frameActivitysplash"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        style="@style/groupStyleindigo_A400">
+
+        <ImageView android:id="@+id/imageGroup"
+            android:layout_gravity="start"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:scaleType="fitXY"
+            android:contentDescription="@string/todo"/>
+
+        <LinearLayout
+            android:id="@+id/linearColumngroup1169"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_40pxh"
+            android:layout_marginVertical="@dimen/_40pxv"
+            android:layout_width="wrap_content"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btnGroupsplash"
+                android:layout_width="@dimen/_74pxh"
+                android:layout_height="@dimen/_74pxh"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="@dimen/_14pxh"
+                android:layout_marginEnd="@dimen/_14pxh"
+                android:background="@drawable/rectangle_bg_white"
+                android:contentDescription="@string/todo"
+                android:paddingHorizontal="@dimen/_16pxh"
+                android:paddingVertical="@dimen/_16pxv"
+                android:scaleType="fitCenter"
+                android:src="@drawable/logo_img"/>
+
+            <TextView
+                android:id="@+id/txtMedtech"
+                style="@style/txtOverpassitalicthin28"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_21pxv"
+                android:ellipsize="end"
+                android:gravity="start"
+                android:textStyle="bold"
+                android:fontFamily="@font/overpass"
+                android:singleLine="true"
+                android:text="@string/lbl_nilkanth_medical" />
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

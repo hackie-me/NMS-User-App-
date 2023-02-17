@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout android:id="@+id/linearActivitylogins"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        style="@style/groupStylewhite_A700">
+
+        <ImageView android:id="@+id/imageGroupFive"
+            android:layout_gravity="start"
+            android:layout_height="@dimen/_15pxh"
+            android:layout_marginEnd="@dimen/_29pxh"
+            android:layout_marginStart="@dimen/_29pxh"
+            android:layout_marginTop="@dimen/_30pxv"
+            android:layout_width="@dimen/_15pxh"
+            android:scaleType="fitXY"
+            android:src="@drawable/back_arrow"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/imageGroup3645"
+            android:layout_width="301dp"
+            android:layout_height="@dimen/_215pxh"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="@dimen/_29pxh"
+            android:layout_marginTop="@dimen/_123pxv"
+            android:layout_marginEnd="@dimen/_29pxh"
+            android:scaleType="fitXY"
+            android:src="@drawable/loginsuccess_image"
+            tools:ignore="ContentDescription" />
+
+        <TextView android:ellipsize="end"
+            android:gravity="center_horizontal"
+            android:id="@+id/txtPhoneNumberVe"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_29pxh"
+            android:layout_marginStart="@dimen/_29pxh"
+            android:layout_marginTop="@dimen/_60pxv"
+            android:layout_width="match_parent"
+            android:lineSpacingExtra="@dimen/_1pxh"
+            android:singleLine="true"
+            android:text="Thank you"
+            style="@style/txtOverpassbold24"/>
+
+        <TextView
+            android:id="@+id/txtLoginusingoth"
+            style="@style/txtOverpasslight16"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_29pxh"
+            android:layout_marginTop="@dimen/_37pxv"
+            android:layout_marginEnd="@dimen/_29pxh"
+            android:gravity="center_horizontal"
+            android:lineSpacingExtra="@dimen/_8pxh"
+            android:text="Your Order will be delivered with invoice #9ds69hs. You can track the delivery in the order section."
+            android:textSize="16sp"
+            tools:ignore="TextContrastCheck" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnContinue"
+            style="@style/btnSolidRounded"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_29pxh"
+            android:layout_marginEnd="@dimen/_29pxh"
+            android:layout_marginTop="@dimen/_100pxv"
+            android:paddingStart="@dimen/_30pxh"
+            android:paddingEnd="@dimen/_30pxh"
+            android:singleLine="true"
+            android:text="Continue Order"
+            android:textAllCaps="true"
+            tools:ignore="TouchTargetSizeCheck" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<!--    <item-->
+<!--        android:id="@+id/menuLogin"-->
+<!--        android:title="Login"-->
+<!--        android:icon="@drawable/ic_login" />-->
+
+<!--    <item-->
+<!--        android:id="@+id/menuRegister"-->
+<!--        android:title="Register"-->
+<!--        android:icon="@drawable/ic_register" />-->
+
+    <item
+        android:id="@+id/menuHome"
+        android:title="Home"
+        android:icon="@drawable/ic_home" />
+    <item
+        android:id="@+id/menuNotification"
+        android:title="Notification"
+        android:icon="@drawable/ic_notification_bottom_nav" />
+
+    <item
+        android:id="@+id/menuCategories"
+        android:title="Categories"
+        android:icon="@drawable/ic_add"/>
+
+    <item
+        android:id="@+id/menuMyOrders"
+        android:title="My Orders"
+        android:icon="@drawable/ic_myorders_bottom_nav" />
+
+    <item
+        android:id="@+id/menuAccount"
+        android:title="Account"
+        android:icon="@drawable/ic_account" />
+
+
+</menu>

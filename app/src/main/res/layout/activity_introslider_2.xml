@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout android:gravity="center_horizontal"
+        android:id="@+id/linearActivitywalkth"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        style="@style/groupStylewhite_A700">
+
+        <ImageView
+            android:id="@+id/imageGroup1207"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="@dimen/_270pxh"
+            android:layout_marginEnd="@dimen/_40pxh"
+            android:layout_marginStart="@dimen/_40pxh"
+            android:layout_marginTop="@dimen/_60pxv"
+            android:layout_width="@dimen/_256pxh"
+            android:scaleType="fitXY"
+            android:src="@drawable/introslider_img_2"
+            android:contentDescription="@string/todo" />
+
+        <LinearLayout
+            android:gravity="center_horizontal"
+            android:id="@+id/linearColumnviewandbuyme"
+            android:layout_height="260sp"
+            android:layout_marginEnd="@dimen/_38pxh"
+            android:layout_marginStart="@dimen/_40pxh"
+            android:layout_marginTop="@dimen/_56pxv"
+            android:layout_width="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:gravity="center_horizontal"
+                android:id="@+id/txtViewandbuyMe"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_28pxh"
+                android:layout_marginStart="@dimen/_28pxh"
+                android:layout_width="match_parent"
+                android:lineSpacingExtra="@dimen/_8pxh"
+                android:textSize="20sp"
+                android:text="@string/online_medical_healthcar"
+                style="@style/txtOverpassbold24"/>
+
+            <TextView
+                android:id="@+id/txtEtiammollisme"
+                style="@style/txtOverpasslight16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_28pxh"
+                android:layout_marginTop="@dimen/_30pxv"
+                android:layout_marginEnd="@dimen/_28pxh"
+                android:gravity="center_horizontal"
+                android:lineSpacingExtra="@dimen/_8pxh"
+                android:textSize="19sp"
+                android:text="@string/msg_etiam_mollis_me"
+                tools:ignore="TextContrastCheck" />
+
+            <LinearLayout
+                android:id="@+id/linearRowskip"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_25pxv"
+                android:layout_width="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtSkip"
+                    style="@style/txtOverpassregular14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_1pxv"
+                    android:layout_weight="0.28"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="@string/lbl_skip"
+                    android:textSize="15sp" />
+
+                <!--                <com.asksira.loopingviewpager.indicator.CustomShapePagerIndicator-->
+                <!--                    android:id="@+id/indicatorGroupThirteen"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginBottom="@dimen/_3pxv"-->
+                <!--                    android:layout_marginStart="@dimen/_99pxh"-->
+                <!--                    android:layout_marginTop="@dimen/_11pxv"-->
+                <!--                    android:layout_weight="0.4"-->
+                <!--                    android:layout_width="0dp"-->
+                <!--                    android:drawable_normal="@drawable/indicator_unselected_bg_gray_400_radius_8"-->
+                <!--                    android:drawable_selected="@drawable/indicator_selected_bg_indigo_a400_radius_8"-->
+                <!--                    android:indicator_size="@dimen/_4pxh"-->
+                <!--                    android:indicator_spacing="@dimen/_8pxh"-->
+                <!--                    tools:ignore="MissingClass" />-->
+
+                <TextView
+                    android:ellipsize="end"
+                    android:id="@+id/txtNext"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_200pxh"
+                    android:layout_width="wrap_content"
+                    android:singleLine="true"
+                    android:text="@string/lbl_next"
+                    android:textSize="15sp"
+                    style="@style/txtOverpassbold14"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

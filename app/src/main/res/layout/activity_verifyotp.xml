@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/linearActivityverify"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        style="@style/groupStylewhite_A700">
+
+        <ImageView
+            android:id="@+id/imageGroupFive"
+            android:layout_gravity="start"
+            android:layout_height="@dimen/_15pxh"
+            android:layout_marginEnd="@dimen/_30pxh"
+            android:layout_marginStart="@dimen/_30pxh"
+            android:layout_marginTop="@dimen/_28pxv"
+            android:layout_width="@dimen/_16pxh"
+            android:scaleType="fitXY"
+            android:src="@drawable/back_arrow"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:ellipsize="end"
+            android:gravity="start"
+            android:id="@+id/txtEntertheverif"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_30pxh"
+            android:layout_marginStart="@dimen/_30pxh"
+            android:layout_marginTop="@dimen/_32pxv"
+            android:layout_width="match_parent"
+            android:lineSpacingExtra="@dimen/_1pxh"
+            android:singleLine="true"
+            android:text="@string/msg_enter_the_verif"
+            style="@style/txtOverpassbold24"/>
+
+        <TextView android:gravity="start"
+            android:id="@+id/txtDescription"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_10pxh"
+            android:layout_marginStart="@dimen/_9pxh"
+            android:layout_marginTop="@dimen/_13pxv"
+            android:layout_width="match_parent"
+            android:textSize="15sp"
+            android:lineSpacingExtra="@dimen/_7pxh"
+            android:text="@string/msg_we_just_send_yo"
+            style="@style/txtOverpassregular14"/>
+
+        <LinearLayout
+            android:gravity="center_horizontal"
+            android:id="@+id/linearColumnzero"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_1pxh"
+            android:layout_marginStart="@dimen/_9pxh"
+            android:layout_marginTop="@dimen/_55pxv"
+            android:layout_width="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout android:id="@+id/linearRowzero"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_15pxh"
+                android:layout_marginStart="@dimen/_15pxh"
+                android:layout_width="match_parent"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:ellipsize="end"
+                    android:id="@+id/txtone"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.17"
+                    android:layout_width="wrap_content"
+                    android:singleLine="true"
+                    android:gravity="center"
+                    android:hint="@string/lbl_02"
+                    android:inputType="number"
+                    style="@style/txtOverpassregular24"/>
+
+                <EditText
+                    android:ellipsize="end"
+                    android:id="@+id/txttwo"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.17"
+                    android:layout_width="wrap_content"
+                    android:singleLine="true"
+                    android:gravity="center"
+                    android:hint="@string/lbl_02"
+                    android:inputType="number"
+                    style="@style/txtOverpassregular24"/>
+
+                <EditText
+                    android:ellipsize="end"
+                    android:id="@+id/txtthree"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.17"
+                    android:layout_width="wrap_content"
+                    android:singleLine="true"
+                    android:gravity="center"
+                    android:hint="@string/lbl_02"
+                    android:inputType="number"
+                    style="@style/txtOverpassregular24"/>
+
+                <EditText
+                    android:ellipsize="end"
+                    android:id="@+id/txtfour"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.17"
+                    android:layout_width="wrap_content"
+                    android:singleLine="true"
+                    android:gravity="center"
+                    android:hint="@string/lbl_02"
+                    android:inputType="number"
+                    style="@style/txtOverpassregular24"/>
+
+                <EditText
+                    android:ellipsize="end"
+                    android:id="@+id/txtfive"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.17"
+                    android:layout_width="wrap_content"
+                    android:singleLine="true"
+                    android:gravity="center"
+                    android:hint="@string/lbl_02"
+                    android:inputType="number"
+                    style="@style/txtOverpassregular24"/>
+                <EditText
+                    android:ellipsize="end"
+                    android:id="@+id/txtsix"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.17"
+                    android:layout_width="wrap_content"
+                    android:singleLine="true"
+                    android:gravity="center"
+                    android:hint="@string/lbl_02"
+                    android:inputType="number"
+                    style="@style/txtOverpassregular24"/>
+
+            </LinearLayout>
+<!--            <com.mukesh.OtpView-->
+<!--                android:focusableInTouchMode="true"-->
+<!--                android:id="@+id/otpViewOtpview"-->
+<!--                android:inputType="number"-->
+<!--                android:layout_gravity="start"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="@dimen/_17pxv"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                app:OtpItemCount="6"-->
+<!--                app:OtpItemSpacing="@dimen/_16pxh"-->
+<!--                app:OtpItemWidth="@dimen/_47pxh"-->
+<!--                app:OtpLineColor="@color/bluegray_900_19"-->
+<!--                app:OtpViewType="line"/>-->
+
+        </LinearLayout>
+        <androidx.appcompat.widget.AppCompatButton
+            android:ellipsize="end"
+            android:gravity="center"
+            android:id="@+id/btnSubmitCode"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_9pxh"
+            android:layout_marginTop="@dimen/_31pxv"
+            android:layout_width="match_parent"
+            android:paddingBottom="@dimen/_20pxv"
+            android:paddingEnd="@dimen/_30pxh"
+            android:paddingStart="@dimen/_30pxh"
+            android:paddingTop="@dimen/_20pxv"
+            android:singleLine="true"
+            android:text="@string/lbl_submit_code"
+            android:textAllCaps="true"
+            style="@style/btnSolidRounded"/>
+
+        <TextView android:ellipsize="end"
+            android:gravity="center_horizontal"
+            android:id="@+id/txtLoginusingoth"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_30pxh"
+            android:layout_marginStart="@dimen/_30pxh"
+            android:layout_marginTop="@dimen/_26pxv"
+            android:layout_width="match_parent"
+            android:lineSpacingExtra="@dimen/_1pxh"
+            android:singleLine="true"
+            android:text="@string/msg_the_verify_code"
+            style="@style/txtOverpassregular14"/>
+
+        <TextView android:ellipsize="end"
+            android:id="@+id/txtLoginusingothOne"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_20pxv"
+            android:layout_marginEnd="@dimen/_30pxh"
+            android:layout_marginStart="@dimen/_30pxh"
+            android:layout_marginTop="@dimen/_24pxv"
+            android:layout_width="wrap_content"
+            android:lineSpacingExtra="@dimen/_1pxh"
+            android:singleLine="true"
+            android:text="@string/lbl_resend_code"
+            style="@style/txtOverpassregular14_4"/>
+
+    </LinearLayout>
+</LinearLayout>

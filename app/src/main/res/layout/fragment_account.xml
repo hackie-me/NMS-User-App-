@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragments.HomeFragment"
+    android:background="@color/backgroundColor">
+
+    <LinearLayout
+        android:id="@+id/MyProfile"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_23pxv"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        style="@style/groupStylewhite_A700"
+        android:background="@color/backgroundColor">
+
+        <LinearLayout
+            android:id="@+id/LinearLayoutMyprofile"
+            android:gravity="end"
+            android:layout_height="0dp"
+            android:layout_marginEnd="@dimen/_6pxh"
+            android:layout_marginStart="@dimen/_17pxh"
+            android:layout_weight="1.0"
+            android:layout_width="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:gravity="start"
+                android:id="@+id/linearColumnmyprofile"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_30pxh"
+                android:layout_width="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:ellipsize="end"
+                    android:id="@+id/txtMyProfile"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_10pxh"
+                    android:layout_width="wrap_content"
+                    android:singleLine="true"
+                    android:text="@string/lbl_my_profile"
+                    style="@style/txtOverpassbold16_1"/>
+
+                <LinearLayout
+                    android:gravity="start"
+                    android:id="@+id/linearname"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_1pxh"
+                    android:layout_marginTop="@dimen/_29pxv"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/profileimage"
+                        android:layout_marginTop="@dimen/_8pxh"
+                        android:layout_width="@dimen/_60pxh"
+                        android:layout_height="@dimen/_70pxh"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_account"
+                        tools:ignore="ContentDescription" />
+
+                    <LinearLayout
+                        android:gravity="start"
+                        android:id="@+id/nameAndmgs"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_10pxv"
+                        android:layout_marginStart="@dimen/_16pxh"
+                        android:layout_marginTop="@dimen/_13pxv"
+                        android:layout_weight="0.68"
+                        android:layout_width="0dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:ellipsize="end"
+                            android:id="@+id/txtusername"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/_10pxh"
+                            android:layout_width="match_parent"
+                            android:singleLine="true"
+                            android:text="@string/lbl_hi_user"
+                            style="@style/txtHKGroteskbold20" />
+
+                        <TextView
+                            android:id="@+id/txtWelcomemgs"
+                            style="@style/txtHKGroteskregular14"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_3pxv"
+                            android:ellipsize="end"
+                            android:singleLine="true"
+                            android:text="@string/msg_welcome_to_medt"
+                            tools:ignore="TextContrastCheck" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearRowa"
+                android:gravity="start"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_30pxh"
+                android:layout_marginStart="@dimen/_6pxh"
+                android:layout_marginTop="@dimen/_44pxv"
+                android:layout_width="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/linearRowgroupitem"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.97"
+                    android:layout_width="0dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/account_imges"
+                        android:layout_height="@dimen/_16pxh"
+                        android:layout_width="@dimen/_16pxh"
+                        android:layout_gravity="center"
+                        android:src="@drawable/img_edit_profile"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:id="@+id/txtPrivateAccount"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_21pxh"
+                        android:layout_marginTop="@dimen/_2pxv"
+                        android:layout_weight="0.84"
+                        android:layout_width="0dp"
+                        android:lineSpacingExtra="@dimen/_1pxh"
+                        android:singleLine="true"
+                        style="@style/txtHKGroteskmedium15"
+                        android:text="@string/lbl_private_account" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/image_account_Arrowright"
+                    android:layout_height="@dimen/_10pxh"
+                    android:layout_marginBottom="@dimen/_5pxv"
+                    android:layout_marginStart="@dimen/_115pxh"
+                    android:layout_marginTop="@dimen/_10pxv"
+                    android:layout_width="@dimen/_6pxh"
+                    android:src="@drawable/img_arrowright"
+                    tools:ignore="ContentDescription" />
+            </LinearLayout>
+            <View
+                android:background="@color/bluegray_900_14"
+                android:id="@+id/lineLine177"
+                android:layout_height="@dimen/_1pxv"
+                android:layout_marginStart="@dimen/_10pxh"
+                android:layout_marginTop="@dimen/_16pxv"
+                android:layout_width="@dimen/_309pxh"/>
+
+            <LinearLayout
+                android:id="@+id/linearRowarrowrightTwo"
+                android:gravity="start"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_30pxh"
+                android:layout_marginStart="@dimen/_6pxh"
+                android:layout_marginTop="@dimen/_17pxv"
+                android:layout_width="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/linearRowgroup1546"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.97"
+                    android:layout_width="0dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageGroup1546"
+                        android:layout_height="@dimen/_16pxh"
+                        android:layout_width="@dimen/_16pxh"
+                        android:layout_gravity="center"
+                        android:src="@drawable/img_my_oder"
+                        tools:ignore="ContentDescription"/>
+
+                    <TextView android:ellipsize="end"
+                        android:id="@+id/txtMyorders"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_21pxh"
+                        android:layout_marginTop="@dimen/_2pxv"
+                        android:layout_weight="0.84"
+                        android:layout_width="0dp"
+                        android:lineSpacingExtra="@dimen/_1pxh"
+                        android:singleLine="true"
+                        android:text="@string/lbl_my_orders"
+                        style="@style/txtHKGroteskmedium15"/>
+
+                </LinearLayout>
+                <ImageView
+                    android:id="@+id/imageArrowrightTwo"
+                    android:layout_height="@dimen/_10pxh"
+                    android:layout_marginBottom="@dimen/_5pxv"
+                    android:layout_marginStart="@dimen/_115pxh"
+                    android:layout_marginTop="@dimen/_10pxv"
+                    android:layout_width="@dimen/_6pxh"
+                    android:src="@drawable/img_arrowright"
+                    tools:ignore="ContentDescription"/>
+            </LinearLayout>
+
+
+            <View
+                android:background="@color/bluegray_900_14"
+                android:id="@+id/lineLine185"
+                android:layout_height="@dimen/_1pxv"
+                android:layout_marginStart="@dimen/_10pxh"
+                android:layout_marginTop="@dimen/_15pxv"
+                android:layout_width="@dimen/_309pxh"/>
+
+
+            <LinearLayout
+                android:id="@+id/linearRowarrowrightThree"
+                android:gravity="start"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_30pxh"
+                android:layout_marginStart="@dimen/_6pxh"
+                android:layout_marginTop="@dimen/_17pxv"
+                android:layout_width="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/linearRowgroupseventy"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.97"
+                    android:layout_width="0dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageGroupSeventy"
+                        android:layout_height="@dimen/_16pxh"
+                        android:layout_width="@dimen/_16pxh"
+                        android:layout_gravity="center"
+                        android:src="@drawable/img_billing"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView android:ellipsize="end"
+                        android:id="@+id/txtHKGroteskmedium15"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_21pxh"
+                        android:layout_marginTop="@dimen/_2pxv"
+                        android:layout_weight="0.84"
+                        android:layout_width="0dp"
+                        android:lineSpacingExtra="@dimen/_1pxh"
+                        android:singleLine="true"
+                        android:text="@string/lbl_billing"
+                        style="@style/txtHKGroteskmedium15"/>
+                </LinearLayout>
+                <ImageView
+                    android:id="@+id/image_Billing_Arrowright"
+                    android:layout_height="@dimen/_10pxh"
+                    android:layout_marginBottom="@dimen/_5pxv"
+                    android:layout_marginStart="@dimen/_115pxh"
+                    android:layout_marginTop="@dimen/_10pxv"
+                    android:layout_width="@dimen/_6pxh"
+                    android:src="@drawable/img_arrowright"
+                    tools:ignore="ContentDescription"/>
+            </LinearLayout>
+            <View
+                android:background="@color/bluegray_900_14"
+                android:id="@+id/lineLine179"
+                android:layout_height="@dimen/_1pxv"
+                android:layout_marginStart="@dimen/_10pxh"
+                android:layout_marginTop="@dimen/_16pxv"
+                android:layout_width="@dimen/_309pxh"/>
+
+            <LinearLayout
+                android:gravity="start"
+                android:id="@+id/linearRowarrowrightFour"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_30pxh"
+                android:layout_marginStart="@dimen/_6pxh"
+                android:layout_marginTop="@dimen/_17pxv"
+                android:layout_width="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/linearRowgroupseventythree"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.97"
+                    android:layout_width="0dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageGroupSeventyThree"
+                        android:layout_height="@dimen/_16pxh"
+                        android:layout_width="@dimen/_16pxh"
+                        android:layout_gravity="center"
+                        android:src="@drawable/img_faq"
+                        tools:ignore="ContentDescription"/>
+
+                    <TextView android:ellipsize="end"
+                        android:id="@+id/txtFaq"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_21pxh"
+                        android:layout_marginTop="@dimen/_2pxv"
+                        android:layout_weight="0.84"
+                        android:layout_width="0dp"
+                        android:lineSpacingExtra="@dimen/_1pxh"
+                        android:singleLine="true"
+                        android:text="@string/lbl_faq"
+                        style="@style/txtHKGroteskmedium15"/>
+
+                </LinearLayout>
+                <ImageView
+                    android:id="@+id/image_faq_Arrowright"
+                    android:layout_height="@dimen/_10pxh"
+                    android:layout_marginBottom="@dimen/_5pxv"
+                    android:layout_marginStart="@dimen/_115pxh"
+                    android:layout_marginTop="@dimen/_10pxv"
+                    android:layout_width="@dimen/_6pxh"
+                    android:src="@drawable/img_arrowright"
+                    tools:ignore="ContentDescription"/>
+            </LinearLayout>
+            <View
+                android:background="@color/bluegray_900_14"
+                android:id="@+id/lineLine183"
+                android:layout_height="@dimen/_1pxv"
+                android:layout_marginStart="@dimen/_10pxh"
+                android:layout_marginTop="@dimen/_16pxv"
+                android:layout_width="@dimen/_309pxh"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

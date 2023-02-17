@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="100sp"
+    android:layout_height="100sp"
+    android:padding="8sp"
+    android:orientation="vertical"
+    android:background="@color/white"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        tools:src="@drawable/ic_categories"
+        android:id="@+id/imgNavIcon"
+        android:layout_gravity="center"
+        android:layout_width="40sp"
+        android:layout_height="40sp"
+        />
+
+    <TextView
+        tools:text="Categories"
+        android:id="@+id/txtNavTitle"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:layout_marginTop="5sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

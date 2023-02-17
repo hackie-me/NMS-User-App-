@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.nms.activity_productdetails">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollViewScrollview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        tools:ignore="SpeakableTextPresentCheck">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:id="@+id/linearColumnlinefour"
+        android:layout_marginBottom="@dimen/_30pxv"
+        android:layout_marginEnd="@dimen/_10pxh"
+        android:layout_marginStart="@dimen/_10pxh"
+        android:layout_marginTop="@dimen/_10pxv"
+        style="@style/groupStylewhite_A700">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:orientation="vertical"
+            android:id="@+id/linearColumngroupfive"
+            android:layout_marginEnd="@dimen/_5pxh">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbarToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                app:contentInsetStart="5dp">
+
+                <LinearLayout
+                    android:id="@+id/linearRowgroupfive"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageGroupFive"
+                        android:layout_width="@dimen/_14pxh"
+                        android:layout_height="@dimen/_14pxh"
+                        android:layout_marginBottom="@dimen/_1pxv"
+                        android:layout_marginTop="@dimen/_2pxv"
+                        android:src="@drawable/back_arrow"
+                        tools:ignore="ContentDescription"/>
+
+                    <LinearLayout
+                        android:id="@+id/linearRowgroup1192"
+                        android:layout_weight="0.8"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_248pxh"
+                        android:layout_width="0dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/imageGroup1192"
+                            android:layout_height="@dimen/_17pxh"
+                            android:layout_width="@dimen/_16pxh"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/ic_notification_bottom_nav"
+                            tools:ignore="ContentDescription"
+                           />
+                        <ImageView
+                            android:id="@+id/imageGroup1184"
+                            android:layout_width="@dimen/_14pxh"
+                            android:layout_height="@dimen/_16pxh"
+                            android:layout_marginStart="@dimen/_25pxh"
+                            android:layout_marginTop="@dimen/_1pxv"
+                            android:src="@drawable/ic_myorders_bottom_nav"
+                            tools:ignore="ContentDescription"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.appcompat.widget.Toolbar>
+            <TextView
+                android:id="@+id/txtSugarFreeGold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_10pxh"
+                android:layout_marginStart="@dimen/_10pxh"
+                android:text="@string/msg_sugar_free_gold"
+                style="@style/txtOverpassbold22"/>
+
+            <TextView
+                android:id="@+id/txtLanguage"
+                style="@style/txtOverpassregular14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_11pxv"
+                android:ellipsize="end"
+                android:layout_marginStart="@dimen/_10pxh"
+                android:singleLine="true"
+                android:text="@string/msg_etiam_mollis_me2" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                style="@style/sliderimage">
+
+                <com.denzcoskun.imageslider.ImageSlider
+                    android:id="@+id/image_slider"
+                    android:layout_width="368dp"
+                    android:layout_height="@dimen/_140pxh"
+                    android:layout_marginStart="@dimen/_5pxh"
+                    android:layout_marginEnd="@dimen/_5pxh"
+                    app:iss_auto_cycle="true"
+                    app:iss_delay="2000"
+                    app:iss_period="2000" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearRowprice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_2pxh"
+                android:layout_marginStart="@dimen/_1pxh"
+                android:layout_marginTop="@dimen/_21pxv"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:id="@+id/linearColumnprice"
+                    android:layout_weight="0.73"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:layout_width="0dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txtPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:layout_marginStart="@dimen/_10pxh"
+                        android:singleLine="true"
+                        android:text="56"
+                        style="@style/txtOverpassbold18"/>
+
+                    <TextView
+                        android:id="@+id/txtLanguageOne"
+                        style="@style/txtOverpassregular14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10pxh"
+                        android:layout_marginTop="@dimen/_9pxv"
+                        android:lineSpacingExtra="@dimen/_1pxh"
+                        android:text="@string/lbl_etiam_mollis" />
+                </LinearLayout>
+                <ImageView android:id="@+id/imageGroup1163"
+                    android:layout_height="@dimen/_16pxh"
+                    android:layout_marginBottom="@dimen/_10pxv"
+                    android:layout_marginTop="@dimen/_16pxv"
+                    android:layout_width="@dimen/_16pxh"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_add"
+                    tools:ignore="ContentDescription"/>
+                <TextView
+                    android:id="@+id/txtAddtocart"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10pxh"
+                    android:layout_marginTop="@dimen/_13pxv"
+                    android:layout_weight="0.22"
+                    android:lineSpacingExtra="@dimen/_1pxh"
+                    android:text="@string/lbl_add_to_cart"
+                    style="@style/txtOverpassregular14"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+        android:id="@+id/linearProductdetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_1pxh"
+        android:gravity="start"
+        android:layout_marginTop="@dimen/_19pxv"
+        android:orientation="vertical"
+        style="@style/groupStylewhite_A700">
+
+
+        <View
+            android:id="@+id/lineLineFour"
+            android:layout_width="@dimen/_326pxh"
+            android:layout_height="@dimen/_1pxv"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/black_900_19"
+            android:layout_marginEnd="@dimen/_6pxh" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearColumnpackagesize"
+            android:gravity="start"
+            android:layout_marginTop="@dimen/_13pxv"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtPackagesize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_10pxh"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="@string/lbl_package_size"
+                style="@style/txtOverpasssemibold16"/>
+
+            <LinearLayout
+                android:id="@+id/linearRowpriceOne"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_10pxh"
+                android:gravity="start"
+                android:layout_marginTop="@dimen/_19pxv"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/linearColumnpriceOne"
+                    android:gravity="start"
+                    android:layout_height="@dimen/_80pxh"
+                    android:layout_weight="0.33"
+                    android:layout_width="0dp"
+                    android:orientation="vertical"
+                    style="@style/groupStyleorange_400_0ccornerRadius">
+
+                    <TextView
+                        android:id="@+id/txtPriceOne"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_10pxh"
+                        android:ellipsize="end"
+                        android:layout_marginStart="@dimen/_10pxh"
+                        android:layout_marginTop="@dimen/_11pxv"
+                        android:singleLine="true"
+                        android:text="$106"
+                        style="@style/txtOverpassbold16_1"/>
+
+                    <TextView
+                        android:id="@+id/txtPelletsCounter"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:layout_marginBottom="@dimen/_16pxv"
+                        android:layout_marginEnd="@dimen/_7pxh"
+                        android:ellipsize="end"
+                        android:layout_marginStart="@dimen/_10pxh"
+                        android:layout_marginTop="@dimen/_10pxv"
+                        android:singleLine="true"
+                        android:text="@string/lbl_pellets"
+                        style="@style/txtOverpassregular16"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/linearColumnpriceTwo"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_80pxh"
+                    android:layout_weight="0.33"
+                    android:gravity="start"
+                    android:layout_marginStart="@dimen/_16pxh"
+                    android:orientation="vertical"
+                    style="@style/groupStyleorange_400_0ccornerRadius">
+
+                    <TextView
+                        android:id="@+id/txtPriceTwo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_10pxh"
+                        android:ellipsize="end"
+                        android:layout_marginStart="@dimen/_10pxh"
+                        android:layout_marginTop="@dimen/_11pxv"
+                        android:singleLine="true"
+                        android:text="166"
+                        style="@style/txtOverpassbold16_1"/>
+                    <TextView android:ellipsize="end"
+                        android:gravity="center_horizontal"
+                        android:id="@+id/txtPelletsCounterOne"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_16pxv"
+                        android:layout_marginEnd="@dimen/_10pxh"
+                        android:layout_marginStart="@dimen/_10pxh"
+                        android:layout_marginTop="@dimen/_10pxv"
+                        android:layout_width="match_parent"
+                        android:singleLine="true"
+                        android:text="110 pellets"
+                        style="@style/txtOverpassregular16"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/linearColumnpriceThree"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_80pxh"
+                    android:layout_marginStart="@dimen/_16pxh"
+                    android:gravity="start"
+                    android:layout_weight="0.33"
+                    android:orientation="vertical"
+                    style="@style/groupStyleorange_400_0ccornerRadius">
+
+                    <TextView
+                        android:ellipsize="end"
+                        android:id="@+id/txtPriceThree"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_10pxh"
+                        android:layout_marginStart="@dimen/_10pxh"
+                        android:layout_marginTop="@dimen/_11pxv"
+                        android:layout_width="wrap_content"
+                        android:singleLine="true"
+                        android:text="252"
+                        style="@style/txtOverpassbold16_1"/>
+
+                    <TextView android:ellipsize="end"
+                        android:gravity="center_horizontal"
+                        android:id="@+id/txtPelletsCounterTwo"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_16pxv"
+                        android:layout_marginEnd="@dimen/_7pxh"
+                        android:layout_marginStart="@dimen/_10pxh"
+                        android:layout_marginTop="@dimen/_10pxv"
+                        android:layout_width="match_parent"
+                        android:singleLine="true"
+                        android:text="300 pellets"
+                        style="@style/txtOverpassregular16"/>
+                </LinearLayout>
+            </LinearLayout>
+            <TextView
+                android:ellipsize="end"
+                android:id="@+id/txtProductDetails"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_10pxh"
+                android:layout_marginTop="@dimen/_11pxv"
+                android:layout_width="wrap_content"
+                android:singleLine="true"
+                android:text="@string/lbl_product_details"
+                style="@style/txtOverpasssemibold16" />
+
+            <TextView
+                android:id="@+id/txtDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_1pxh"
+                android:layout_marginTop="@dimen/_16pxv"
+                android:lineSpacingExtra="@dimen/_5pxh"
+                android:text="@string/msg_product"
+                style="@style/txtOverpassregular14"/>
+
+            <TextView android:ellipsize="end"
+                android:id="@+id/txtRatingandRevi"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_10pxh"
+                android:layout_marginTop="@dimen/_29pxv"
+                android:layout_width="wrap_content"
+                android:singleLine="true"
+                android:text="@string/msg_rating_and_revi"
+                style="@style/txtOverpasssemibold16"/>
+
+            <LinearLayout
+                android:id="@+id/linearRow923ratingsand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_21pxv"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/linearColumnfortyfour"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:layout_marginBottom="@dimen/_5pxv"
+                    android:layout_marginTop="@dimen/_4pxv"
+                    android:layout_weight="0.35"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:gravity="start"
+                        android:id="@+id/linearRowfortyfour"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_10pxh"
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView android:ellipsize="end"
+                            android:id="@+id/txtFortyFour"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/_1pxv"
+                            android:layout_weight="0.66"
+                            android:layout_width="0dp"
+                            android:singleLine="true"
+                            android:text="4.4"
+                            style="@style/txtOverpasssemibold33"/>
+
+                        <ImageView
+                            android:id="@+id/imageStarOne"
+                            android:layout_height="@dimen/_26pxh"
+                            android:layout_marginTop="@dimen/_8pxv"
+                            android:layout_width="@dimen/_26pxh"
+                            android:src="@drawable/img_star1"
+                            tools:ignore="ContentDescription"/>
+
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/txt923Ratingsand"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_22pxv"
+                        android:lineSpacingExtra="@dimen/_5pxh"
+                        android:text="923 ratings"
+                        style="@style/txtOverpassregular14"/>
+                </LinearLayout>
+                <View
+                    android:id="@+id/lineLineFive"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_90pxv"
+                    android:background="@color/black_900_19"
+                    android:layout_marginBottom="@dimen/_4pxv"
+                    android:layout_marginStart="@dimen/_18pxh"
+                    android:layout_marginTop="@dimen/_2pxv"
+                    android:layout_weight="0.0"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>
