@@ -31,7 +31,7 @@
             android:layout_gravity="center_horizontal">
 
             <ImageView
-                android:id="@+id/imageCardItems"
+                android:id="@+id/ivProductImage"
                 style="@style/groupStylegray_200cornerRadius"
                 android:layout_width="@dimen/_109pxh"
                 android:layout_height="@dimen/_134pxh"
@@ -44,7 +44,7 @@
         </FrameLayout>
 
         <TextView
-            android:id="@+id/txtName"
+            android:id="@+id/txtPoductName"
             android:layout_width="150sp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_16pxh"
@@ -68,7 +68,7 @@
 
 
             <TextView
-                android:id="@+id/txtPrice"
+                android:id="@+id/txtPoductPrice"
                 style="@style/txtOverpassbold16_1"
                 android:layout_width="102dp"
                 android:layout_height="wrap_content"
@@ -101,7 +101,7 @@
                     tools:ignore="ContentDescription" />
 
                 <TextView
-                    android:id="@+id/txtrating"
+                    android:id="@+id/txtPoductRating"
                     style="@style/txtSofiaProbold13"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
-import com.example.persons.models.NotificationModel
+import com.nms.user.models.NotificationModel
 import com.nms.user.R
 
 class NotificationAdapter(

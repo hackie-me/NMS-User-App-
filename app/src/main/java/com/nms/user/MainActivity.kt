@@ -3,8 +3,10 @@ package com.nms.user
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.WindowManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.nms.user.fragments.*
+import com.nms.user.utils.Helper
 
 class MainActivity : AppCompatActivity()
 {
@@ -21,11 +23,11 @@ class MainActivity : AppCompatActivity()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
+        // Hide Focus on EditText when activity starts
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         bottomNavView = findViewById(R.id.bottomNav)
         bottomNavView.setOnItemSelectedListener(::bottomNavItemSelected)
-
 
         homeFragment = HomeFragment()
         notificationFragment = NotificationFragment()
@@ -88,6 +90,5 @@ class MainActivity : AppCompatActivity()
             commit()
         }
     }
-
 
 }

@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
-import com.example.persons.models.NotificationModel
+import com.nms.user.models.NotificationModel
 import com.nms.user.R
 import com.nms.user.adapters.NotificationAdapter
 

@@ -1,3 +1,6 @@
-package com.example.persons.models
+package com.nms.user.models
 
-data class NotificationModel(val name: String, val age: String)
+data class NotificationModel(
+    val name: String = "",
+    val age: String = ""
+)

@@ -49,7 +49,7 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:fontFamily">@font/overpass</item>
         <item name="android:textFontWeight" tools:targetApi="p">700</item>
-        <item name="android:background">@drawable/btn_primery</item>
+        <item name="android:background">@drawable/btn_primary</item>
     </style>
 
 

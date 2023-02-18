@@ -66,7 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
             android:height="50dp"
-            android:background="@drawable/btn_primery"
+            android:background="@drawable/btn_primary"
             android:backgroundTint="@color/white"
             android:autofillHints="phone"
             android:hint="@string/enter_you_mobile_number"
@@ -80,7 +80,7 @@
 
             android:layout_marginTop="20dp"
             android:height="50dp"
-            android:background="@drawable/btn_primery"
+            android:background="@drawable/btn_primary"
             android:backgroundTint="@color/white"
             android:hint="@string/enter_password"
             android:inputType="textPassword"
@@ -107,7 +107,7 @@
         android:layout_marginTop="0sp"
         android:layout_below="@id/ly_1"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/btn_primery"
+        android:background="@drawable/btn_primary"
         android:textColor="@color/white"
         android:textSize="18sp"/>
     <LinearLayout

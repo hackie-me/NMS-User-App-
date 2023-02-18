@@ -14,7 +14,7 @@ class ApiRequest {
         private const val BASE_URL = "http://192.168.1.2/nms/api/" // Home IP
         // private const val BASE_URL = "https://hardik.works/nms/api/" // Personal IP
 
-        // Endpoints for Authentication
+        // Endpoints for AuthRepository
         const val URL_LOGIN = "${BASE_URL}auth/login.php"
         const val URL_REGISTER = "${BASE_URL}auth/register.php"
         const val URL_FORGOT_PASSWORD = "${BASE_URL}auth/forgot_password.php"
@@ -25,6 +25,7 @@ class ApiRequest {
 
         // Endpoints for Handling products
         const val URL_GET_PRODUCTS = "${BASE_URL}product/fetch.php"
+        const val URL_GET_PRODUCT_BY_ID = "${BASE_URL}product/fetch_by_id.php?id="
 
         // Endpoints for Handling orders
         const val URL_GET_ORDERS = "${BASE_URL}order/fetch.php"
