@@ -37,7 +37,15 @@ class ProductsAdapter(
         // set the data to the views
         holder.productName.text = itemsViewModel.name
         holder.productPrice.text = itemsViewModel.price
-        holder.productRating.text = itemsViewModel.rating
+
+        // set rating to 0 if it is null
+        if (itemsViewModel.rating == "")
+        {
+            holder.productRating.text = "0"
+        }else{
+            holder.productRating.text = itemsViewModel.rating
+        }
+
 
         // if Product Image is Blank then set default image
         if (itemsViewModel.image == "")

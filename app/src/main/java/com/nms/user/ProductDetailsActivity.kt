@@ -1,5 +1,6 @@
 package com.nms.user
 
+import android.graphics.Color
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
@@ -7,20 +8,21 @@ import androidx.appcompat.app.AppCompatActivity
 import com.denzcoskun.imageslider.ImageSlider
 import com.denzcoskun.imageslider.constants.ActionTypes
 import com.denzcoskun.imageslider.constants.ScaleTypes
-import com.denzcoskun.imageslider.interfaces.ItemChangeListener
 import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.interfaces.TouchListener
 import com.denzcoskun.imageslider.models.SlideModel
-import com.example.nmsadminapp.utils.api.ApiRequest
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import com.nms.user.models.ProductModel
 import com.nms.user.repo.ProductRepository
 import com.nms.user.utils.Helper
+import com.taufiqrahman.reviewratings.BarLabels
+import com.taufiqrahman.reviewratings.RatingReviews
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.util.*
 
 class ProductDetailsActivity : AppCompatActivity() {
 
@@ -43,13 +45,14 @@ class ProductDetailsActivity : AppCompatActivity() {
     private lateinit var productPrice : String
     private lateinit var productDescription : String
 
+    private lateinit var ratingReviews: RatingReviews
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_details)
 
         // Initialize views
         initViews()
-
 
         // Get the product id from intent if not found then finish the activity
         if (intent.getStringExtra("productId") == null) {
@@ -104,7 +107,7 @@ class ProductDetailsActivity : AppCompatActivity() {
         txtProductName = findViewById(R.id.txtProductName)
         txtProductPrice = findViewById(R.id.txtProductPrice)
         txtProductDescription = findViewById(R.id.txtProductDescription)
-        txtProductRating = findViewById(R.id.txtProductRating)
+        ratingReviews = findViewById(R.id.txtProductRating)
         // txtProductTotalRating = findViewById(R.id.txtProductTotalRating)
         // txtProductTotalReviews = findViewById(R.id.txtProductTotalReviews)
         btnIcoBack = findViewById(R.id.btnIcoBackArrow)
@@ -116,8 +119,23 @@ class ProductDetailsActivity : AppCompatActivity() {
         // Handle product image slider
         handleProductImageSlider()
 
+        // Initialize rating reviews
+        initRatingReviews()
+
         // Handle common clicks
         handleCommonClicks()
+    }
+
+    // Function to initialize rating reviews
+    private fun initRatingReviews() {
+        val rating = intArrayOf(
+            Random().nextInt(100),
+            Random().nextInt(100),
+            Random().nextInt(100),
+            Random().nextInt(100),
+            Random().nextInt(100)
+        )
+        ratingReviews.createRatingBars(100, BarLabels.STYPE3, Color.parseColor("#0f9d58"), rating)
     }
 
     // Function to Handle Common Clicks
