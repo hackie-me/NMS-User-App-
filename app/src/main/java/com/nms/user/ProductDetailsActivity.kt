@@ -46,6 +46,8 @@ class ProductDetailsActivity : AppCompatActivity() {
     private lateinit var productDescription : String
 
     private lateinit var ratingReviews: RatingReviews
+    private lateinit var txtProductAverageRating : TextView
+    private lateinit var txtProductRatingCount : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,8 +61,6 @@ class ProductDetailsActivity : AppCompatActivity() {
             finish()
         }
         productId = intent.getStringExtra("productId").toString()
-        Snackbar.make(findViewById(android.R.id.content), "Product id: $productId", Snackbar.LENGTH_LONG).show()
-
     }
 
     override fun onResume() {
@@ -115,6 +115,8 @@ class ProductDetailsActivity : AppCompatActivity() {
         btnIcoShoppingBag = findViewById(R.id.btnIcoShoppingBag)
         ivIcoAddToCartPlus = findViewById(R.id.ivIcoAddToCartPlus)
         txtAddToCart = findViewById(R.id.txtAddToCart)
+        txtProductAverageRating = findViewById(R.id.txtProductAverageRating)
+        txtProductRatingCount = findViewById(R.id.txtProductRatingCount)
 
         // Handle product image slider
         handleProductImageSlider()
@@ -136,6 +138,19 @@ class ProductDetailsActivity : AppCompatActivity() {
             Random().nextInt(100)
         )
         ratingReviews.createRatingBars(100, BarLabels.STYPE3, Color.parseColor("#0f9d58"), rating)
+
+        // Random Average Rating for testing in float value (0.0 to 5.0)
+        val randomRating = Random().nextInt(5)
+        val ratingDecimal = Random().nextInt(9)
+        var averageRating = "$randomRating.$ratingDecimal"
+        if (randomRating == 0) {
+            averageRating = "1.$ratingDecimal"
+        }
+        txtProductAverageRating.text = averageRating
+
+        // Random Rating Count for testing in integer value (0 to 999999)
+        val ratingCount = Random().nextInt(999999)
+        txtProductRatingCount.text = ratingCount.toString()
     }
 
     // Function to Handle Common Clicks

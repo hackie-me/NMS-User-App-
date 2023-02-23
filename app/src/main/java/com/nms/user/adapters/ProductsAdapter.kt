@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.nms.user.R
 import com.nms.user.models.ProductModel
 import com.nms.user.utils.Helper
+import java.util.*
 
 class ProductsAdapter(
     private val context: Context,
@@ -41,7 +42,14 @@ class ProductsAdapter(
         // set rating to 0 if it is null
         if (itemsViewModel.rating == "")
         {
-            holder.productRating.text = "0"
+            // Random Average Rating for testing in float value (0.0 to 5.0)
+            val randomRating = Random().nextInt(5)
+            val ratingDecimal = Random().nextInt(9)
+            var averageRating = "$randomRating.$ratingDecimal"
+            if (randomRating == 0) {
+                averageRating = "1.$ratingDecimal"
+            }
+            holder.productRating.text = averageRating
         }else{
             holder.productRating.text = itemsViewModel.rating
         }

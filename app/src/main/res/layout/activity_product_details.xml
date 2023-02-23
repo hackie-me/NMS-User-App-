@@ -327,7 +327,7 @@
                             android:layout_marginLeft="16dp" />
 
                         <TextView
-                            android:id="@+id/textView2"
+                            android:id="@+id/txtProductRatingCount"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
