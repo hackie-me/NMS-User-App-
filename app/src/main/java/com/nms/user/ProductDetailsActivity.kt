@@ -3,6 +3,7 @@ package com.nms.user
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.denzcoskun.imageslider.ImageSlider
@@ -11,9 +12,13 @@ import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.interfaces.TouchListener
 import com.denzcoskun.imageslider.models.SlideModel
-import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
+import com.nms.user.fragments.CartFragment
+import com.nms.user.fragments.HomeFragment
+import com.nms.user.fragments.MyOrdersFragment
+import com.nms.user.fragments.NotificationFragment
 import com.nms.user.models.ProductModel
+import com.nms.user.repo.CartRepository
 import com.nms.user.repo.ProductRepository
 import com.nms.user.utils.Helper
 import com.taufiqrahman.reviewratings.BarLabels
@@ -27,27 +32,28 @@ import java.util.*
 class ProductDetailsActivity : AppCompatActivity() {
 
     private lateinit var imageSlider: ImageSlider
-    private lateinit var txtProductName : TextView
-    private lateinit var txtProductPrice : TextView
-    private lateinit var txtProductDescription : TextView
-    private lateinit var txtProductImage : ImageView
-    private lateinit var txtProductRating : TextView
-    private lateinit var txtProductTotalRating : TextView
-    private lateinit var txtProductTotalReviews : TextView
-    private lateinit var btnIcoBack : ImageView
-    private lateinit var btnIcoNotification : ImageView
-    private lateinit var btnIcoShoppingBag : ImageView
-    private lateinit var ivIcoAddToCartPlus : ImageView
-    private lateinit var txtAddToCart : TextView
+    private lateinit var txtProductName: TextView
+    private lateinit var txtProductPrice: TextView
+    private lateinit var txtProductDescription: TextView
+    private lateinit var txtProductImage: ImageView
+    private lateinit var txtProductRating: TextView
+    private lateinit var txtProductTotalRating: TextView
+    private lateinit var txtProductTotalReviews: TextView
+    private lateinit var btnIcoBack: ImageView
+    private lateinit var btnIcoNotification: ImageView
+    private lateinit var btnIcoShoppingBag: ImageView
+    private lateinit var ivIcoAddToCartPlus: ImageView
+    private lateinit var txtAddToCart: TextView
+    private lateinit var linearColumnaddtocart: LinearLayout
 
-    private lateinit var productId : String
-    private lateinit var productName : String
-    private lateinit var productPrice : String
-    private lateinit var productDescription : String
+    private lateinit var productId: String
+    private lateinit var productName: String
+    private lateinit var productPrice: String
+    private lateinit var productDescription: String
 
     private lateinit var ratingReviews: RatingReviews
-    private lateinit var txtProductAverageRating : TextView
-    private lateinit var txtProductRatingCount : TextView
+    private lateinit var txtProductAverageRating: TextView
+    private lateinit var txtProductRatingCount: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,7 +74,7 @@ class ProductDetailsActivity : AppCompatActivity() {
         // Get product details from server and set to views if product id is not null or empty
         if (productId.isNotEmpty()) {
             getProductDetails()
-        }else{
+        } else {
             finish()
         }
     }
@@ -117,6 +123,7 @@ class ProductDetailsActivity : AppCompatActivity() {
         txtAddToCart = findViewById(R.id.txtAddToCart)
         txtProductAverageRating = findViewById(R.id.txtProductAverageRating)
         txtProductRatingCount = findViewById(R.id.txtProductRatingCount)
+        linearColumnaddtocart = findViewById(R.id.linearColumnaddtocart)
 
         // Handle product image slider
         handleProductImageSlider()
@@ -126,6 +133,9 @@ class ProductDetailsActivity : AppCompatActivity() {
 
         // Handle common clicks
         handleCommonClicks()
+
+        // Handle add to cart click
+        linearColumnaddtocart.setOnClickListener {addToCart()}
     }
 
     // Function to initialize rating reviews
@@ -156,36 +166,65 @@ class ProductDetailsActivity : AppCompatActivity() {
     // Function to Handle Common Clicks
     private fun handleCommonClicks() {
         btnIcoBack.setOnClickListener {
+            supportFragmentManager.beginTransaction().apply {
+                replace(R.id.fragmentContainer, HomeFragment())
+                commit()
+            }
             finish()
         }
         btnIcoNotification.setOnClickListener {
-            Helper.showSnackBar(findViewById(android.R.id.content), "Notification Clicked")
+            supportFragmentManager.beginTransaction().apply {
+                replace(R.id.fragmentContainer, NotificationFragment())
+                commit()
+            }
         }
         btnIcoShoppingBag.setOnClickListener {
-            Helper.showSnackBar(findViewById(android.R.id.content), "Shopping Bag Clicked")
-        }
-        ivIcoAddToCartPlus.setOnClickListener {
-            Helper.showSnackBar(findViewById(android.R.id.content), "Add to cart Clicked")
-        }
-        txtAddToCart.setOnClickListener {
-            Helper.showSnackBar(findViewById(android.R.id.content), "Add to cart Clicked")
+            supportFragmentManager.beginTransaction().apply {
+                replace(R.id.fragmentContainer, CartFragment())
+                commit()
+            }
         }
     }
 
     // Function to get the product details from server and set the data to views
     private fun getProductDetails() {
-        CoroutineScope(Dispatchers.IO).launch{
+        CoroutineScope(Dispatchers.IO).launch {
             val response = ProductRepository.getProductById(productId)
             val products = Gson().fromJson(response.data, ProductModel::class.java)
-            withContext(Dispatchers.Main){
-                if(response.code == 200) {
+            withContext(Dispatchers.Main) {
+                if (response.code == 200) {
                     txtProductName.text = products.name
                     txtProductPrice.text = products.price
                     txtProductDescription.text = products.description
                 } else {
-                    Helper.showSnackBar(findViewById(android.R.id.content), "Error: ${response.message}")
+                    Helper.showSnackBar(
+                        findViewById(android.R.id.content),
+                        "Error: ${response.message}"
+                    )
                 }
             }
+        }
+    }
+
+    // Function to Add product to cart
+    private fun addToCart() {
+
+        // Check if the product is already in cart then navigate to cart
+        if (CartRepository.isProductInCart(this, productId)){
+            // redirect to cart
+            supportFragmentManager.beginTransaction().apply {
+                replace(R.id.fragmentContainer, MyOrdersFragment())
+                commit()
+            }
+            return
+        }
+
+        if (CartRepository.addToCart(this, productId)){
+            Helper.showSnackBar(findViewById(android.R.id.content), "Product added to cart")
+            // Update the text of add to cart button
+            txtAddToCart.text = "Go to cart"
+        }else{
+            Helper.showSnackBar(findViewById(android.R.id.content), "Error: Product not added to cart")
         }
     }
 }

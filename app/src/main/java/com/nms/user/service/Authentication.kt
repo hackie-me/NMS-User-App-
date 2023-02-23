@@ -1,6 +1,9 @@
 package com.nms.user.service
 
 import android.content.Context
+import android.util.Base64
+import com.google.gson.Gson
+import com.google.gson.JsonObject
 import com.nms.user.utils.Helper
 
 class Authentication(
@@ -42,5 +45,29 @@ class Authentication(
                 commit()
             }
         }
+
+        // Function to Decode JWT Token
+        fun decodeJWTToken(token: String): String {
+            val split = token.split(".")
+            val payload = split[1]
+            val decoded = Base64.decode(payload, Base64.DEFAULT)
+            return String(decoded)
+        }
+
+        // Function to fetch user id from JWT Token
+        fun getDataFromToken(context: Context, value: String): String? {
+            return Gson().fromJson(
+                decodeJWTToken(
+                    Authentication.getToken(context)!!
+                ), JsonObject::class.java
+            ).getAsJsonObject("data")?.get(value)?.asString
+        }
+
+        // FetchJson data from response
+        fun fetchTokenFromJsonData(context: Context, response: String): String? {
+            val element = Gson().fromJson(response, JsonObject::class.java)
+            return element.get("token").asString
+        }
+
     }
 }

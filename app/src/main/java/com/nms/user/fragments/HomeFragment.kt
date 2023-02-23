@@ -27,6 +27,7 @@ import com.nms.user.models.CategoryModel
 import com.nms.user.models.ProductModel
 import com.nms.user.repo.CategoryRepository
 import com.nms.user.repo.ProductRepository
+import com.nms.user.service.Authentication
 import com.nms.user.utils.Helper
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -114,7 +115,7 @@ class HomeFragment : Fragment(), ProductsAdapter.ClickListener
 
     // Function to Initialize userdata from Token
     private fun initializeUserData(){
-        userFullName = Helper.getDataFromToken(requireContext(), "full_name")!!
+        userFullName = Authentication.getDataFromToken(requireContext(), "full_name")!!
         view?.findViewById<TextView>(R.id.txtFullName)?.text = "Hi, $userFullName"
     }
 

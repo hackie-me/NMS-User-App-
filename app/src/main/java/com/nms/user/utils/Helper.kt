@@ -26,14 +26,13 @@ class Helper {
             Toast.makeText(context, message, duration).show()
         }
 
-        // FetchJson data from response
-        fun fetchTokenFromJsonData(context: Context, response: String): String? {
-            val element = Gson().fromJson(response, JsonObject::class.java)
-            return element.get("token").asString
+        // Function to show snack-bar
+        fun showSnackBar(view: View, message: String) {
+            Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show()
         }
 
         // Function to store shared preference
-        fun storeSharedPreference(context: Context, key: String, value: String) {
+        fun storeSharedPreference(context: Context, key: String, value: String, prefName: String = Helper.prefName) {
             val sharedPref = context.getSharedPreferences(prefName, Context.MODE_PRIVATE)
             with(sharedPref.edit()) {
                 putString(key, value)
@@ -42,13 +41,19 @@ class Helper {
         }
 
         // Function to fetch shared preference
-        fun fetchSharedPreference(context: Context, key: String): String {
+        fun fetchSharedPreference(context: Context, key: String, prefName: String = Helper.prefName): String {
             val sharedPref = context.getSharedPreferences(prefName, Context.MODE_PRIVATE)
             return sharedPref.getString(key, "")!!
         }
 
+        // Function to get All Keys from Shared Preference as Array
+        fun getAllKeysFromSharedPreference(context: Context, prefName: String = Helper.prefName): Array<String> {
+            val sharedPref = context.getSharedPreferences(prefName, Context.MODE_PRIVATE)
+            return sharedPref.all.keys.toTypedArray()
+        }
+
         // Function to remove shared preference
-        fun removeSharedPreference(context: Context, key: String) {
+        fun removeSharedPreference(context: Context, key: String, prefName: String = Helper.prefName) {
             val sharedPref = context.getSharedPreferences(prefName, Context.MODE_PRIVATE)
             with(sharedPref.edit()) {
                 remove(key)
@@ -57,7 +62,7 @@ class Helper {
         }
 
         // Function to check if the shared preference has the key
-        fun hasSharedPreference(context: Context, key: String): Boolean {
+        fun hasSharedPreference(context: Context, key: String, prefName: String = Helper.prefName): Boolean {
             val sharedPref = context.getSharedPreferences(prefName, Context.MODE_PRIVATE)
             return sharedPref.contains(key)
         }
@@ -82,16 +87,6 @@ class Helper {
                 function1()
             }
             builder.show()
-        }
-
-        fun replaceFragment(
-            supportFragmentManager: FragmentManager,
-            homeFragment: HomeFragment,
-            fragmentContainer: Int
-        ) {
-            val fragmentTransaction = supportFragmentManager.beginTransaction()
-            fragmentTransaction.replace(fragmentContainer, homeFragment)
-            fragmentTransaction.commit()
         }
 
         // Function to convert image to base64
@@ -125,28 +120,6 @@ class Helper {
             builder.show()
         }
 
-        // Function to Decode JWT Token
-        fun decodeJWTToken(token: String): String {
-            val split = token.split(".")
-            val payload = split[1]
-            val decoded = Base64.decode(payload, Base64.DEFAULT)
-            return String(decoded)
-        }
-
-        // Function to fetch user id from JWT Token
-        fun getDataFromToken(context: Context, value: String): String? {
-            return Gson().fromJson(
-                decodeJWTToken(
-                    Authentication.getToken(context)!!
-                ), JsonObject::class.java
-            ).getAsJsonObject("data")?.get(value)?.asString
-        }
-
-        // Function to show snack-bar
-        fun showSnackBar(view: View, message: String) {
-            Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show()
-        }
-
         // Function to show snack-bar with action
         fun showSnackBarWithAction(
             view: View,
@@ -168,9 +141,8 @@ class Helper {
             }
         }
 
-
         // Function to Generate Random String
-        fun generateRandomString(i: Int): Any {
+        fun generateRandomString(i: Int): String {
             val chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
             val sb = StringBuilder()
             for (j in 0 until i) {

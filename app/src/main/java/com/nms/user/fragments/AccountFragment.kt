@@ -8,6 +8,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.nms.user.R
+import com.nms.user.service.Authentication
 import com.nms.user.utils.Helper
 
 class AccountFragment : Fragment() {
@@ -46,7 +47,7 @@ class AccountFragment : Fragment() {
         linearLayoutGroupItemFaq = view?.findViewById(R.id.linearRowgroupitemFaq)!!
     }
     private fun initializeUserData(){
-        val userFullName = let { Helper.getDataFromToken(requireContext(), "full_name") }
+        val userFullName = let { Authentication.getDataFromToken(requireContext(), "full_name") }
         view?.findViewById<TextView>(R.id.txtUserName)?.text = "Hi, $userFullName"
     }
 

@@ -140,26 +140,31 @@
                             android:text="56" />
                     </LinearLayout>
 
-                    <ImageView
-                        android:id="@+id/ivIcoAddToCartPlus"
-                        android:layout_width="@dimen/_16pxh"
-                        android:layout_height="@dimen/_16pxh"
-                        android:layout_marginTop="@dimen/_16pxv"
-                        android:layout_marginBottom="@dimen/_10pxv"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/ic_add"
-                        tools:ignore="ContentDescription" />
+                    <LinearLayout
+                        android:id="@+id/linearColumnaddtocart"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/ivIcoAddToCartPlus"
+                            android:layout_width="@dimen/_16pxh"
+                            android:layout_height="@dimen/_16pxh"
+                            android:layout_marginTop="@dimen/_16pxv"
+                            android:layout_marginBottom="@dimen/_10pxv"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/ic_add"
+                            tools:ignore="ContentDescription" />
 
-                    <TextView
-                        android:id="@+id/txtAddToCart"
-                        style="@style/txtOverpassregular14"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_10pxh"
-                        android:layout_marginTop="@dimen/_13pxv"
-                        android:layout_weight="0.22"
-                        android:lineSpacingExtra="@dimen/_1pxh"
-                        android:text="@string/lbl_add_to_cart" />
+                        <TextView
+                            android:id="@+id/txtAddToCart"
+                            style="@style/txtOverpassregular14"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10pxh"
+                            android:layout_marginTop="@dimen/_13pxv"
+                            android:layout_weight="0.22"
+                            android:lineSpacingExtra="@dimen/_1pxh"
+                            android:text="@string/lbl_add_to_cart" />
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
 
