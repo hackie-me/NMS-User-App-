@@ -76,7 +76,7 @@
 
                         <TextView
                             android:ellipsize="end"
-                            android:id="@+id/txtusername"
+                            android:id="@+id/txtUserName"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="@dimen/_10pxh"
                             android:layout_width="match_parent"
@@ -99,7 +99,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linearRowa"
+                android:id="@+id/linearRowgroupitemPrivateAccount"
                 android:gravity="start"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_30pxh"
@@ -155,7 +155,7 @@
                 android:layout_width="@dimen/_309pxh"/>
 
             <LinearLayout
-                android:id="@+id/linearRowarrowrightTwo"
+                android:id="@+id/linearRowgroupitemMyOrders"
                 android:gravity="start"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_30pxh"
@@ -202,8 +202,6 @@
                     android:src="@drawable/img_arrowright"
                     tools:ignore="ContentDescription"/>
             </LinearLayout>
-
-
             <View
                 android:background="@color/bluegray_900_14"
                 android:id="@+id/lineLine185"
@@ -212,9 +210,8 @@
                 android:layout_marginTop="@dimen/_15pxv"
                 android:layout_width="@dimen/_309pxh"/>
 
-
             <LinearLayout
-                android:id="@+id/linearRowarrowrightThree"
+                android:id="@+id/linearRowgroupitemBilling"
                 android:gravity="start"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_30pxh"
@@ -269,8 +266,8 @@
                 android:layout_width="@dimen/_309pxh"/>
 
             <LinearLayout
+                android:id="@+id/linearRowgroupitemFaq"
                 android:gravity="start"
-                android:id="@+id/linearRowarrowrightFour"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_30pxh"
                 android:layout_marginStart="@dimen/_6pxh"
