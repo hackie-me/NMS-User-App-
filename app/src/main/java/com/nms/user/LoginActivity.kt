@@ -6,19 +6,22 @@ import android.os.Bundle
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatButton
 import com.nms.user.models.UserModel
 import com.nms.user.repo.AuthRepository
 import com.nms.user.service.Authentication
+import com.nms.user.utils.Helper
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class LoginActivity : AppCompatActivity() {
-    private lateinit var login: TextView
     private lateinit var mobileNo: EditText
     private lateinit var password: EditText
 
+    private lateinit var btnLogin: AppCompatButton
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +36,12 @@ class LoginActivity : AppCompatActivity() {
             finish()
         }
 
+        // Set on click listener on Login button
+        btnLogin.setOnClickListener {
+            doLogin()
+        }
+
+        // Set on click listener on Register button
         findViewById<TextView>(R.id.txtregister).setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
             finish()
@@ -44,6 +53,7 @@ class LoginActivity : AppCompatActivity() {
     private fun init(){
         mobileNo = findViewById(R.id.txtMobileNumber)
         password = findViewById(R.id.txtPassword)
+        btnLogin = findViewById(R.id.btnLogin)
     }
 
     //  Function to validate Inputs
@@ -76,8 +86,14 @@ class LoginActivity : AppCompatActivity() {
             if(response.code == 200){
                 Authentication.storeToken(this@LoginActivity, response.data.toString())
 
-                // redirect to Home page
-
+                // redirect to Home Fragment
+                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                finish()
+            }else{
+                // show error message
+                withContext(Dispatchers.Main){
+                    Helper.showToast(this@LoginActivity, response.code.toString())
+                }
             }
         }
     }

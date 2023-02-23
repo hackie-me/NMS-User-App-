@@ -100,7 +100,7 @@
             android:textSize="15sp" />
     </LinearLayout>
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnlogin"
+        android:id="@+id/btnLogin"
         android:layout_width="310dp"
         android:layout_height="wrap_content"
         android:text="@string/login"
@@ -114,7 +114,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_below="@id/btnlogin"
+        android:layout_below="@id/btnLogin"
         android:layout_marginTop="15sp"
         android:gravity="center">
         <TextView

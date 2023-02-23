@@ -28,7 +28,7 @@
 
     <item
         android:id="@+id/menuMyOrders"
-        android:title="My Orders"
+        android:title="My Cart"
         android:icon="@drawable/ic_myorders_bottom_nav" />
 
     <item
