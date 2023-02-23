@@ -2,32 +2,32 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="@dimen/_70sp"
+    android:layout_width="@dimen/_80sp"
     android:layout_height="@dimen/_120pxh"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
-
-    <FrameLayout
+    <LinearLayout
         android:id="@+id/frameStack"
         style="@style/homtopcategoriesbg"
         android:layout_marginStart="5sp"
         android:layout_marginTop="@dimen/_5pxh"
-        android:layout_width="@dimen/_65sp"
-        android:layout_height="@dimen/_75pxv">
+        android:layout_width="@dimen/_70sp"
+        android:layout_height="@dimen/_95pxv">
 
         <ImageView
             android:id="@+id/imageCardItems"
-            android:layout_width="@dimen/_60pxh"
-            android:layout_height="@dimen/_65pxh"
-            android:layout_gravity="center_horizontal"/>
-    </FrameLayout>
+            android:layout_width="@dimen/_50pxh"
+            android:layout_height="@dimen/_50pxh"
+            android:layout_marginStart="@dimen/_10pxh"
+            android:layout_gravity="center"/>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/txtTopCategoriesName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_10pxv"
+        android:layout_marginTop="@dimen/_15pxv"
         android:layout_gravity="center"
         android:textSize="@dimen/_16pxh"
         android:lineSpacingExtra="@dimen/_6pxh"

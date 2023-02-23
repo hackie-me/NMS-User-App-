@@ -188,7 +188,7 @@
         <item name="android:background">@drawable/card_rectangle_bg</item>
     </style>
     <style name="homtopcategoriesbg">
-        <item name="android:background">@drawable/home_topcategories_backgroung</item>
+        <item name="android:background">@drawable/card_rectangle_bg</item>
     </style>
     <style name="sliderimage">
         <item name="android:src">@drawable/rectangle_card_border</item>

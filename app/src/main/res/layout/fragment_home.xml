@@ -125,7 +125,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="@dimen/_10pxh"
-                                    android:layout_marginTop="@dimen/_7pxv"
+
                                     android:ellipsize="end"
                                     android:gravity="center_horizontal"
                                     android:singleLine="true"
@@ -136,7 +136,7 @@
                                     android:layout_width="370dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="@dimen/_12pxh"
-                                    android:layout_marginTop="10dp"
+                                    android:layout_marginTop="5dp"
                                     android:layout_marginEnd="@dimen/_12pxh"
                                     android:height="50dp"
                                     android:background="@drawable/btn_white"
@@ -176,6 +176,7 @@
                                            android:layout_width="match_parent"
                                            android:layout_height="wrap_content"
                                            android:layout_marginTop="@dimen/_14pxh"
+                                           android:layout_marginStart="15sp"
                                            app:reverseLayout="true"/>
                                    </LinearLayout>
 

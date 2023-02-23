@@ -10,10 +10,9 @@ class ApiRequest {
 
 
         // TODO: Change this to your own server URL
-        // private const val BASE_URL = "http://192.168.56.1/nms/api/" // College IP
-        private const val BASE_URL = "http://192.168.1.2/nms/api/" // Home IP
+        private const val BASE_URL = "http://10.1.51.154/nms/api/" // College IP
+        // private const val BASE_URL = "http://192.168.1.2/nms/api/" // Home IP
         // private const val BASE_URL = "https://hardik.works/nms/api/" // Personal IP
-
         // Endpoints for AuthRepository
         const val URL_LOGIN = "${BASE_URL}auth/login.php"
         const val URL_REGISTER = "${BASE_URL}auth/register.php"

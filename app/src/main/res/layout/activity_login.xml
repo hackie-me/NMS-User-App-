@@ -61,7 +61,7 @@
         android:padding="20dp">
 
         <EditText
-            android:id="@+id/txtemail"
+            android:id="@+id/txtMobileNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
@@ -74,7 +74,7 @@
             android:textColorHint="#546E7A" />
 
         <EditText
-            android:id="@+id/txtpassword"
+            android:id="@+id/txtPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
