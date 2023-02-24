@@ -77,7 +77,7 @@
 
     <string name="msg_cart">bottle of 500 pellets</string>
     <string name="cart_name">Sugar free gold</string>
-    <string name="Your_cart">Your cart</string>
+    <string name="Your_cart">Checkout</string>
     <string name="lbl_add_more">Add more</string>
     <string name="msg_sugar_free_gold">Sugar Free Gold Low Calories</string>
     <string name="msg_etiam_mollis_me2">"Etiam mollis metus non purus "</string>
@@ -103,4 +103,5 @@
     <string name="shop_now">Shop Now</string>
     <string name="cart">Cart</string>
     <string name="payment_summary">payment summary</string>
+    <string name="free">Free</string>
 </resources>

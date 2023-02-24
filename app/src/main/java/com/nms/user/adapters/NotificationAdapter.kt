@@ -13,14 +13,14 @@ import com.nms.user.R
 class NotificationAdapter(
     private val activity: Activity,
     private val persons: Array<NotificationModel>
-) : ArrayAdapter<NotificationModel>(activity, R.layout.notification_list_item, persons)
+) : ArrayAdapter<NotificationModel>(activity, R.layout.list_item_notification_card, persons)
 {
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View
     {
         var view = convertView
         if (view == null)
         {
-            view = LayoutInflater.from(activity).inflate(R.layout.notification_list_item, null)
+            view = LayoutInflater.from(activity).inflate(R.layout.list_item_notification_card, null)
 
             val viewHolder = ViewHolder()
             viewHolder.imgdp = view!!.findViewById(R.id.imgdp)

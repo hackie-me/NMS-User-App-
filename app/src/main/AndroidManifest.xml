@@ -20,7 +20,7 @@
             android:name=".OrderPlacedActivity"
             android:exported="false" />
         <activity
-            android:name=".CheckOutActivity"
+            android:name=".CheckoutActivity"
             android:exported="false" />
         <activity
             android:name=".CartActivity"

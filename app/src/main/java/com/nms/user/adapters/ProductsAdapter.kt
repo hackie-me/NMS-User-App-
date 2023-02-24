@@ -25,7 +25,7 @@ class ProductsAdapter(
         // inflates the card_view_design view
         // that is used to hold list item
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.home_product_card_view, parent, false)
+            .inflate(R.layout.list_item_product_card, parent, false)
         return ViewHolder(view)
     }
 
@@ -77,7 +77,7 @@ class ProductsAdapter(
     // inner class to hold the views
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     {
-        val productImage: ImageView = itemView.findViewById(R.id.ivProductImage)
+        val productImage: ImageView = itemView.findViewById(R.id.ivProductImage)!!
         val productName: TextView = itemView.findViewById(R.id.txtPoductName)
         val productPrice: TextView = itemView.findViewById(R.id.txtPoductPrice)
         val productRating: TextView = itemView.findViewById(R.id.txtPoductRating)

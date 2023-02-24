@@ -2,6 +2,7 @@ package com.nms.user.repo
 
 import android.content.Context
 import com.nms.user.database.DBHelper
+import com.nms.user.models.CartModel
 import com.nms.user.utils.Helper
 
 class CartRepository() {

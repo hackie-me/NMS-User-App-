@@ -67,6 +67,13 @@ class ProductDetailsActivity : AppCompatActivity() {
             finish()
         }
         productId = intent.getStringExtra("productId").toString()
+
+        // Check if product is already in cart
+        if (CartRepository.isProductInCart(this, productId)) {
+            txtAddToCart.text = "Go to Cart"
+        } else {
+            txtAddToCart.text = "Add to Cart"
+        }
     }
 
     override fun onResume() {
@@ -209,10 +216,7 @@ class ProductDetailsActivity : AppCompatActivity() {
         // Check if the product is already in cart then navigate to cart
         if (CartRepository.isProductInCart(this, productId)){
             // redirect to cart
-            supportFragmentManager.beginTransaction().apply {
-                replace(R.id.fragmentContainer, MyOrdersFragment())
-                commit()
-            }
+            startActivity(Intent(this, CartActivity::class.java))
             return
         }
 
