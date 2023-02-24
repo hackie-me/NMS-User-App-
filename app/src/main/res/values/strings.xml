@@ -100,4 +100,7 @@
     <string name="confirm_password">Confirm password</string>
     <string name="let_s_help_you_meet_up_your_tasks">Let’s help you meet up your tasks.</string>
     <string name="enter_your_mobile_number">Enter your mobile number</string>
+    <string name="shop_now">Shop Now</string>
+    <string name="cart">Cart</string>
+    <string name="payment_summary">payment summary</string>
 </resources>

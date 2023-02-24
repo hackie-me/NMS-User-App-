@@ -15,7 +15,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var myOrdersFragment: MyOrdersFragment
     private lateinit var accountFragment: AccountFragment
     private lateinit var categoriesFragment: CategoriesFragment
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

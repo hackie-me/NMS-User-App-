@@ -1,5 +1,6 @@
 package com.nms.user
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.ImageView
@@ -13,7 +14,6 @@ import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.interfaces.TouchListener
 import com.denzcoskun.imageslider.models.SlideModel
 import com.google.gson.Gson
-import com.nms.user.fragments.CartFragment
 import com.nms.user.fragments.HomeFragment
 import com.nms.user.fragments.MyOrdersFragment
 import com.nms.user.fragments.NotificationFragment
@@ -179,10 +179,7 @@ class ProductDetailsActivity : AppCompatActivity() {
             }
         }
         btnIcoShoppingBag.setOnClickListener {
-            supportFragmentManager.beginTransaction().apply {
-                replace(R.id.fragmentContainer, CartFragment())
-                commit()
-            }
+            startActivity(Intent(this, CartActivity::class.java))
         }
     }
 

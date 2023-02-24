@@ -23,7 +23,7 @@
 
     <item
         android:id="@+id/menuCategories"
-        android:title="Categories"
+        android:title="Buy Now"
         android:icon="@drawable/ic_add"/>
 
     <item
