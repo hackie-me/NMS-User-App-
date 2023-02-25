@@ -2,11 +2,10 @@ package com.nms.user.repo
 
 import android.content.Context
 import com.nms.user.database.DBHelper
-import com.nms.user.models.CartModel
 import com.nms.user.utils.Helper
 
-class CartRepository() {
-    companion object{
+class CartRepository {
+    companion object {
         // Function to add product to cart
         fun addToCart(context: Context, productId: String): Boolean {
             // Open Database
@@ -14,8 +13,22 @@ class CartRepository() {
             // Generate id
             val id = Helper.generateRandomString(5)
             // Insert product to cart table
-            db.execSQL("INSERT INTO cart VALUES ('$id', '$productId')")
+            db.execSQL("INSERT INTO cart VALUES ('$id', '$productId', 1)")
             return true
+        }
+
+        // Function to update product quantity
+        fun updateProductQuantity(context: Context, productId: String, quantity: Int): Boolean {
+            // Open Database
+            val db = DBHelper.getDB(context)
+            // Update product quantity
+            if (quantity == 0) {
+                db.execSQL("DELETE FROM cart WHERE productId = '$productId'")
+            } else {
+                db.execSQL("UPDATE cart SET quantity = $quantity WHERE productId = '$productId'")
+                return true
+            }
+            return false
         }
 
         // Function to remove product from cart

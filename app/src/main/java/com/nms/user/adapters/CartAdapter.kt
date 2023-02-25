@@ -4,8 +4,10 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.nms.user.R
@@ -13,12 +15,11 @@ import com.nms.user.models.CartModel
 
 class CartAdapter(
     private val context: Context,
-    private val products: Array<CartModel>,
-) : RecyclerView.Adapter<CartAdapter.ViewHolder>()
-{
+    private val products: ArrayList<CartModel>,
+    private val clickListener: OnClickListener
+) : RecyclerView.Adapter<CartAdapter.ViewHolder>() {
     // create new views
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder
-    {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         // inflates the card_view_design view
         // that is used to hold list item
         val view =
@@ -26,64 +27,55 @@ class CartAdapter(
         return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int)
-    {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val itemsViewModel = products[position]
-        holder.bind()
+        holder.bind(clickListener)
         // set the data to the views
         holder.productName.text = itemsViewModel.productName
         holder.productDescription.text = itemsViewModel.productDescription
-        holder.productTotalPrice.text = itemsViewModel.productPrice
-
+        holder.productQuantity.text = itemsViewModel.productQuantity.toString()
+        holder.productTotalPrice.text = "₹ ${itemsViewModel.productPrice}"
         // if Product Image is Blank then set default image
-        if (itemsViewModel.productImage == "")
-        {
+        if (itemsViewModel.productImage == "") {
             Glide.with(context)
-                .load("https://picsum.photos/200/300")
+                .load("https://picsum.photos/480")
                 .into(holder.ivProductImage)
-        }
-        else
-        {
+        } else {
             Glide.with(context)
                 .load(itemsViewModel.productImage)
                 .into(holder.ivProductImage)
         }
-
     }
 
     override fun getItemCount(): Int = products.size
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
-    {
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val productName: TextView = itemView.findViewById(R.id.txtProductName)
         val ivProductImage: ImageView = itemView.findViewById(R.id.ivProductImage)
         val productDescription: TextView = itemView.findViewById(R.id.txtProductDescription)
-        private val btnMinus: TextView = itemView.findViewById(R.id.btnMinus)
-        private val btnPlus: TextView = itemView.findViewById(R.id.btnPlus)
-        val btnRemoveFromCart: TextView = itemView.findViewById(R.id.ivRemoveCartItem)
-        private val productQuantity: TextView = itemView.findViewById(R.id.txtQuantity)
+        private val btnMinus: FrameLayout = itemView.findViewById(R.id.btnMinus)
+        private val btnPlus: FrameLayout = itemView.findViewById(R.id.btnPlus)
+        private val btnRemoveFromCart: AppCompatImageView =
+            itemView.findViewById(R.id.ivRemoveCartItem)
+        val productQuantity: TextView = itemView.findViewById(R.id.txtQuantity)
         val productTotalPrice: TextView = itemView.findViewById(R.id.txtProductPrice)
-        fun bind()
-        {
-            var quantity = 1 // default quantity
+        fun bind(clickListener: OnClickListener) {
             btnMinus.setOnClickListener {
-                if (quantity > 1)
-                {
-                    quantity--
-                    productQuantity.text = quantity.toString()
-                    // Update total price
-                    val productPrice = productTotalPrice.text.toString().toInt()
-                    productTotalPrice.text = (quantity * productPrice).toString()
-                }
+                clickListener.onMinusClick(adapterPosition)
             }
             btnPlus.setOnClickListener {
-                quantity++
-                productQuantity.text = quantity.toString()
+                clickListener.onPlusClick(adapterPosition)
+            }
 
-                // Update total price
-                val productPrice = productTotalPrice.text.toString().toInt()
-                productTotalPrice.text = (quantity * productPrice).toString()
+            btnRemoveFromCart.setOnClickListener {
+                clickListener.onRemoveClick(adapterPosition)
             }
         }
+    }
+
+    interface OnClickListener {
+        fun onMinusClick(position: Int)
+        fun onPlusClick(position: Int)
+        fun onRemoveClick(position: Int)
     }
 }

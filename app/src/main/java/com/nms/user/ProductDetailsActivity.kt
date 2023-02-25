@@ -14,9 +14,6 @@ import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.interfaces.TouchListener
 import com.denzcoskun.imageslider.models.SlideModel
 import com.google.gson.Gson
-import com.nms.user.fragments.HomeFragment
-import com.nms.user.fragments.MyOrdersFragment
-import com.nms.user.fragments.NotificationFragment
 import com.nms.user.models.ProductModel
 import com.nms.user.repo.CartRepository
 import com.nms.user.repo.ProductRepository
@@ -173,17 +170,12 @@ class ProductDetailsActivity : AppCompatActivity() {
     // Function to Handle Common Clicks
     private fun handleCommonClicks() {
         btnIcoBack.setOnClickListener {
-            supportFragmentManager.beginTransaction().apply {
-                replace(R.id.fragmentContainer, HomeFragment())
-                commit()
-            }
-            finish()
+            startActivity(Intent(this, MainActivity::class.java))
         }
         btnIcoNotification.setOnClickListener {
-            supportFragmentManager.beginTransaction().apply {
-                replace(R.id.fragmentContainer, NotificationFragment())
-                commit()
-            }
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("fragment", "notification")
+            startActivity(intent)
         }
         btnIcoShoppingBag.setOnClickListener {
             startActivity(Intent(this, CartActivity::class.java))

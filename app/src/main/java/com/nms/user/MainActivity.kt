@@ -1,18 +1,21 @@
 package com.nms.user
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.nms.user.fragments.*
+import com.nms.user.fragments.AccountFragment
+import com.nms.user.fragments.CategoriesFragment
+import com.nms.user.fragments.HomeFragment
+import com.nms.user.fragments.NotificationFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var bottomNavView: BottomNavigationView
 
     private lateinit var homeFragment: HomeFragment
     private lateinit var notificationFragment: NotificationFragment
-    private lateinit var myOrdersFragment: MyOrdersFragment
     private lateinit var accountFragment: AccountFragment
     private lateinit var categoriesFragment: CategoriesFragment
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,23 +25,29 @@ class MainActivity : AppCompatActivity() {
         // Hide Focus on EditText when activity starts
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
 
+        // Initialize
         bottomNavView = findViewById(R.id.bottomNav)
         bottomNavView.setOnItemSelectedListener(::bottomNavItemSelected)
-
         homeFragment = HomeFragment()
         notificationFragment = NotificationFragment()
-        myOrdersFragment = MyOrdersFragment()
         accountFragment = AccountFragment()
         categoriesFragment = CategoriesFragment()
 
-        showHomeFragment()
+        // Get intent data
+        val intent = intent
+        when (intent.getStringExtra("fragment")) {
+            "notification" -> showNotificationFragment()
+            "account" -> showAccountFragment()
+            "categories" -> showCategoriesFragment()
+            else -> showHomeFragment()
+        }
     }
 
     private fun bottomNavItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menuHome -> showHomeFragment()
             R.id.menuNotification -> showNotificationFragment()
-            R.id.menuMyOrders -> showMyOrdersFragment()
+            R.id.menuMyCart -> openMyCartActivity()
             R.id.menuAccount -> showAccountFragment()
             R.id.menuCategories -> showCategoriesFragment()
             else -> return false
@@ -60,11 +69,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun showMyOrdersFragment() {
-        supportFragmentManager.beginTransaction().apply {
-            replace(R.id.fragmentContainer, myOrdersFragment)
-            commit()
-        }
+    private fun openMyCartActivity() {
+        val intent = Intent(this, CartActivity::class.java)
+        startActivity(intent)
     }
 
     private fun showAccountFragment() {

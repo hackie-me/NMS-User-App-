@@ -12,19 +12,16 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.nms.user.adapters.CartAdapter
-import com.nms.user.adapters.ProductsAdapter
 import com.nms.user.models.CartModel
 import com.nms.user.models.ProductModel
 import com.nms.user.repo.CartRepository
 import com.nms.user.repo.ProductRepository
-import com.nms.user.utils.Helper
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class CartActivity : AppCompatActivity()
-{
+class CartActivity : AppCompatActivity(), CartAdapter.OnClickListener {
     private lateinit var emptyCartLayout: LinearLayout
     private lateinit var cartLayout: LinearLayout
     private lateinit var btnShopNow: AppCompatButton
@@ -35,9 +32,9 @@ class CartActivity : AppCompatActivity()
     private lateinit var txtShippingPrice: TextView
     private lateinit var txtTotalCartValue: TextView
     private lateinit var imgBackArrow: ImageView
+    private lateinit var cartListArray: ArrayList<CartModel>
 
-    override fun onCreate(savedInstanceState: Bundle?)
-    {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cart)
 
@@ -66,37 +63,53 @@ class CartActivity : AppCompatActivity()
     override fun onResume() {
         super.onResume()
         // Check if cart is empty
-        if (CartRepository.getCartCount(this) == 0)
-        {
+        if (CartRepository.getCartCount(this) == 0) {
             emptyCartLayout.visibility = View.VISIBLE
             cartLayout.visibility = View.GONE
-        } else
-        {
+        } else {
             emptyCartLayout.visibility = View.GONE
             cartLayout.visibility = View.VISIBLE
         }
 
-
+        // Get the cart items
+        getCartItems()
     }
 
     // Function to get the product details from server and set the data to views
-    private fun getProductDetails(productId: String) {
-        CoroutineScope(Dispatchers.IO).launch {
-            val response = ProductRepository.getProductById(productId)
-            val products = Gson().fromJson(response.data, ProductModel::class.java)
-            withContext(Dispatchers.Main) {
+    private fun getCartItems() {
+        val cartItems = CartRepository.getAllProductsFromCart(this)
+        // Get the product details for each product in cart
+        for (i in 0 until cartItems.size) {
+            CoroutineScope(Dispatchers.IO).launch {
+                val response = ProductRepository.getProductById(cartItems[i])
                 if (response.code == 200) {
-                    val cartModel: Array<CartModel>? = null
-                    cartModel?.let {
-                        val cartAdapter = CartAdapter(this@CartActivity, it)
+                    val product = Gson().fromJson(response.data, ProductModel::class.java)
+                    withContext(Dispatchers.Main) {
+                        cartListArray.add(
+                            CartModel(
+                                product.id,
+                                product.name,
+                                product.description,
+                                product.image,
+                                product.price.toInt(),
+                                product.discount,
+                                product.price.toInt()
+                            )
+                        )
+                        // Set the data to views
                         rvCartItem.layoutManager = GridLayoutManager(this@CartActivity, 1)
-                        rvCartItem.adapter = cartAdapter
+                        rvCartItem.adapter =
+                            CartAdapter(this@CartActivity, cartListArray, this@CartActivity)
+
+                        // Total Price of all items
+                        for (j in 0 until cartListArray.size) {
+                            val price = cartListArray[j].productPrice.toInt()
+                            val quantity = cartListArray[j].productQuantity
+                            val totalPrice = price * quantity
+                            txtOrderTotal.text = "₹ $totalPrice"
+                            txtTotalCartValue.text = "₹ $totalPrice"
+                        }
                     }
-                } else {
-                    Helper.showSnackBar(
-                        findViewById(android.R.id.content),
-                        "Error: ${response.message}"
-                    )
                 }
             }
         }
@@ -114,7 +127,58 @@ class CartActivity : AppCompatActivity()
         txtShippingPrice = findViewById(R.id.txtShippingPrice)
         txtTotalCartValue = findViewById(R.id.txtTotalCartValue)
         imgBackArrow = findViewById(R.id.imgBackArrow)
+        cartListArray = ArrayList()
     }
 
+    override fun onMinusClick(position: Int) {
+        // Getting Clicked Items Product ID
+        val productId = cartListArray[position].id
+        // Getting Clicked Items Quantity and Total Price and Price
+        val quantity = cartListArray[position].productQuantity
+        val price = cartListArray[position].productPrice
+
+        // Checking if quantity is greater than 1
+        if (quantity > 1) {
+            // Updating the quantity in cart
+            if (CartRepository.updateProductQuantity(this, productId, quantity - 1)) {
+                var totalPrice: Int = 0
+                totalPrice -= price.toInt()
+                // Updating the quantity in cart list array
+                cartListArray[position].productQuantity = quantity - 1
+                cartListArray[position].productPrice = totalPrice
+                // Updating the quantity in cart adapter
+                rvCartItem.adapter?.notifyItemChanged(position)
+            }
+        }
+    }
+
+    override fun onPlusClick(position: Int) {
+        // Getting Clicked Items Product ID
+        val productId = cartListArray[position].id
+        // Getting Clicked Items Quantity and Total Price and Price
+        val quantity = cartListArray[position].productQuantity
+        val price = cartListArray[position].productPrice
+        // Updating the quantity, total price and price in cart
+        if (CartRepository.updateProductQuantity(this, productId, quantity + 1)) {
+            var totalPrice: Int = 0
+            totalPrice += price.toInt()
+            // Updating the quantity in cart list array
+            cartListArray[position].productQuantity = quantity + 1
+            cartListArray[position].productPrice = totalPrice
+            // Updating the quantity in cart adapter
+            rvCartItem.adapter?.notifyItemChanged(position)
+        }
+    }
+
+    override fun onRemoveClick(position: Int) {
+        // Getting Clicked Items Product ID
+        val productId = cartListArray[position].id
+        // Removing the product from cart
+        CartRepository.removeFromCart(this, productId)
+        // Removing the product from cart list array
+        cartListArray.removeAt(position)
+        // Removing the product from cart adapter
+        rvCartItem.adapter?.notifyItemRemoved(position)
+    }
 
 }
