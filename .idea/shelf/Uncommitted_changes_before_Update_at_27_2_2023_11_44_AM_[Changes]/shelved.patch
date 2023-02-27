@@ -1,0 +1,30 @@
+Index: app/src/main/java/com/nms/user/CartActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.nms.user\r\n\r\nimport android.content.Intent\r\nimport android.os.Bundle\r\nimport android.view.View\r\nimport android.widget.ImageView\r\nimport android.widget.LinearLayout\r\nimport android.widget.TextView\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport androidx.appcompat.widget.AppCompatButton\r\nimport androidx.recyclerview.widget.GridLayoutManager\r\nimport androidx.recyclerview.widget.RecyclerView\r\nimport com.google.gson.Gson\r\nimport com.nms.user.adapters.CartAdapter\r\nimport com.nms.user.adapters.ProductsAdapter\r\nimport com.nms.user.models.CartModel\r\nimport com.nms.user.models.ProductModel\r\nimport com.nms.user.repo.CartRepository\r\nimport com.nms.user.repo.ProductRepository\r\nimport com.nms.user.utils.Helper\r\nimport kotlinx.coroutines.CoroutineScope\r\nimport kotlinx.coroutines.Dispatchers\r\nimport kotlinx.coroutines.launch\r\nimport kotlinx.coroutines.withContext\r\n\r\nclass CartActivity : AppCompatActivity()\r\n{\r\n    private lateinit var emptyCartLayout: LinearLayout\r\n    private lateinit var cartLayout: LinearLayout\r\n    private lateinit var btnShopNow: AppCompatButton\r\n    private lateinit var btnCheckout: AppCompatButton\r\n    private lateinit var rvCartItem: RecyclerView\r\n    private lateinit var txtOrderTotal: TextView\r\n    private lateinit var txtItemsDiscount: TextView\r\n    private lateinit var txtShippingPrice: TextView\r\n    private lateinit var txtTotalCartValue: TextView\r\n    private lateinit var imgBackArrow: ImageView\r\n\r\n    override fun onCreate(savedInstanceState: Bundle?)\r\n    {\r\n        super.onCreate(savedInstanceState)\r\n        setContentView(R.layout.activity_cart)\r\n\r\n        // Initialize\r\n        initViews()\r\n\r\n        // Set click listeners\r\n        btnShopNow.setOnClickListener {\r\n            // TODO: Navigate to Main Activity\r\n            startActivity(Intent(this, MainActivity::class.java))\r\n            finish()\r\n        }\r\n\r\n        imgBackArrow.setOnClickListener {\r\n            // TODO: Navigate to Main Activity\r\n            finish()\r\n        }\r\n\r\n        btnCheckout.setOnClickListener {\r\n            // TODO: Navigate to Checkout Activity\r\n            startActivity(Intent(this, CheckoutActivity::class.java))\r\n            finish()\r\n        }\r\n    }\r\n\r\n    override fun onResume() {\r\n        super.onResume()\r\n        // Check if cart is empty\r\n        if (CartRepository.getCartCount(this) == 0)\r\n        {\r\n            emptyCartLayout.visibility = View.VISIBLE\r\n            cartLayout.visibility = View.GONE\r\n        } else\r\n        {\r\n            emptyCartLayout.visibility = View.GONE\r\n            cartLayout.visibility = View.VISIBLE\r\n        }\r\n\r\n\r\n    }\r\n\r\n    // Function to get the product details from server and set the data to views\r\n    private fun getProductDetails(productId: String) {\r\n        CoroutineScope(Dispatchers.IO).launch {\r\n            val response = ProductRepository.getProductById(productId)\r\n            val products = Gson().fromJson(response.data, ProductModel::class.java)\r\n            withContext(Dispatchers.Main) {\r\n                if (response.code == 200) {\r\n                    val cartModel: Array<CartModel>? = null\r\n                    cartModel?.let {\r\n                        val cartAdapter = CartAdapter(this@CartActivity, it)\r\n                        rvCartItem.layoutManager = GridLayoutManager(this@CartActivity, 1)\r\n                        rvCartItem.adapter = cartAdapter\r\n                    }\r\n                } else {\r\n                    Helper.showSnackBar(\r\n                        findViewById(android.R.id.content),\r\n                        \"Error: ${response.message}\"\r\n                    )\r\n                }\r\n            }\r\n        }\r\n    }\r\n\r\n    // Function to initialize views\r\n    private fun initViews() {\r\n        emptyCartLayout = findViewById(R.id.emptyCartLayout)\r\n        cartLayout = findViewById(R.id.cartLayout)\r\n        btnShopNow = findViewById(R.id.btnShopNow)\r\n        btnCheckout = findViewById(R.id.btnCheckout)\r\n        rvCartItem = findViewById(R.id.rvCartItem)\r\n        txtOrderTotal = findViewById(R.id.txtOrderTotal)\r\n        txtItemsDiscount = findViewById(R.id.txtItemsDiscount)\r\n        txtShippingPrice = findViewById(R.id.txtShippingPrice)\r\n        txtTotalCartValue = findViewById(R.id.txtTotalCartValue)\r\n        imgBackArrow = findViewById(R.id.imgBackArrow)\r\n    }\r\n\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/nms/user/CartActivity.kt b/app/src/main/java/com/nms/user/CartActivity.kt
+--- a/app/src/main/java/com/nms/user/CartActivity.kt	(revision cae36a24971ecb2957d025a7ff5e581b394ef155)
++++ b/app/src/main/java/com/nms/user/CartActivity.kt	(date 1677295104066)
+@@ -66,17 +66,13 @@
+     override fun onResume() {
+         super.onResume()
+         // Check if cart is empty
+-        if (CartRepository.getCartCount(this) == 0)
+-        {
++        if (CartRepository.getCartCount(this) == 0) {
+             emptyCartLayout.visibility = View.VISIBLE
+             cartLayout.visibility = View.GONE
+-        } else
+-        {
++        } else {
+             emptyCartLayout.visibility = View.GONE
+             cartLayout.visibility = View.VISIBLE
+         }
+-
+-
+     }
+ 
+     // Function to get the product details from server and set the data to views

@@ -11,7 +11,7 @@ class DBHelper {
         // Function to get Database
         fun getDB(context: Context): SQLiteDatabase {
             val db = context.openOrCreateDatabase(DBName, Context.MODE_PRIVATE, null)
-            db.execSQL("CREATE TABLE IF NOT EXISTS cart (id VARCHAR, productId VARCHAR, quantity INTEGER)")
+            db.execSQL("CREATE TABLE IF NOT EXISTS cart (id INTEGER PRIMARY KEY AUTOINCREMENT, productId VARCHAR, quantity INTEGER DEFAULT 1, Price INTEGER DEFAULT 0)")
             return db
         }
     }

@@ -34,7 +34,7 @@ class CartAdapter(
         holder.productName.text = itemsViewModel.productName
         holder.productDescription.text = itemsViewModel.productDescription
         holder.productQuantity.text = itemsViewModel.productQuantity.toString()
-        holder.productTotalPrice.text = "₹ ${itemsViewModel.productPrice}"
+        holder.productPrice.text = "₹ ${itemsViewModel.productPrice}"
         // if Product Image is Blank then set default image
         if (itemsViewModel.productImage == "") {
             Glide.with(context)
@@ -58,7 +58,7 @@ class CartAdapter(
         private val btnRemoveFromCart: AppCompatImageView =
             itemView.findViewById(R.id.ivRemoveCartItem)
         val productQuantity: TextView = itemView.findViewById(R.id.txtQuantity)
-        val productTotalPrice: TextView = itemView.findViewById(R.id.txtProductPrice)
+        val productPrice: TextView = itemView.findViewById(R.id.txtProductPrice)
         fun bind(clickListener: OnClickListener) {
             btnMinus.setOnClickListener {
                 clickListener.onMinusClick(adapterPosition)

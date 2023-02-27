@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.nms.user.adapters.CartAdapter
 import com.nms.user.models.CartModel
+import com.nms.user.models.CartProductPrice
 import com.nms.user.models.ProductModel
 import com.nms.user.repo.CartRepository
 import com.nms.user.repo.ProductRepository
@@ -33,6 +34,7 @@ class CartActivity : AppCompatActivity(), CartAdapter.OnClickListener {
     private lateinit var txtTotalCartValue: TextView
     private lateinit var imgBackArrow: ImageView
     private lateinit var cartListArray: ArrayList<CartModel>
+    private lateinit var cartProductPriceListArray: ArrayList<CartProductPrice>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,9 +57,11 @@ class CartActivity : AppCompatActivity(), CartAdapter.OnClickListener {
 
         btnCheckout.setOnClickListener {
             // TODO: Navigate to Checkout Activity
-            startActivity(Intent(this, CheckoutActivity::class.java))
-            finish()
+            //startActivity(Intent(this, CheckoutActivity::class.java))
+            //finish()
         }
+        // Get the cart items
+        getCartItems()
     }
 
     override fun onResume() {
@@ -70,9 +74,6 @@ class CartActivity : AppCompatActivity(), CartAdapter.OnClickListener {
             emptyCartLayout.visibility = View.GONE
             cartLayout.visibility = View.VISIBLE
         }
-
-        // Get the cart items
-        getCartItems()
     }
 
     // Function to get the product details from server and set the data to views
@@ -87,28 +88,24 @@ class CartActivity : AppCompatActivity(), CartAdapter.OnClickListener {
                     withContext(Dispatchers.Main) {
                         cartListArray.add(
                             CartModel(
-                                product.id,
-                                product.name,
-                                product.description,
-                                product.image,
-                                product.price.toInt(),
-                                product.discount,
-                                product.price.toInt()
+                                id = product.id,
+                                productName = product.name,
+                                productDescription = product.description,
+                                productImage = product.image,
+                                productPrice = product.price.toInt(),
+                                productDiscount = product.discount
+                            )
+                        )
+                        cartProductPriceListArray.add(
+                            CartProductPrice(
+                                productId = product.id,
+                                price = product.price.toInt()
                             )
                         )
                         // Set the data to views
                         rvCartItem.layoutManager = GridLayoutManager(this@CartActivity, 1)
                         rvCartItem.adapter =
                             CartAdapter(this@CartActivity, cartListArray, this@CartActivity)
-
-                        // Total Price of all items
-                        for (j in 0 until cartListArray.size) {
-                            val price = cartListArray[j].productPrice.toInt()
-                            val quantity = cartListArray[j].productQuantity
-                            val totalPrice = price * quantity
-                            txtOrderTotal.text = "₹ $totalPrice"
-                            txtTotalCartValue.text = "₹ $totalPrice"
-                        }
                     }
                 }
             }
@@ -128,6 +125,7 @@ class CartActivity : AppCompatActivity(), CartAdapter.OnClickListener {
         txtTotalCartValue = findViewById(R.id.txtTotalCartValue)
         imgBackArrow = findViewById(R.id.imgBackArrow)
         cartListArray = ArrayList()
+        cartProductPriceListArray = ArrayList()
     }
 
     override fun onMinusClick(position: Int) {
@@ -136,16 +134,18 @@ class CartActivity : AppCompatActivity(), CartAdapter.OnClickListener {
         // Getting Clicked Items Quantity and Total Price and Price
         val quantity = cartListArray[position].productQuantity
         val price = cartListArray[position].productPrice
+        val defaultPrice = cartListArray[position].productPrice
 
         // Checking if quantity is greater than 1
         if (quantity > 1) {
+            // Update product Price
+            val productPrice = price - defaultPrice
+
             // Updating the quantity in cart
-            if (CartRepository.updateProductQuantity(this, productId, quantity - 1)) {
-                var totalPrice: Int = 0
-                totalPrice -= price.toInt()
+            if (CartRepository.updateProductQuantity(this, productId, quantity - 1, productPrice)) {
                 // Updating the quantity in cart list array
                 cartListArray[position].productQuantity = quantity - 1
-                cartListArray[position].productPrice = totalPrice
+                cartListArray[position].productPrice = productPrice
                 // Updating the quantity in cart adapter
                 rvCartItem.adapter?.notifyItemChanged(position)
             }
@@ -158,13 +158,16 @@ class CartActivity : AppCompatActivity(), CartAdapter.OnClickListener {
         // Getting Clicked Items Quantity and Total Price and Price
         val quantity = cartListArray[position].productQuantity
         val price = cartListArray[position].productPrice
+        val defaultPrice = cartListArray[position].productPrice
+
+        // Update product Price
+        val productPrice = price + defaultPrice
+
         // Updating the quantity, total price and price in cart
-        if (CartRepository.updateProductQuantity(this, productId, quantity + 1)) {
-            var totalPrice: Int = 0
-            totalPrice += price.toInt()
+        if (CartRepository.updateProductQuantity(this, productId, quantity + 1, productPrice)) {
             // Updating the quantity in cart list array
             cartListArray[position].productQuantity = quantity + 1
-            cartListArray[position].productPrice = totalPrice
+            cartListArray[position].productPrice = productPrice
             // Updating the quantity in cart adapter
             rvCartItem.adapter?.notifyItemChanged(position)
         }

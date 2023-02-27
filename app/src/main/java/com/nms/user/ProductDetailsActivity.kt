@@ -191,6 +191,7 @@ class ProductDetailsActivity : AppCompatActivity() {
                 if (response.code == 200) {
                     txtProductName.text = products.name
                     txtProductPrice.text = products.price
+                    productPrice = products.price
                     txtProductDescription.text = products.description
                 } else {
                     Helper.showSnackBar(
@@ -212,7 +213,7 @@ class ProductDetailsActivity : AppCompatActivity() {
             return
         }
 
-        if (CartRepository.addToCart(this, productId)){
+        if (CartRepository.addToCart(this, productId, productPrice)){
             Helper.showSnackBar(findViewById(android.R.id.content), "Product added to cart")
             // Update the text of add to cart button
             txtAddToCart.text = "Go to cart"
