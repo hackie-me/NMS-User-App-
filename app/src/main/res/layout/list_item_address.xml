@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_110pxh"
+    android:layout_marginTop="1dp"
+    android:background="@color/white"
+    android:checkable="true"
+    android:clickable="true"
+    android:focusable="true"
+    android:padding="@dimen/_6pxh"
+    app:cardCornerRadius="@dimen/_8pxh"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true">
+
+    <TextView
+        android:id="@+id/tvAddress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/_5pxh"
+        android:ellipsize="end"
+        android:gravity="start"
+        android:padding="@dimen/_6pxh"
+        android:textColor="@color/black"
+        tools:text="Address" />
+</androidx.cardview.widget.CardView>

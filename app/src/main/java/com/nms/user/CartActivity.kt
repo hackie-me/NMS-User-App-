@@ -35,6 +35,9 @@ class CartActivity : AppCompatActivity(), CartAdapter.OnClickListener {
     private lateinit var imgBackArrow: ImageView
     private lateinit var cartListArray: ArrayList<CartModel>
     private lateinit var cartProductPriceListArray: ArrayList<CartProductPrice>
+    private var orderTotal: Int = 0
+    private var itemsDiscount: Int = 0
+    private var discount = 5
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,9 +59,14 @@ class CartActivity : AppCompatActivity(), CartAdapter.OnClickListener {
         }
 
         btnCheckout.setOnClickListener {
-            // TODO: Navigate to Checkout Activity
-            //startActivity(Intent(this, CheckoutActivity::class.java))
-            //finish()
+            val intent = Intent(this, CheckoutActivity::class.java)
+            intent.putExtra("orderTotal", orderTotal)
+            intent.putExtra("itemsDiscount", itemsDiscount)
+            intent.putExtra("shippingPrice", 0)
+            intent.putExtra("totalCartValue", (orderTotal - itemsDiscount))
+            intent.putExtra("totalCartCount", cartListArray.size)
+            startActivity(intent)
+            finish()
         }
         // Get the cart items
         getCartItems()
@@ -106,6 +114,9 @@ class CartActivity : AppCompatActivity(), CartAdapter.OnClickListener {
                         rvCartItem.layoutManager = GridLayoutManager(this@CartActivity, 1)
                         rvCartItem.adapter =
                             CartAdapter(this@CartActivity, cartListArray, this@CartActivity)
+
+                        // update the cart total
+                        updateCart()
                     }
                 }
             }
@@ -134,7 +145,7 @@ class CartActivity : AppCompatActivity(), CartAdapter.OnClickListener {
         // Getting Clicked Items Quantity and Total Price and Price
         val quantity = cartListArray[position].productQuantity
         val price = cartListArray[position].productPrice
-        val defaultPrice = cartListArray[position].productPrice
+        val defaultPrice = cartProductPriceListArray[position].price
 
         // Checking if quantity is greater than 1
         if (quantity > 1) {
@@ -148,6 +159,9 @@ class CartActivity : AppCompatActivity(), CartAdapter.OnClickListener {
                 cartListArray[position].productPrice = productPrice
                 // Updating the quantity in cart adapter
                 rvCartItem.adapter?.notifyItemChanged(position)
+
+                // Update the cart
+                updateCart()
             }
         }
     }
@@ -158,7 +172,7 @@ class CartActivity : AppCompatActivity(), CartAdapter.OnClickListener {
         // Getting Clicked Items Quantity and Total Price and Price
         val quantity = cartListArray[position].productQuantity
         val price = cartListArray[position].productPrice
-        val defaultPrice = cartListArray[position].productPrice
+        val defaultPrice = cartProductPriceListArray[position].price
 
         // Update product Price
         val productPrice = price + defaultPrice
@@ -170,6 +184,9 @@ class CartActivity : AppCompatActivity(), CartAdapter.OnClickListener {
             cartListArray[position].productPrice = productPrice
             // Updating the quantity in cart adapter
             rvCartItem.adapter?.notifyItemChanged(position)
+
+            // Update the cart
+            updateCart()
         }
     }
 
@@ -182,6 +199,28 @@ class CartActivity : AppCompatActivity(), CartAdapter.OnClickListener {
         cartListArray.removeAt(position)
         // Removing the product from cart adapter
         rvCartItem.adapter?.notifyItemRemoved(position)
+
+        // Update the cart
+        updateCart()
+    }
+
+    // Function to update the cart
+    private fun updateCart() {
+        // Calculate the total price
+        orderTotal = 0
+        for (j in 0 until cartListArray.size) {
+            orderTotal += cartListArray[j].productPrice
+        }
+        txtOrderTotal.text = "₹ $orderTotal"
+        // Calculate the discount
+        itemsDiscount = (orderTotal * discount) / 100
+        txtItemsDiscount.text = "₹ $itemsDiscount"
+        // Calculate the shipping price
+        // val shippingPrice = 50
+        // txtShippingPrice.text = "₹ $shippingPrice"
+        // Calculate the total cart value
+        val totalCartValue = orderTotal - itemsDiscount
+        txtTotalCartValue.text = "₹ $totalCartValue"
     }
 
 }

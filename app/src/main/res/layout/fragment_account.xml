@@ -311,15 +311,67 @@
                     android:layout_marginTop="@dimen/_10pxv"
                     android:layout_width="@dimen/_6pxh"
                     android:src="@drawable/img_arrowright"
-                    tools:ignore="ContentDescription"/>
+                    tools:ignore="ContentDescription" />
             </LinearLayout>
+
             <View
                 android:background="@color/bluegray_900_14"
                 android:id="@+id/lineLine183"
                 android:layout_height="@dimen/_1pxv"
                 android:layout_marginStart="@dimen/_10pxh"
                 android:layout_marginTop="@dimen/_16pxv"
-                android:layout_width="@dimen/_309pxh"/>
+                android:layout_width="@dimen/_309pxh" />
+
+            <LinearLayout
+                android:id="@+id/linearRowgroupitemLogout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_6pxh"
+                android:layout_marginTop="@dimen/_17pxv"
+                android:layout_marginEnd="@dimen/_30pxh"
+                android:gravity="start"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/linearRowgroupseventyfour"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.97"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageGroupSeventyFour"
+                        android:layout_width="@dimen/_16pxh"
+                        android:layout_height="@dimen/_16pxh"
+                        android:layout_gravity="center"
+                        android:src="@drawable/img_faq"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:id="@+id/txtLogout"
+                        style="@style/txtHKGroteskmedium15"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_21pxh"
+                        android:layout_marginTop="@dimen/_2pxv"
+                        android:layout_weight="0.84"
+                        android:ellipsize="end"
+                        android:lineSpacingExtra="@dimen/_1pxh"
+                        android:singleLine="true"
+                        android:text="Logout" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/image_logout_Arrowright"
+                    android:layout_width="@dimen/_6pxh"
+                    android:layout_height="@dimen/_10pxh"
+                    android:layout_marginStart="@dimen/_115pxh"
+                    android:layout_marginTop="@dimen/_10pxv"
+                    android:layout_marginBottom="@dimen/_5pxv"
+                    android:src="@drawable/img_arrowright"
+                    tools:ignore="ContentDescription" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

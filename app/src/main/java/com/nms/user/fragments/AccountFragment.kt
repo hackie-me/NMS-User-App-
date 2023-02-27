@@ -1,5 +1,6 @@
 package com.nms.user.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.nms.user.LoginActivity
 import com.nms.user.R
 import com.nms.user.service.Authentication
 import com.nms.user.utils.Helper
@@ -16,7 +18,8 @@ class AccountFragment : Fragment() {
     private lateinit var linearLayoutGroupItemMyAccount : LinearLayout
     private lateinit var linearLayoutGroupItemMyOrder : LinearLayout
     private lateinit var linearLayoutGroupItemBilling : LinearLayout
-    private lateinit var linearLayoutGroupItemFaq : LinearLayout
+    private lateinit var linearLayoutGroupItemFaq: LinearLayout
+    private lateinit var linearLayoutGroupItemLogout: LinearLayout
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -45,6 +48,7 @@ class AccountFragment : Fragment() {
         linearLayoutGroupItemMyOrder = view?.findViewById(R.id.linearRowgroupitemMyOrders)!!
         linearLayoutGroupItemBilling = view?.findViewById(R.id.linearRowgroupitemBilling)!!
         linearLayoutGroupItemFaq = view?.findViewById(R.id.linearRowgroupitemFaq)!!
+        linearLayoutGroupItemLogout = view?.findViewById(R.id.linearRowgroupitemLogout)!!
     }
     private fun initializeUserData(){
         val userFullName = let { Authentication.getDataFromToken(requireContext(), "full_name") }
@@ -72,6 +76,14 @@ class AccountFragment : Fragment() {
         // FAQ
         linearLayoutGroupItemFaq.setOnClickListener {
             Helper.showToast(requireContext(), "FAQ")
+        }
+
+        // Logout
+        linearLayoutGroupItemLogout.setOnClickListener {
+            Authentication.clearToken(requireContext())
+            Helper.showToast(requireContext(), "Successfully logged out")
+            startActivity(Intent(requireContext(), LoginActivity::class.java))
+            requireActivity().finish()
         }
     }
 }

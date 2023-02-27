@@ -9,9 +9,10 @@ class ApiRequest {
     companion object {
 
 
+
         // TODO: Change this to your own server URL
-        private const val BASE_URL = "http://10.1.51.154/nms/api/" // College IP
-        // private const val BASE_URL = "http://192.168.1.2/nms/api/" // Home IP
+        // private const val BASE_URL = "http://10.1.51.154/nms/api/" // College IP
+        private const val BASE_URL = "http://192.168.1.2/nms/api/" // Home IP
 
         // private const val BASE_URL = "https://hardik.works/nms/api/" // Personal IP
         // Endpoints for AuthRepository
@@ -22,6 +23,12 @@ class ApiRequest {
 
         // Endpoints for Handling categories
         const val URL_GET_CATEGORIES = "${BASE_URL}category/fetch.php"
+
+        // Endpoints for Handling addresses
+        const val URL_GET_ADDRESSES = "${BASE_URL}address/fetch.php"
+        const val URL_ADD_ADDRESS = "${BASE_URL}address/insert.php"
+        const val URL_UPDATE_ADDRESS = "${BASE_URL}address/update.php"
+        const val URL_DELETE_ADDRESS = "${BASE_URL}address/delete.php"
 
         // Endpoints for Handling products
         const val URL_GET_PRODUCTS = "${BASE_URL}product/fetch.php"
@@ -56,6 +63,7 @@ class ApiRequest {
 
         // Method to send get request
         fun getRequest(url: String, token: String? = null): ApiResponse {
+            // Remove extra double quotes from token
             return if (token == null) {
                 send(
                     Request.Builder()
