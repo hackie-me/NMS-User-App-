@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/_110pxh"
+    android:layout_height="@dimen/_120pxh"
     android:layout_marginTop="1dp"
     android:background="@color/white"
     app:cardCornerRadius="@dimen/_8pxh"
@@ -14,13 +14,13 @@
     <LinearLayout
         android:id="@+id/linearRowbottleof500p"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/ivProductImage"
-            android:layout_width="@dimen/_70pxh"
-            android:layout_height="@dimen/_80pxh"
+            android:layout_width="@dimen/_80pxh"
+            android:layout_height="@dimen/_110pxh"
             android:scaleType="fitXY"
             android:src="@drawable/img_card_items"
             tools:ignore="ContentDescription" />
@@ -28,7 +28,7 @@
         <LinearLayout
             android:id="@+id/linearColumnsugarfreegold"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginStart="@dimen/_16pxh"
             android:layout_weight="0.77"
             android:gravity="start"
@@ -44,8 +44,9 @@
                     android:id="@+id/txtProductName"
                     style="@style/txtOverpasssemibold14"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="20sp"
                     android:layout_marginTop="@dimen/_3pxv"
+                    android:maxLength="40"
                     android:layout_marginBottom="@dimen/_2pxv"
                     android:layout_weight="0.83"
                     android:ellipsize="end"
@@ -67,18 +68,17 @@
                 android:id="@+id/txtProductDescription"
                 style="@style/txtOverpassregular13"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40sp"
+                android:maxLength="80"
+                android:autoSizeTextType="uniform"
                 android:layout_marginTop="@dimen/_3pxv"
-                android:layout_marginEnd="@dimen/_10pxh"
-
-                android:ellipsize="end"
                 android:text="@string/msg_cart" />
 
             <LinearLayout
                 android:id="@+id/linearRowprice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10pxv"
+                android:layout_marginTop="@dimen/_20pxv"
                 android:layout_marginEnd="@dimen/_5pxh"
                 android:orientation="horizontal">
 
