@@ -62,5 +62,8 @@ dependencies {
     // Rating View library
     implementation 'com.github.Inconnu08:android-ratingreviews:1.2.0'
 
+    // material UI
+    implementation 'com.google.android.material:material:1.8.0'
+
 
 }

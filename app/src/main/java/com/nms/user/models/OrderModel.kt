@@ -1,13 +1,12 @@
 package com.nms.user.models
 
 data class OrderModel(
-    val _id: String,
-    val address: AddressModel,
-    val cart: ArrayList<CartModel>,
-    val date: String,
-    val orderTotal: Int,
-    val paymentMethod: String,
-    val shippingPrice: Int,
-    val status: String,
-    val user: String
+    val id: String = "",
+    val address: String = "",
+    val pid: String = "",
+    val note: String = "",
+    val quantity: String = "",
+    val pdf: String = "",
+    val total: String = "",
+    val status: String = ""
 )

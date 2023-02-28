@@ -214,7 +214,7 @@ class ProductDetailsActivity : AppCompatActivity() {
         }
 
         if (CartRepository.addToCart(this, productId, productPrice)){
-            Helper.showSnackBar(findViewById(android.R.id.content), "Product added to cart")
+            // Helper.showSnackBar(findViewById(android.R.id.content), "Product added to cart")
             // Update the text of add to cart button
             txtAddToCart.text = "Go to cart"
         }else{

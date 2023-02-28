@@ -17,6 +17,7 @@ import com.nms.user.models.CartProductPrice
 import com.nms.user.models.ProductModel
 import com.nms.user.repo.CartRepository
 import com.nms.user.repo.ProductRepository
+import com.nms.user.utils.Helper
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -35,6 +36,7 @@ class CartActivity : AppCompatActivity(), CartAdapter.OnClickListener {
     private lateinit var imgBackArrow: ImageView
     private lateinit var cartListArray: ArrayList<CartModel>
     private lateinit var cartProductPriceListArray: ArrayList<CartProductPrice>
+    private lateinit var cartProductIdListArray : ArrayList<String>
     private var orderTotal: Int = 0
     private var itemsDiscount: Int = 0
     private var discount = 5
@@ -65,6 +67,7 @@ class CartActivity : AppCompatActivity(), CartAdapter.OnClickListener {
             intent.putExtra("shippingPrice", 0)
             intent.putExtra("totalCartValue", (orderTotal - itemsDiscount))
             intent.putExtra("totalCartCount", cartListArray.size)
+            intent.putExtra("pid", cartProductIdListArray)
             startActivity(intent)
             finish()
         }
@@ -87,29 +90,37 @@ class CartActivity : AppCompatActivity(), CartAdapter.OnClickListener {
     // Function to get the product details from server and set the data to views
     private fun getCartItems() {
         val cartItems = CartRepository.getAllProductsFromCart(this)
+        // get the quantity from cartItems
         // Get the product details for each product in cart
         for (i in 0 until cartItems.size) {
             CoroutineScope(Dispatchers.IO).launch {
-                val response = ProductRepository.getProductById(cartItems[i])
+                val pid = cartItems[i][0]
+                val response = ProductRepository.getProductById(pid)
                 if (response.code == 200) {
                     val product = Gson().fromJson(response.data, ProductModel::class.java)
                     withContext(Dispatchers.Main) {
+                        var price = cartItems[i][3].toInt()
+                        if(price == 0) {
+                            price = product.price.toInt() * cartItems[i][2].toInt()
+                        }
                         cartListArray.add(
                             CartModel(
                                 id = product.id,
                                 productName = product.name,
                                 productDescription = product.description,
                                 productImage = product.image,
-                                productPrice = product.price.toInt(),
-                                productDiscount = product.discount
+                                productPrice = price,
+                                productDiscount = product.discount,
+                                productQuantity = cartItems[i][2].toInt(),
                             )
                         )
                         cartProductPriceListArray.add(
                             CartProductPrice(
                                 productId = product.id,
-                                price = product.price.toInt()
+                                price = price
                             )
                         )
+                        cartProductIdListArray.add(product.id)
                         // Set the data to views
                         rvCartItem.layoutManager = GridLayoutManager(this@CartActivity, 1)
                         rvCartItem.adapter =
@@ -137,6 +148,7 @@ class CartActivity : AppCompatActivity(), CartAdapter.OnClickListener {
         imgBackArrow = findViewById(R.id.imgBackArrow)
         cartListArray = ArrayList()
         cartProductPriceListArray = ArrayList()
+        cartProductIdListArray = ArrayList()
     }
 
     override fun onMinusClick(position: Int) {
@@ -193,6 +205,7 @@ class CartActivity : AppCompatActivity(), CartAdapter.OnClickListener {
     override fun onRemoveClick(position: Int) {
         // Getting Clicked Items Product ID
         val productId = cartListArray[position].id
+        Helper.showToast(this, productId)
         // Removing the product from cart
         CartRepository.removeFromCart(this, productId)
         // Removing the product from cart list array

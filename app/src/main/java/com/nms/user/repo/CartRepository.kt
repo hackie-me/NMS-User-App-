@@ -1,6 +1,7 @@
 package com.nms.user.repo
 
 import android.content.Context
+import android.util.Log
 import com.nms.user.database.DBHelper
 import com.nms.user.utils.Helper
 
@@ -36,24 +37,33 @@ class CartRepository {
             // Open Database
             val db = DBHelper.getDB(context)
             // Delete product from cart table
-            db.execSQL("DELETE FROM cart WHERE productId = '$productId'")
+            val sql = "DELETE FROM cart WHERE productId = '$productId'"
+            Helper.showToast(context, sql)
+            db.execSQL(sql)
             return true
         }
 
         // Function to get all products from cart
-        fun getAllProductsFromCart(context: Context): ArrayList<String> {
+        fun getAllProductsFromCart(context: Context): ArrayList<Array<String>> {
             // Open Database
             val db = DBHelper.getDB(context)
             // Get all products from cart table
             val cursor = db.rawQuery("SELECT * FROM cart", null)
             // Create array list to store products
-            val products = ArrayList<String>()
+            val products = ArrayList<Array<String>>()
             // Check if cursor has data
             if (cursor.moveToFirst()) {
                 // Loop through cursor
                 do {
                     // Add product to array list
-                    products.add(cursor.getString(1))
+                    products.add(
+                        arrayOf(
+                            cursor.getString(0), // id
+                            cursor.getString(1), // productId
+                            cursor.getString(2), // quantity
+                            cursor.getString(3)  // price
+                        )
+                    )
                 } while (cursor.moveToNext())
             }
             // Close cursor

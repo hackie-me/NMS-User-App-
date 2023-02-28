@@ -12,14 +12,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.nms.user.adapters.AddressAdapter
 import com.nms.user.models.AddressModel
+import com.nms.user.models.OrderModel
 import com.nms.user.repo.AddressRepository
+import com.nms.user.repo.CheckoutRepository
 import com.nms.user.utils.Helper
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class CheckoutActivity : AppCompatActivity() {
+class CheckoutActivity : AppCompatActivity()
+{
     private lateinit var btnOrderNow: AppCompatButton
     private lateinit var txtOrderTotal: TextView
     private lateinit var txtItemsDiscount: TextView
@@ -33,6 +36,7 @@ class CheckoutActivity : AppCompatActivity() {
     private lateinit var rvAddressList: RecyclerView
     private lateinit var txtButtonAddNewAddress: TextView
     private lateinit var linearEmptyAddress: LinearLayout
+    private var addressId: String = ""
 
     // Special Order Notes
     private lateinit var txtSpecialOrderNotes: TextView
@@ -44,8 +48,10 @@ class CheckoutActivity : AppCompatActivity() {
     private var shippingPrice: Int = 0
     private var totalCartValue: Int = 0
     private var totalCartCount: Int = 0
+    private var pid = ""
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_checkout)
 
@@ -58,6 +64,7 @@ class CheckoutActivity : AppCompatActivity() {
         shippingPrice = intent.getIntExtra("shippingPrice", 0)
         totalCartValue = intent.getIntExtra("totalCartValue", 0)
         totalCartCount = intent.getIntExtra("totalCartCount", 0)
+        pid = intent.getStringExtra("pid").toString()
 
         // Set data
         txtOrderTotal.text = "₹ $orderTotal"
@@ -92,14 +99,16 @@ class CheckoutActivity : AppCompatActivity() {
 
     }
 
-    override fun onResume() {
+    override fun onResume()
+    {
         super.onResume()
         // Get Address List
         getAddressList()
     }
 
     // Function to initialize views
-    private fun initViews() {
+    private fun initViews()
+    {
         btnOrderNow = findViewById(R.id.btnOrderNow)
         txtOrderTotal = findViewById(R.id.txtOrderTotal)
         txtItemsDiscount = findViewById(R.id.txtItemsDiscount)
@@ -115,42 +124,70 @@ class CheckoutActivity : AppCompatActivity() {
     }
 
     // Function to do order
-    private fun doOrder() {
-        // Open Order Confirmation Activity
-        startActivity(Intent(this, OrderPlaced::class.java))
-        finish()
+    private fun doOrder()
+    {
+        // Get Special Order Notes
+        val specialOrderNotes = txtSpecialOrderNotes.text.toString()
+
+        // Create Order Model
+        val orderModel = OrderModel(
+            address = Helper.fetchSharedPreference(this, "deliveryAddress"),
+            note = specialOrderNotes,
+            total = totalCartValue.toString(),
+            quantity = totalCartCount.toString()
+
+        )
+        // Place Order
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = CheckoutRepository.placeOrder(orderModel)
+            if (response.code == 201)
+            {
+                withContext(Dispatchers.Main) {
+                    // Open Order Placed Activity
+                    startActivity(
+                        Intent(
+                            this@CheckoutActivity, OrderPlacedActivity::class.java
+                        )
+                    )
+                    finish()
+                }
+            }
+        }
     }
 
     // Function to get address list
-    private fun getAddressList() {
+    private fun getAddressList()
+    {
         CoroutineScope(Dispatchers.IO).launch {
             // Get Address List
             val response = AddressRepository.getAllAddress(this@CheckoutActivity)
             val addressList = Gson().fromJson(response.data, Array<AddressModel>::class.java)
             // if address list is Empty then show default address
-            if (addressList.isEmpty()) {
+            if (addressList.isEmpty())
+            {
                 withContext(Dispatchers.Main) {
                     linearEmptyAddress.visibility = LinearLayout.VISIBLE
                 }
-            } else {
+            } else
+            {
                 withContext(Dispatchers.Main) {
                     linearEmptyAddress.visibility = LinearLayout.GONE
                     rvAddressList.visibility = RecyclerView.VISIBLE
                 }
             }
 
-            if (response.code == 200) {
+            if (response.code == 200)
+            {
                 // Set Address List
                 val addressAdapter = AddressAdapter(this@CheckoutActivity, addressList)
                 withContext(Dispatchers.Main) {
                     rvAddressList.adapter = addressAdapter
                     rvAddressList.layoutManager = LinearLayoutManager(
-                        this@CheckoutActivity,
-                        LinearLayoutManager.VERTICAL,
-                        false
+                        this@CheckoutActivity, LinearLayoutManager.VERTICAL, false
                     )
                 }
-            } else {
+            } else
+            {
                 // Show Error Message
                 withContext(Dispatchers.Main) {
                     Helper.showToast(this@CheckoutActivity, "Error: ${response.message}")
