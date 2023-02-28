@@ -1,10 +1,7 @@
 package com.nms.user.repo
 
-import android.content.Context
-import com.example.nmsadminapp.utils.api.ApiRequest
 import com.example.nmsadminapp.utils.api.ApiResponse
-import com.nms.user.database.DBHelper
-import com.nms.user.utils.Helper
+import com.nms.user.utils.api.ApiRequest
 
 class ProductRepository {
     companion object {

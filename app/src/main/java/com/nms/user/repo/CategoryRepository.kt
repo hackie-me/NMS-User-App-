@@ -1,7 +1,7 @@
 package com.nms.user.repo
 
-import com.example.nmsadminapp.utils.api.ApiRequest
 import com.example.nmsadminapp.utils.api.ApiResponse
+import com.nms.user.utils.api.ApiRequest
 
 class CategoryRepository {
     companion object{

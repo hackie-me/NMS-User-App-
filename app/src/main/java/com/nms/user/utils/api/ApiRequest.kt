@@ -1,5 +1,6 @@
-package com.example.nmsadminapp.utils.api
+package com.nms.user.utils.api
 
+import com.example.nmsadminapp.utils.api.ApiResponse
 import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -8,11 +9,8 @@ import okhttp3.RequestBody.Companion.toRequestBody
 class ApiRequest {
     companion object {
 
-
-
-        // TODO: Change this to your own server URL
-        private const val BASE_URL = "http://10.1.51.154/nms/api/" // College IP
-        // private const val BASE_URL = "http://192.168.1.2/nms/api/" // Home IP
+        // private const val BASE_URL = "http://10.1.51.154/nms/api/" // College IP
+        private const val BASE_URL = "http://192.168.1.2/nms/api/" // Home IP
 
         // private const val BASE_URL = "https://hardik.works/nms/api/" // Personal IP
         // Endpoints for AuthRepository
@@ -39,6 +37,15 @@ class ApiRequest {
         const val URL_ADD_ORDER = "${BASE_URL}order/insert.php"
         const val URL_UPDATE_ORDER = "${BASE_URL}order/update.php"
         const val URL_DELETE_ORDER = "${BASE_URL}order/delete.php"
+
+        // Endpoints for Handling custom orders
+        const val URL_GET_CUSTOM_ORDERS = "${BASE_URL}custom_order/fetch.php"
+        const val URL_ADD_CUSTOM_ORDER = "${BASE_URL}custom_order/insert.php"
+        const val URL_UPDATE_CUSTOM_ORDER = "${BASE_URL}custom_order/update.php"
+        const val URL_DELETE_CUSTOM_ORDER = "${BASE_URL}custom_order/delete.php"
+        const val URL_GET_CUSTOM_ORDER_BY_ID = "${BASE_URL}custom_order/fetch_by_id.php?id="
+        const val URL_GET_CUSTOM_ORDER_BY_USERID =
+            "${BASE_URL}custom_order/fetch_by_user_id.php?user_id="
 
         // Endpoints for Handling reviews
         const val URL_GET_REVIEWS = "${BASE_URL}review/fetch.php"

@@ -7,7 +7,7 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.nms.user.fragments.AccountFragment
-import com.nms.user.fragments.CategoriesFragment
+import com.nms.user.fragments.CustomOrderFragment
 import com.nms.user.fragments.HomeFragment
 import com.nms.user.fragments.NotificationFragment
 
@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var homeFragment: HomeFragment
     private lateinit var notificationFragment: NotificationFragment
     private lateinit var accountFragment: AccountFragment
-    private lateinit var categoriesFragment: CategoriesFragment
+    private lateinit var customOrderFragment: CustomOrderFragment
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         homeFragment = HomeFragment()
         notificationFragment = NotificationFragment()
         accountFragment = AccountFragment()
-        categoriesFragment = CategoriesFragment()
+        customOrderFragment = CustomOrderFragment()
 
         // Get intent data
         val intent = intent
@@ -83,7 +83,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun showCategoriesFragment() {
         supportFragmentManager.beginTransaction().apply {
-            replace(R.id.fragmentContainer, categoriesFragment)
+            replace(R.id.fragmentContainer, customOrderFragment)
             commit()
         }
     }

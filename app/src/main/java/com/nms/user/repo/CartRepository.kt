@@ -1,43 +1,45 @@
 package com.nms.user.repo
 
 import android.content.Context
-import android.util.Log
 import com.nms.user.database.DBHelper
 import com.nms.user.utils.Helper
 
 class CartRepository {
     companion object {
         // Function to add product to cart
-        fun addToCart(context: Context, productId: String, price: String): Boolean {
+        fun addToCart(context: Context, productId: Int, price: Int): Boolean {
             // Open Database
             val db = DBHelper.getDB(context)
-            // Generate id
-            val id = Helper.generateRandomString(5)
             // Insert product to cart table
-            db.execSQL("INSERT INTO cart(productId, quantity, Price) VALUES ('$productId', 1, '$price')")
+            db.execSQL("INSERT INTO cart(productId, quantity, Price) VALUES ($productId, 1, $price)")
             return true
         }
 
         // Function to update product quantity
-        fun updateProductQuantity(context: Context, productId: String, quantity: Int, price: Int): Boolean {
+        fun updateProductQuantity(
+            context: Context,
+            productId: Int,
+            quantity: Int,
+            price: Int
+        ): Boolean {
             // Open Database
             val db = DBHelper.getDB(context)
             // Update product quantity
             if (quantity == 0) {
-                db.execSQL("DELETE FROM cart WHERE productId = '$productId'")
+                db.execSQL("DELETE FROM cart WHERE productId = $productId")
             } else {
-                db.execSQL("UPDATE cart SET quantity = $quantity AND price = $price WHERE productId = '$productId'")
+                db.execSQL("UPDATE cart SET quantity = $quantity AND price = $price WHERE productId = $productId")
                 return true
             }
             return false
         }
 
         // Function to remove product from cart
-        fun removeFromCart(context: Context, productId: String): Boolean {
+        fun removeFromCart(context: Context, productId: Int): Boolean {
             // Open Database
             val db = DBHelper.getDB(context)
             // Delete product from cart table
-            val sql = "DELETE FROM cart WHERE productId = '$productId'"
+            val sql = "DELETE FROM cart WHERE productId = $productId"
             Helper.showToast(context, sql)
             db.execSQL(sql)
             return true

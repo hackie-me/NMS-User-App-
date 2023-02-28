@@ -1,10 +1,9 @@
 package com.nms.user.repo
 
-import com.example.nmsadminapp.utils.api.ApiRequest
 import com.example.nmsadminapp.utils.api.ApiResponse
 import com.google.gson.Gson
-import com.nms.user.models.CheckoutModel
 import com.nms.user.models.OrderModel
+import com.nms.user.utils.api.ApiRequest
 
 class CheckoutRepository {
     companion object {

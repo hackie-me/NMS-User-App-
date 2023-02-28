@@ -165,7 +165,13 @@ class CartActivity : AppCompatActivity(), CartAdapter.OnClickListener {
             val productPrice = price - defaultPrice
 
             // Updating the quantity in cart
-            if (CartRepository.updateProductQuantity(this, productId, quantity - 1, productPrice)) {
+            if (CartRepository.updateProductQuantity(
+                    this,
+                    productId.toInt(),
+                    quantity - 1,
+                    productPrice
+                )
+            ) {
                 // Updating the quantity in cart list array
                 cartListArray[position].productQuantity = quantity - 1
                 cartListArray[position].productPrice = productPrice
@@ -190,7 +196,13 @@ class CartActivity : AppCompatActivity(), CartAdapter.OnClickListener {
         val productPrice = price + defaultPrice
 
         // Updating the quantity, total price and price in cart
-        if (CartRepository.updateProductQuantity(this, productId, quantity + 1, productPrice)) {
+        if (CartRepository.updateProductQuantity(
+                this,
+                productId.toInt(),
+                quantity + 1,
+                productPrice
+            )
+        ) {
             // Updating the quantity in cart list array
             cartListArray[position].productQuantity = quantity + 1
             cartListArray[position].productPrice = productPrice
@@ -207,7 +219,7 @@ class CartActivity : AppCompatActivity(), CartAdapter.OnClickListener {
         val productId = cartListArray[position].id
         Helper.showToast(this, productId)
         // Removing the product from cart
-        CartRepository.removeFromCart(this, productId)
+        CartRepository.removeFromCart(this, productId.toInt())
         // Removing the product from cart list array
         cartListArray.removeAt(position)
         // Removing the product from cart adapter

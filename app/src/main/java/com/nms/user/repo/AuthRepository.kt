@@ -1,10 +1,10 @@
 package com.nms.user.repo
 
 import android.content.Context
-import com.example.nmsadminapp.utils.api.ApiRequest
 import com.example.nmsadminapp.utils.api.ApiResponse
 import com.google.gson.Gson
 import com.nms.user.models.UserModel
+import com.nms.user.utils.api.ApiRequest
 
 class AuthRepository {
     companion object{
