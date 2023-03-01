@@ -10,12 +10,19 @@ import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.google.gson.Gson
 import com.nms.user.R
 import com.nms.user.models.CartModel
+import com.nms.user.models.ProductModel
+import com.nms.user.repo.ProductRepository
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class CartAdapter(
     private val context: Context,
-    private val products: ArrayList<CartModel>,
+    private val products: Array<CartModel>,
     private val clickListener: OnClickListener
 ) : RecyclerView.Adapter<CartAdapter.ViewHolder>() {
     // create new views
@@ -31,20 +38,41 @@ class CartAdapter(
         val itemsViewModel = products[position]
         holder.bind(clickListener)
         // set the data to the views
-        holder.productName.text = itemsViewModel.productName
-        holder.productDescription.text = itemsViewModel.productDescription
-        holder.productQuantity.text = itemsViewModel.productQuantity.toString()
-        holder.productPrice.text = "₹ ${itemsViewModel.productPrice}"
-        // if Product Image is Blank then set default image
-        if (itemsViewModel.productImage == "") {
-            Glide.with(context)
-                .load("https://picsum.photos/480")
-                .into(holder.ivProductImage)
-        } else {
-            Glide.with(context)
-                .load(itemsViewModel.productImage)
-                .into(holder.ivProductImage)
+        val pid = itemsViewModel.pid
+        var productPrice = 0
+
+        // Get Product Name, Description, Price, Image from Product ID
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = ProductRepository.getProductById(pid)
+            val product = Gson().fromJson(response.data, ProductModel::class.java)
+            if (response.code == 200) {
+                withContext(Dispatchers.Main) {
+                    holder.productName.text = product.name
+                    holder.productDescription.text = product.description
+                    holder.productPrice.text = "₹ ${product.price}"
+                    productPrice = product.price.toInt()
+                    // if Product Image is Blank then set default image
+                    if (product.image == "") {
+                        Glide.with(context)
+                            .load("https://picsum.photos/480")
+                            .into(holder.ivProductImage)
+                    } else {
+                        Glide.with(context)
+                            .load(product.image)
+                            .into(holder.ivProductImage)
+                    }
+                }
+            }
         }
+
+        // Set Quantity
+        holder.productQuantity.text = itemsViewModel.quantity
+
+        // Set Total Price
+        val totalPrice = itemsViewModel.quantity.toInt() * productPrice
+
+        // Set Total Price
+        holder.productPrice.text = "₹ $totalPrice"
     }
 
     override fun getItemCount(): Int = products.size

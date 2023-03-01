@@ -14,6 +14,7 @@ import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.interfaces.TouchListener
 import com.denzcoskun.imageslider.models.SlideModel
 import com.google.gson.Gson
+import com.nms.user.models.CartModel
 import com.nms.user.models.ProductModel
 import com.nms.user.repo.CartRepository
 import com.nms.user.repo.ProductRepository
@@ -66,11 +67,7 @@ class ProductDetailsActivity : AppCompatActivity() {
         productId = intent.getStringExtra("productId").toString()
 
         // Check if product is already in cart
-        if (CartRepository.isProductInCart(this, productId)) {
-            txtAddToCart.text = "Go to Cart"
-        } else {
-            txtAddToCart.text = "Add to Cart"
-        }
+        isProductInCart()
     }
 
     override fun onResume() {
@@ -139,7 +136,9 @@ class ProductDetailsActivity : AppCompatActivity() {
         handleCommonClicks()
 
         // Handle add to cart click
-        linearColumnaddtocart.setOnClickListener {addToCart()}
+        linearColumnaddtocart.setOnClickListener {
+            handleAddToCartClick()
+        }
     }
 
     // Function to initialize rating reviews
@@ -205,23 +204,51 @@ class ProductDetailsActivity : AppCompatActivity() {
 
     // Function to Add product to cart
     private fun addToCart() {
-
-        // Check if the product is already in cart then navigate to cart
-        if (CartRepository.isProductInCart(this, productId)){
-            // redirect to cart
-            startActivity(Intent(this, CartActivity::class.java))
-            return
+        val cartModel = CartModel(
+            pid = productId,
+            price = txtProductPrice.text.toString()
+        )
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = CartRepository.addToCart(this@ProductDetailsActivity, cartModel)
+            withContext(Dispatchers.Main) {
+                if (response.code == 201) {
+                    Helper.showSnackBar(
+                        findViewById(android.R.id.content),
+                        "Product added to cart successfully"
+                    )
+                    txtAddToCart.text = "Go to Cart"
+                }
+            }
         }
+    }
 
-        if (CartRepository.addToCart(this, productId.toInt(), productPrice.toInt())) {
-            // Helper.showSnackBar(findViewById(android.R.id.content), "Product added to cart")
-            // Update the text of add to cart button
-            txtAddToCart.text = "Go to cart"
+    // Function to check if product is in cart
+    private fun isProductInCart(): Boolean {
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = CartRepository.getCartItems(this@ProductDetailsActivity)
+            withContext(Dispatchers.Main) {
+                if (response.code == 200) {
+                    val cartItems = Gson().fromJson(response.data, Array<CartModel>::class.java)
+                    for (item in cartItems) {
+                        if (item.pid == productId) {
+                            txtAddToCart.text = "Go to Cart"
+                            return@withContext
+                        } else {
+                            txtAddToCart.text = "Add to Cart"
+                        }
+                    }
+                }
+            }
+        }
+        return false
+    }
+
+    // Function to handle add to cart click
+    private fun handleAddToCartClick() {
+        if (txtAddToCart.text == "Add to Cart") {
+            addToCart()
         } else {
-            Helper.showSnackBar(
-                findViewById(android.R.id.content),
-                "Error: Product not added to cart"
-            )
+            startActivity(Intent(this, CartActivity::class.java))
         }
     }
 }

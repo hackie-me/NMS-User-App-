@@ -47,6 +47,12 @@ class ApiRequest {
         const val URL_GET_CUSTOM_ORDER_BY_USERID =
             "${BASE_URL}custom_order/fetch_by_user_id.php?user_id="
 
+        // Endpoints for Handling cart
+        const val URL_GET_CART_ITEMS = "${BASE_URL}cart/fetch.php"
+        const val URL_ADD_CART_ITEM = "${BASE_URL}cart/insert.php"
+        const val URL_UPDATE_CART_QUANTITY = "${BASE_URL}cart/update_quantity.php"
+        const val URL_DELETE_CART_ITEM = "${BASE_URL}cart/delete.php"
+
         // Endpoints for Handling reviews
         const val URL_GET_REVIEWS = "${BASE_URL}review/fetch.php"
         const val URL_ADD_REVIEW = "${BASE_URL}review/insert.php"
