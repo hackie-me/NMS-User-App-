@@ -8,13 +8,10 @@ import android.util.Base64
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.fragment.app.FragmentManager
-import com.nms.user.fragments.HomeFragment
-import com.nms.user.service.Authentication
 import com.google.android.material.snackbar.Snackbar
-import com.google.gson.Gson
-import com.google.gson.JsonObject
 import java.io.ByteArrayOutputStream
+import java.text.SimpleDateFormat
+import java.util.*
 
 class Helper {
     companion object {
@@ -32,7 +29,12 @@ class Helper {
         }
 
         // Function to store shared preference
-        fun storeSharedPreference(context: Context, key: String, value: String, prefName: String = Helper.prefName) {
+        fun storeSharedPreference(
+            context: Context,
+            key: String,
+            value: String,
+            prefName: String = Helper.prefName
+        ) {
             val sharedPref = context.getSharedPreferences(prefName, Context.MODE_PRIVATE)
             with(sharedPref.edit()) {
                 putString(key, value)
@@ -41,19 +43,30 @@ class Helper {
         }
 
         // Function to fetch shared preference
-        fun fetchSharedPreference(context: Context, key: String, prefName: String = Helper.prefName): String {
+        fun fetchSharedPreference(
+            context: Context,
+            key: String,
+            prefName: String = Helper.prefName
+        ): String {
             val sharedPref = context.getSharedPreferences(prefName, Context.MODE_PRIVATE)
             return sharedPref.getString(key, "")!!
         }
 
         // Function to get All Keys from Shared Preference as Array
-        fun getAllKeysFromSharedPreference(context: Context, prefName: String = Helper.prefName): Array<String> {
+        fun getAllKeysFromSharedPreference(
+            context: Context,
+            prefName: String = Helper.prefName
+        ): Array<String> {
             val sharedPref = context.getSharedPreferences(prefName, Context.MODE_PRIVATE)
             return sharedPref.all.keys.toTypedArray()
         }
 
         // Function to remove shared preference
-        fun removeSharedPreference(context: Context, key: String, prefName: String = Helper.prefName) {
+        fun removeSharedPreference(
+            context: Context,
+            key: String,
+            prefName: String = Helper.prefName
+        ) {
             val sharedPref = context.getSharedPreferences(prefName, Context.MODE_PRIVATE)
             with(sharedPref.edit()) {
                 remove(key)
@@ -62,7 +75,11 @@ class Helper {
         }
 
         // Function to check if the shared preference has the key
-        fun hasSharedPreference(context: Context, key: String, prefName: String = Helper.prefName): Boolean {
+        fun hasSharedPreference(
+            context: Context,
+            key: String,
+            prefName: String = Helper.prefName
+        ): Boolean {
             val sharedPref = context.getSharedPreferences(prefName, Context.MODE_PRIVATE)
             return sharedPref.contains(key)
         }
@@ -157,6 +174,13 @@ class Helper {
                 context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             val activeNetworkInfo = connectivityManager.activeNetworkInfo
             return activeNetworkInfo != null && activeNetworkInfo.isConnected
+        }
+
+        fun formatDate(inputDate: String): String {
+            val inputFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+            val outputFormat = SimpleDateFormat("MMM d, yyyy 'at' hh:mm a", Locale.getDefault())
+            val date = inputFormat.parse(inputDate)
+            return outputFormat.format(date!!)
         }
     }
 }

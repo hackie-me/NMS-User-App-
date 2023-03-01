@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.nms.user.EditAccountFragment
 import com.nms.user.LoginActivity
 import com.nms.user.R
 import com.nms.user.service.Authentication
@@ -15,9 +16,9 @@ import com.nms.user.utils.Helper
 
 class AccountFragment : Fragment() {
 
-    private lateinit var linearLayoutGroupItemMyAccount : LinearLayout
-    private lateinit var linearLayoutGroupItemMyOrder : LinearLayout
-    private lateinit var linearLayoutGroupItemBilling : LinearLayout
+    private lateinit var linearLayoutGroupItemMyAccount: LinearLayout
+    private lateinit var linearLayoutGroupItemMyOrder: LinearLayout
+    private lateinit var linearLayoutGroupItemBilling: LinearLayout
     private lateinit var linearLayoutGroupItemFaq: LinearLayout
     private lateinit var linearLayoutGroupItemLogout: LinearLayout
     override fun onCreateView(
@@ -28,8 +29,7 @@ class AccountFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_account, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?)
-    {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         // initialize views
@@ -43,24 +43,29 @@ class AccountFragment : Fragment() {
     }
 
     // Function to initialize views
-    private fun initializeViews(){
+    private fun initializeViews() {
         linearLayoutGroupItemMyAccount = view?.findViewById(R.id.linearRowgroupitemPrivateAccount)!!
         linearLayoutGroupItemMyOrder = view?.findViewById(R.id.linearRowgroupitemMyOrders)!!
         linearLayoutGroupItemBilling = view?.findViewById(R.id.linearRowgroupitemBilling)!!
         linearLayoutGroupItemFaq = view?.findViewById(R.id.linearRowgroupitemFaq)!!
         linearLayoutGroupItemLogout = view?.findViewById(R.id.linearRowgroupitemLogout)!!
     }
-    private fun initializeUserData(){
+
+    private fun initializeUserData() {
         val userFullName = let { Authentication.getDataFromToken(requireContext(), "full_name") }
         view?.findViewById<TextView>(R.id.txtUserName)?.text = "Hi, $userFullName"
     }
 
     // Function to set click listener for Linear layouts
-    private fun setClickListener(){
+    private fun setClickListener() {
 
         // My Account
         linearLayoutGroupItemMyAccount.setOnClickListener {
-            Helper.showToast(requireContext(), "My Account")
+            val myAccountFragment = EditAccountFragment()
+            requireActivity().supportFragmentManager.beginTransaction().apply {
+                replace(R.id.fragmentContainer, myAccountFragment)
+                commit()
+            }
         }
 
         // My Order
@@ -75,15 +80,25 @@ class AccountFragment : Fragment() {
 
         // FAQ
         linearLayoutGroupItemFaq.setOnClickListener {
-            Helper.showToast(requireContext(), "FAQ")
+
         }
 
         // Logout
         linearLayoutGroupItemLogout.setOnClickListener {
-            Authentication.clearToken(requireContext())
-            Helper.showToast(requireContext(), "Successfully logged out")
-            startActivity(Intent(requireContext(), LoginActivity::class.java))
-            requireActivity().finish()
+            Helper.showConfirmationDialog(
+                requireContext(),
+                "Logout",
+                "Are you sure you want to logout?",
+                "Yes",
+                "No",
+                {
+                    Authentication.clearToken(requireContext())
+                    Helper.showToast(requireContext(), "Successfully logged out")
+                    startActivity(Intent(requireContext(), LoginActivity::class.java))
+                    requireActivity().finish()
+                },
+                {})
+
         }
     }
 }

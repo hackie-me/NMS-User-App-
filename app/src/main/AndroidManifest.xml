@@ -19,9 +19,6 @@
             android:name=".AddNewAddressActivity"
             android:exported="false" />
         <activity
-            android:name=".OrderPlaced"
-            android:exported="false" />
-        <activity
             android:name=".OrderPlacedActivity"
             android:exported="false" />
         <activity

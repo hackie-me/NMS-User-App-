@@ -41,13 +41,15 @@
                 android:textStyle="bold"
                 android:textColor="@color/primery" />
         </LinearLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="15sp"
-        android:background="#A19A9A9A"/>
-    <ListView
-        android:id="@+id/lstPersons"
+        android:background="#A19A9A9A" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/lstNotification"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

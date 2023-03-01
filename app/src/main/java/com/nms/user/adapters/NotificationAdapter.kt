@@ -1,48 +1,41 @@
 package com.nms.user.adapters
 
-import android.app.Activity
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.ImageView
 import android.widget.TextView
-import com.nms.user.models.NotificationModel
+import androidx.recyclerview.widget.RecyclerView
 import com.nms.user.R
+import com.nms.user.models.NotificationModel
+import com.nms.user.utils.Helper
 
 class NotificationAdapter(
-    private val activity: Activity,
-    private val persons: Array<NotificationModel>
-) : ArrayAdapter<NotificationModel>(activity, R.layout.list_item_notification_card, persons)
-{
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View
-    {
-        var view = convertView
-        if (view == null)
-        {
-            view = LayoutInflater.from(activity).inflate(R.layout.list_item_notification_card, null)
-
-            val viewHolder = ViewHolder()
-            viewHolder.imgdp = view!!.findViewById(R.id.imgdp)
-            viewHolder.lblDescription = view.findViewById(R.id.lblDescription)
-            viewHolder.lblDate = view.findViewById(R.id.lblDate)
-
-            view.tag = viewHolder
-        }
-
-        val existingViewHolder = view.tag as ViewHolder
-
-        existingViewHolder.imgdp.setImageResource(R.drawable.ic_notification_bottom_nav)
-        existingViewHolder.lblDescription.text = persons[position].name
-        existingViewHolder.lblDate.text = persons[position].age.toString()
-
-        return view
+    private val context: Context,
+    private val items: Array<NotificationModel>
+) : RecyclerView.Adapter<NotificationAdapter.ViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view =
+            LayoutInflater.from(context)
+                .inflate(R.layout.list_item_notification_card, parent, false)
+        return ViewHolder(view)
     }
 
-    class ViewHolder
-    {
-        lateinit var imgdp: ImageView
-        lateinit var lblDescription: TextView
-        lateinit var lblDate: TextView
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = items[position]
+        holder.lblDescription.text = item.description
+        holder.lblDate.text = Helper.formatDate(item.date)
+    }
+
+    override fun getItemCount(): Int = items.size
+
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var lblDescription: TextView
+        var lblDate: TextView
+
+        init {
+            lblDescription = itemView.findViewById(R.id.lblDescription)
+            lblDate = itemView.findViewById(R.id.lblDate)
+        }
     }
 }

@@ -71,6 +71,9 @@ class ApiRequest {
         // Endpoints for Handling FAQ
         const val URL_GET_FAQ = "${BASE_URL}faq/fetch.php"
 
+        // Endpoints for Handling Notifications
+        const val URL_GET_NOTIFICATIONS = "${BASE_URL}notification/fetch.php"
+
         // Endpoints for Handling Upload Image
         const val URL_UPLOAD_CATEGORY_IMAGE = "${BASE_URL}store/upload_category_image.php"
 
