@@ -73,7 +73,7 @@
     <string name="lbl_my_profile">My Profile</string>
     <string name="lbl_hi_user">Hi, rahul Kanjariya</string>
 
-    <string name="lbl_private_account">Private Account</string>
+    <string name="lbl_private_account">Edit Account</string>
 
     <string name="msg_cart">bottle of 500 pellets.....</string>
     <string name="cart_name">Sugar free gold</string>
@@ -104,4 +104,5 @@
     <string name="cart">Cart</string>
     <string name="payment_summary">payment summary</string>
     <string name="free">Free</string>
+    <string name="name">Name</string>
 </resources>

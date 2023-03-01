@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditAccountFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:gravity="start"
+        android:id="@+id/linearname"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_1pxh"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/_29pxv"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/profileimage"
+        android:layout_marginTop="@dimen/_8pxh"
+        android:layout_width="@dimen/_100pxh"
+        android:layout_height="@dimen/_110pxh"
+        android:scaleType="centerCrop"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_account"
+        tools:ignore="ContentDescription" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="200sp"
+        android:orientation="vertical"
+       android:layout_marginEnd="40sp"
+        android:layout_marginStart="@dimen/_40sp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:textSize="20sp"/>
+        <EditText
+            android:id="@+id/txtName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_15sp"
+           android:hint=" Enter Name" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mobile Number"
+            android:layout_marginTop="@dimen/_15sp"
+            android:textSize="20sp"/>
+        <EditText
+            android:id="@+id/txtMobileNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_15sp"
+            android:hint="Enter Number" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email Address"
+            android:layout_marginTop="@dimen/_15sp"
+            android:textSize="20sp"/>
+        <EditText
+            android:id="@+id/txtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_15sp"
+            android:hint="@string/enter_email" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="200sp"
+            android:layout_height="wrap_content"
+            android:text="UPDATE PROFILE"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:background="@drawable/btn_primary"
+            android:layout_marginTop="40sp"/>
+    </LinearLayout>
+
+
+</FrameLayout>
