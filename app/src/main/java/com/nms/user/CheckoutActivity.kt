@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.nms.user.adapters.AddressAdapter
 import com.nms.user.models.AddressModel
-import com.nms.user.models.OrderModel
+import com.nms.user.models.MyOrderModel
 import com.nms.user.repo.AddressRepository
 import com.nms.user.repo.OrderRepository
 import com.nms.user.utils.Helper
@@ -138,14 +138,14 @@ class CheckoutActivity : AppCompatActivity() {
         val specialOrderNotes = txtSpecialOrderNotes.text.toString()
 
         // Create Order Model
-        val orderModel = OrderModel(
+        val myOrderModel = MyOrderModel(
             address = Helper.fetchSharedPreference(this, "deliveryAddress"),
             note = specialOrderNotes,
             total = totalCartValue.toString(),
         )
         // Place Order
         CoroutineScope(Dispatchers.IO).launch {
-            val response = OrderRepository.placeOrder(this@CheckoutActivity, orderModel)
+            val response = OrderRepository.placeOrder(this@CheckoutActivity, myOrderModel)
             withContext(Dispatchers.Main) {
                 if (response.code == 201) {
                     // Open Order Placed Activity

@@ -322,8 +322,9 @@
                 android:layout_marginStart="@dimen/_10pxh"
                 android:layout_marginTop="@dimen/_16pxv"
                 android:layout_width="@dimen/_309pxh" />
+
             <LinearLayout
-                android:id="@+id/linear_Rowgroupitem_TermsAndConditions"
+                android:id="@+id/linearRowgroupitemTermsAndConditions"
                 android:gravity="start"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_30pxh"
@@ -378,8 +379,9 @@
                 android:layout_marginStart="@dimen/_10pxh"
                 android:layout_marginTop="@dimen/_16pxv"
                 android:layout_width="@dimen/_309pxh" />
+
             <LinearLayout
-                android:id="@+id/linear_Rowgroupitem_PrivacyPolicy"
+                android:id="@+id/linearRowgroupitemPrivacyPolicy"
                 android:gravity="start"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_30pxh"

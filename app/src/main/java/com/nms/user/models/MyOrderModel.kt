@@ -1,6 +1,6 @@
 package com.nms.user.models
 
-data class OrderModel(
+data class MyOrderModel(
     val id: String = "",
     val uid: String = "",
     val pid: String = "",

@@ -3,14 +3,14 @@ package com.nms.user.repo
 import android.content.Context
 import com.example.nmsadminapp.utils.api.ApiResponse
 import com.google.gson.Gson
-import com.nms.user.models.OrderModel
+import com.nms.user.models.MyOrderModel
 import com.nms.user.service.Authentication
 import com.nms.user.utils.api.ApiRequest
 
 class OrderRepository {
     companion object {
         // Function to Place Order
-        fun placeOrder(context: Context, order: OrderModel): ApiResponse {
+        fun placeOrder(context: Context, order: MyOrderModel): ApiResponse {
             return ApiRequest.postRequest(
                 ApiRequest.URL_ADD_ORDER,
                 Gson().toJson(order),
@@ -27,7 +27,7 @@ class OrderRepository {
         }
 
         // Function to Cancel Order
-        fun cancelOrder(context: Context, order: OrderModel): ApiResponse {
+        fun cancelOrder(context: Context, order: MyOrderModel): ApiResponse {
             return ApiRequest.postRequest(
                 ApiRequest.URL_CANCEL_ORDER,
                 Gson().toJson(order),

@@ -21,6 +21,8 @@ class AccountFragment : Fragment() {
     private lateinit var linearLayoutGroupItemBilling: LinearLayout
     private lateinit var linearLayoutGroupItemFaq: LinearLayout
     private lateinit var linearLayoutGroupItemLogout: LinearLayout
+    private lateinit var linearLayoutTerms: LinearLayout
+    private lateinit var linearLayoutPrivacyPolicy: LinearLayout
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -49,6 +51,8 @@ class AccountFragment : Fragment() {
         linearLayoutGroupItemBilling = view?.findViewById(R.id.linearRowgroupitemBilling)!!
         linearLayoutGroupItemFaq = view?.findViewById(R.id.linearRowgroupitemFaq)!!
         linearLayoutGroupItemLogout = view?.findViewById(R.id.linearRowgroupitemLogout)!!
+        linearLayoutTerms = view?.findViewById(R.id.linearRowgroupitemTermsAndConditions)!!
+        linearLayoutPrivacyPolicy = view?.findViewById(R.id.linearPrivacyPolicy)!!
     }
 
     private fun initializeUserData() {
@@ -61,26 +65,50 @@ class AccountFragment : Fragment() {
 
         // My Account
         linearLayoutGroupItemMyAccount.setOnClickListener {
-            val myAccountFragment = EditAccountFragment()
             requireActivity().supportFragmentManager.beginTransaction().apply {
-                replace(R.id.fragmentContainer, myAccountFragment)
+                replace(R.id.fragmentContainer, EditAccountFragment())
                 commit()
             }
         }
 
         // My Order
         linearLayoutGroupItemMyOrder.setOnClickListener {
-            Helper.showToast(requireContext(), "My Order")
+            requireActivity().supportFragmentManager.beginTransaction().apply {
+                replace(R.id.fragmentContainer, MyOrdersFragment())
+                commit()
+            }
         }
 
         // Billing
         linearLayoutGroupItemBilling.setOnClickListener {
-            Helper.showToast(requireContext(), "Billing")
+            requireActivity().supportFragmentManager.beginTransaction().apply {
+                replace(R.id.fragmentContainer, BillingFragment())
+                commit()
+            }
         }
 
         // FAQ
         linearLayoutGroupItemFaq.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction().apply {
+                replace(R.id.fragmentContainer, FaqFragment())
+                commit()
+            }
+        }
 
+        // Terms and Conditions
+        linearLayoutTerms.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction().apply {
+                replace(R.id.fragmentContainer, TermsAndConditionsFragment())
+                commit()
+            }
+        }
+
+        // Privacy Policy
+        linearLayoutPrivacyPolicy.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction().apply {
+                replace(R.id.fragmentContainer, PrivacyPolicyFragment())
+                commit()
+            }
         }
 
         // Logout
