@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.denzcoskun.imageslider.ImageSlider
 import com.denzcoskun.imageslider.constants.ActionTypes
 import com.denzcoskun.imageslider.constants.ScaleTypes
@@ -19,6 +18,7 @@ import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.interfaces.TouchListener
 import com.denzcoskun.imageslider.models.SlideModel
 import com.google.gson.Gson
+import com.nms.user.CartActivity
 import com.nms.user.ProductDetailsActivity
 import com.nms.user.R
 import com.nms.user.adapters.CategoriesAdapter
@@ -28,7 +28,6 @@ import com.nms.user.models.ProductModel
 import com.nms.user.repo.CategoryRepository
 import com.nms.user.repo.ProductRepository
 import com.nms.user.service.Authentication
-import com.nms.user.utils.Helper
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -63,7 +62,7 @@ class HomeFragment : Fragment(), ProductsAdapter.ClickListener
         }
 
         btnIcoShoppingBag.setOnClickListener {
-            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragmentContainer, MyOrdersFragment())?.commit()
+            startActivity(Intent(requireContext(), CartActivity::class.java))
         }
 
         val imageList = ArrayList<SlideModel>() // Create image list
@@ -74,19 +73,17 @@ class HomeFragment : Fragment(), ProductsAdapter.ClickListener
 
         imageSlider.setImageList(imageList)
 
-        imageSlider.setItemClickListener(object : ItemClickListener
-        {
-             override fun onItemSelected(position: Int) {
-                 imageList.add(SlideModel(R.drawable.card_home,  ScaleTypes.CENTER_CROP))
-             }
+        imageSlider.setItemClickListener(object : ItemClickListener {
+            override fun onItemSelected(position: Int) {
+                imageList.add(SlideModel(R.drawable.card_home, ScaleTypes.CENTER_CROP))
+            }
         })
 
-        imageSlider.setTouchListener(object : TouchListener
-        {
+        imageSlider.setTouchListener(object : TouchListener {
             override fun onTouched(touched: ActionTypes) {
-                if (touched == ActionTypes.DOWN){
+                if (touched == ActionTypes.DOWN) {
                     imageSlider.stopSliding()
-                } else if (touched == ActionTypes.UP ) {
+                } else if (touched == ActionTypes.UP) {
                     imageSlider.startSliding(5000)
                 }
             }
@@ -101,7 +98,7 @@ class HomeFragment : Fragment(), ProductsAdapter.ClickListener
     }
 
     // Function to initialize views
-    private fun initializeViews(){
+    private fun initializeViews() {
         rvProducts = view?.findViewById(R.id.rvProducts)!!
         rvCategories = view?.findViewById(R.id.rvTopCategories)!!
         imageSlider = view?.findViewById(R.id.offerImageSlider)!!

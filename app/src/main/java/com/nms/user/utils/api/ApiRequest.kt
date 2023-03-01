@@ -33,10 +33,10 @@ class ApiRequest {
         const val URL_GET_PRODUCT_BY_ID = "${BASE_URL}product/fetch_by_id.php?id="
 
         // Endpoints for Handling orders
-        const val URL_GET_ORDERS = "${BASE_URL}order/fetch.php"
+        const val URL_GET_ALL_ORDERS = "${BASE_URL}order/fetch.php"
         const val URL_ADD_ORDER = "${BASE_URL}order/insert.php"
         const val URL_UPDATE_ORDER = "${BASE_URL}order/update.php"
-        const val URL_DELETE_ORDER = "${BASE_URL}order/delete.php"
+        const val URL_CANCEL_ORDER = "${BASE_URL}order/cancel_order.php"
 
         // Endpoints for Handling custom orders
         const val URL_GET_CUSTOM_ORDERS = "${BASE_URL}custom_order/fetch.php"

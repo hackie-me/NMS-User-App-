@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 import com.nms.user.R
@@ -16,6 +15,8 @@ class AddressAdapter(
     private val context: Context,
     private val address: Array<AddressModel>
 ) : RecyclerView.Adapter<AddressAdapter.ViewHolder>() {
+
+    private var selectedCardView: MaterialCardView? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View = LayoutInflater.from(parent.context)
@@ -30,20 +31,35 @@ class AddressAdapter(
         val address =
             "${itemViewModel.address}, ${itemViewModel.city}, ${itemViewModel.state}, ${itemViewModel.pincode}"
         holder.address.text = address
+        holder.addressId.text = itemViewModel.id
+
     }
 
     override fun getItemCount(): Int = address.size
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val address: TextView
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val address: TextView = itemView.findViewById(R.id.tvAddress)
+        val addressId: TextView = itemView.findViewById(R.id.tvAddressId)
 
         init {
-            address = itemView.findViewById(R.id.tvAddress)
-            // set the click listener
-            itemView.findViewById<MaterialCardView>(R.id.cardViewAddress).setOnClickListener{
-                itemView.findViewById<MaterialCardView>(R.id.cardViewAddress).isChecked = !itemView.findViewById<MaterialCardView>(R.id.cardViewAddress).isChecked
-                // Helper.showToast(itemView.context, address.text.toString())
-                Helper.storeSharedPreference(itemView.context, "deliveryAddress", address.text.toString())
+            // set the click listener to the card view
+            itemView.findViewById<MaterialCardView>(R.id.cardViewAddress).setOnClickListener {
+                val cardView = itemView.findViewById<MaterialCardView>(R.id.cardViewAddress)
+                if (cardView != selectedCardView) {
+                    // deselect the currently selected card view
+                    selectedCardView?.isChecked = false
+
+                    // select the clicked card view
+                    cardView.isChecked = true
+                    selectedCardView = cardView
+
+                    // save the selected address to shared preferences
+                    Helper.storeSharedPreference(
+                        itemView.context,
+                        "deliveryAddress",
+                        addressId.text.toString()
+                    )
+                }
             }
         }
     }

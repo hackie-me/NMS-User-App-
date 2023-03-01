@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,17 +11,6 @@
         android:layout_width="match_parent"
         android:orientation="vertical"
         style="@style/groupStylewhite_A700">
-
-        <ImageView android:id="@+id/imageGroupFive"
-            android:layout_gravity="start"
-            android:layout_height="@dimen/_15pxh"
-            android:layout_marginEnd="@dimen/_29pxh"
-            android:layout_marginStart="@dimen/_29pxh"
-            android:layout_marginTop="@dimen/_30pxv"
-            android:layout_width="@dimen/_15pxh"
-            android:scaleType="fitXY"
-            android:src="@drawable/back_arrow"
-            tools:ignore="ContentDescription" />
 
         <ImageView
             android:id="@+id/imageGroup3645"
@@ -59,7 +47,7 @@
             android:layout_marginEnd="@dimen/_29pxh"
             android:gravity="center_horizontal"
             android:lineSpacingExtra="@dimen/_8pxh"
-            android:text="Your Order will be delivered with invoice #9ds69hs. You can track the delivery in the order section."
+            android:text="Your order has been placed successfully. We will notify you once your order is ready for pickup. Thank you for choosing us."
             android:textSize="16sp"
             tools:ignore="TextContrastCheck" />
 
