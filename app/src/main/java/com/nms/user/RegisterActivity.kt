@@ -123,7 +123,7 @@ class RegisterActivity : AppCompatActivity() {
 
         // Coroutine to register user
         CoroutineScope(Dispatchers.IO).launch {
-            val response = AuthRepository.registerUser(user, this@RegisterActivity)
+            val response = AuthRepository.registerUser(user)
             withContext(Dispatchers.Main) {
                 if (response.code == 201) {
                     Helper.showToast(this@RegisterActivity, "User registered successfully")

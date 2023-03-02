@@ -82,7 +82,8 @@ class LoginActivity : AppCompatActivity() {
         val password = password.text.toString()
 
         CoroutineScope(Dispatchers.IO).launch {
-            val response = AuthRepository.loginUser(UserModel(phone = mobileNo, password = password), this@LoginActivity)
+            val response =
+                AuthRepository.loginUser(UserModel(phone = mobileNo, password = password))
             if(response.code == 200){
                 Authentication.storeToken(this@LoginActivity, response.data.toString())
 

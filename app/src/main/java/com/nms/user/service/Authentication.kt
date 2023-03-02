@@ -58,13 +58,13 @@ class Authentication(
         fun getDataFromToken(context: Context, value: String): String? {
             return Gson().fromJson(
                 decodeJWTToken(
-                    Authentication.getToken(context)!!
+                    getToken(context)!!
                 ), JsonObject::class.java
             ).getAsJsonObject("data")?.get(value)?.asString
         }
 
         // FetchJson data from response
-        fun fetchTokenFromJsonData(context: Context, response: String): String? {
+        fun fetchTokenFromJsonData(response: String): String? {
             val element = Gson().fromJson(response, JsonObject::class.java)
             return element.get("token").asString
         }
