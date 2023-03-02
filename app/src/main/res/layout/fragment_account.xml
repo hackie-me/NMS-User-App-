@@ -342,10 +342,10 @@
 
                     <ImageView
                         android:id="@+id/icon_TermsAndConditions"
-                        android:layout_height="@dimen/_16pxh"
-                        android:layout_width="@dimen/_16pxh"
+                        android:layout_height="@dimen/_18pxh"
+                        android:layout_width="@dimen/_18pxh"
                         android:layout_gravity="center"
-                        android:src="@drawable/img_faq"
+                        android:src="@drawable/ic_terms_conditions"
                         tools:ignore="ContentDescription"/>
 
                     <TextView android:ellipsize="end"
@@ -459,7 +459,7 @@
                         android:layout_width="@dimen/_16pxh"
                         android:layout_height="@dimen/_16pxh"
                         android:layout_gravity="center"
-                        android:src="@drawable/img_faq"
+                        android:src="@drawable/ic_logout"
                         tools:ignore="ContentDescription" />
 
                     <TextView
