@@ -247,6 +247,7 @@ class ProductDetailsActivity : AppCompatActivity() {
     private fun handleAddToCartClick() {
         if (txtAddToCart.text == "Add to Cart") {
             addToCart()
+            Helper.showToast(this, "Product added to cart successfully")
         } else {
             startActivity(Intent(this, CartActivity::class.java))
         }
