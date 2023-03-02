@@ -293,16 +293,14 @@
                         <TextView
                             android:id="@+id/txtTotalCartValue"
                             style="@style/txtOverpassbold16_1"
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_225pxh"
                             android:layout_marginBottom="@dimen/_1pxv"
-                            android:layout_weight="0.63"
                             android:ellipsize="end"
                             android:lineSpacingExtra="@dimen/_1pxh"
                             android:singleLine="true"
-                            android:text="@string/lbl_185_00"
-                            tools:text="@string/lbl_185_00" />
+                            android:text="185.0000"/>
 
                     </LinearLayout>
 

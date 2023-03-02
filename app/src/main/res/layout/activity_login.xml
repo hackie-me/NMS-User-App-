@@ -69,6 +69,7 @@
             android:background="@drawable/btn_primary"
             android:backgroundTint="@color/white"
             android:autofillHints="phone"
+            android:inputType="number"
             android:hint="@string/enter_you_mobile_number"
             android:padding="15dp"
             android:textColorHint="#546E7A" />
@@ -77,7 +78,6 @@
             android:id="@+id/txtPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:layout_marginTop="20dp"
             android:height="50dp"
             android:background="@drawable/btn_primary"

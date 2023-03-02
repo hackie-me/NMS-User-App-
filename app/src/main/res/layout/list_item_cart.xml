@@ -47,6 +47,7 @@
                     android:layout_height="20sp"
                     android:layout_marginTop="@dimen/_3pxv"
                     android:maxLength="40"
+                    android:autoSizeTextType="uniform"
                     android:layout_marginBottom="@dimen/_2pxv"
                     android:layout_weight="0.83"
                     android:ellipsize="end"
@@ -70,6 +71,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="40sp"
                 android:maxLength="80"
+                android:maxLines="2"
+                android:maxEms="10"
+                android:textSize="15sp"
                 android:autoSizeTextType="uniform"
                 android:layout_marginTop="@dimen/_3pxv"
                 android:text="@string/msg_cart" />

@@ -133,17 +133,16 @@
 
                                 <EditText
                                     android:id="@+id/txtsearch"
-                                    android:layout_width="370dp"
+                                    android:layout_width="360dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginStart="@dimen/_12pxh"
-                                    android:layout_marginTop="5dp"
-                                    android:layout_marginEnd="@dimen/_12pxh"
+                                    android:layout_marginTop="10dp"
+                                     android:layout_gravity="center_horizontal"
                                     android:height="50dp"
                                     android:background="@drawable/btn_white"
                                     android:drawableStart="@drawable/ic_search"
                                     android:hint="@string/search_medicine_products"
                                     android:inputType="text"
-                                    android:padding="10dp"
+                                    android:padding="15dp"
                                     android:textColorHint="#546E7A"
                                     tools:ignore="TouchTargetSizeCheck"
                                     android:autofillHints="" />
@@ -184,6 +183,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         style="@style/sliderimage"
+                                        android:layout_marginTop="@dimen/_8pxh"
                                         android:padding="@dimen/_5pxh">
 
                                     <com.denzcoskun.imageslider.ImageSlider

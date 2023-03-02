@@ -4,18 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="30sp"
+    android:padding="10sp"
     tools:context="com.nms.user.fragments.HomeFragment">
 
     <!-- task bar -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_2pxh"
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="29dp"
-            android:layout_height="match_parent"
+            android:layout_width="24dp"
+            android:layout_height="24sp"
             android:layout_marginRight="10sp"
             android:src="@drawable/back_arrow" />
 
@@ -50,6 +51,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_15pxh"
             android:orientation="vertical">
 
             <TextView
