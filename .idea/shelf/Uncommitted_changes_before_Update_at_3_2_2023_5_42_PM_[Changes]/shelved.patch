@@ -1,0 +1,153 @@
+Index: app/src/main/java/com/nms/user/LoginActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.nms.user\r\n\r\nimport android.annotation.SuppressLint\r\nimport android.content.Intent\r\nimport android.os.Bundle\r\nimport android.widget.EditText\r\nimport android.widget.TextView\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport androidx.appcompat.widget.AppCompatButton\r\nimport com.nms.user.models.UserModel\r\nimport com.nms.user.repo.AuthRepository\r\nimport com.nms.user.service.Authentication\r\nimport com.nms.user.utils.Helper\r\nimport kotlinx.coroutines.CoroutineScope\r\nimport kotlinx.coroutines.Dispatchers\r\nimport kotlinx.coroutines.launch\r\nimport kotlinx.coroutines.withContext\r\n\r\n\r\nclass LoginActivity : AppCompatActivity() {\r\n    private lateinit var mobileNo: EditText\r\n    private lateinit var password: EditText\r\n\r\n    private lateinit var btnLogin: AppCompatButton\r\n    @SuppressLint(\"MissingInflatedId\")\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        setContentView(R.layout.activity_login)\r\n\r\n        // Init Views\r\n        init()\r\n\r\n        // check if user is already logged in\r\n        if (Authentication.isLoggedIn(this)) {\r\n            startActivity(Intent(this, MainActivity::class.java))\r\n            finish()\r\n        }\r\n\r\n        // Set on click listener on Login button\r\n        btnLogin.setOnClickListener {\r\n            doLogin()\r\n        }\r\n\r\n        // Set on click listener on Register button\r\n        findViewById<TextView>(R.id.txtregister).setOnClickListener {\r\n            startActivity(Intent(this, RegisterActivity::class.java))\r\n            finish()\r\n        }\r\n\r\n    }\r\n\r\n    // Function to init views\r\n    private fun init(){\r\n        mobileNo = findViewById(R.id.txtMobileNumber)\r\n        password = findViewById(R.id.txtPassword)\r\n        btnLogin = findViewById(R.id.btnLogin)\r\n    }\r\n\r\n    //  Function to validate Inputs\r\n    private fun validateInput() : Boolean{\r\n        return when{\r\n            mobileNo.text.isEmpty() ->{\r\n                mobileNo.error = \"Please Enter Mobile No\"\r\n                false\r\n            }\r\n            password.text.isEmpty() ->{\r\n                password.error = \"Please Enter Password\"\r\n                false\r\n            }\r\n            else ->{\r\n                true\r\n            }\r\n        }\r\n    }\r\n\r\n    // Function to Do Login\r\n    private fun doLogin(){\r\n        if(!validateInput())\r\n            return\r\n\r\n        val mobileNo = mobileNo.text.toString()\r\n        val password = password.text.toString()\r\n\r\n        CoroutineScope(Dispatchers.IO).launch {\r\n            val response = AuthRepository.loginUser(UserModel(phone = mobileNo, password = password), this@LoginActivity)\r\n            if(response.code == 200){\r\n                Authentication.storeToken(this@LoginActivity, response.data.toString())\r\n\r\n                // redirect to Home Fragment\r\n                startActivity(Intent(this@LoginActivity, MainActivity::class.java))\r\n                finish()\r\n            }else{\r\n                // show error message\r\n                withContext(Dispatchers.Main){\r\n                    Helper.showToast(this@LoginActivity, response.code.toString())\r\n                }\r\n            }\r\n        }\r\n    }\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/nms/user/LoginActivity.kt b/app/src/main/java/com/nms/user/LoginActivity.kt
+--- a/app/src/main/java/com/nms/user/LoginActivity.kt	(revision f3d53379527d4898b55168284caf45b9a9634172)
++++ b/app/src/main/java/com/nms/user/LoginActivity.kt	(date 1677758990068)
+@@ -82,7 +82,7 @@
+         val password = password.text.toString()
+ 
+         CoroutineScope(Dispatchers.IO).launch {
+-            val response = AuthRepository.loginUser(UserModel(phone = mobileNo, password = password), this@LoginActivity)
++            val response = AuthRepository.loginUser(UserModel(phone = mobileNo, password = password))
+             if(response.code == 200){
+                 Authentication.storeToken(this@LoginActivity, response.data.toString())
+ 
+Index: app/src/main/java/com/nms/user/service/Authentication.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.nms.user.service\r\n\r\nimport android.content.Context\r\nimport android.util.Base64\r\nimport com.google.gson.Gson\r\nimport com.google.gson.JsonObject\r\nimport com.nms.user.utils.Helper\r\n\r\nclass Authentication(\r\n    private val context: Context\r\n) {\r\n    companion object {\r\n\r\n        // Function to check if user is logged in\r\n        fun isLoggedIn(context: Context): Boolean {\r\n            return tokenExists(context)\r\n        }\r\n\r\n        // Function to Store Token\r\n        fun storeToken(context: Context, token: String) {\r\n            val sharedPref = context.getSharedPreferences(Helper.prefName, Context.MODE_PRIVATE)\r\n            with(sharedPref.edit()) {\r\n                putString(\"token\", token)\r\n                commit()\r\n            }\r\n        }\r\n\r\n        // Function to Check if Token Exists\r\n        private fun tokenExists(context: Context): Boolean {\r\n            val sharedPref = context.getSharedPreferences(Helper.prefName, Context.MODE_PRIVATE)\r\n            return sharedPref.contains(\"token\")\r\n        }\r\n\r\n        // Function to Get Token\r\n        fun getToken(context: Context): String? {\r\n            val sharedPref = context.getSharedPreferences(Helper.prefName, Context.MODE_PRIVATE)\r\n            return sharedPref.getString(\"token\", null)\r\n        }\r\n\r\n        // Function to Clear Token\r\n        fun clearToken(context: Context) {\r\n            val sharedPref = context.getSharedPreferences(Helper.prefName, Context.MODE_PRIVATE)\r\n            with(sharedPref.edit()) {\r\n                remove(\"token\")\r\n                commit()\r\n            }\r\n        }\r\n\r\n        // Function to Decode JWT Token\r\n        fun decodeJWTToken(token: String): String {\r\n            val split = token.split(\".\")\r\n            val payload = split[1]\r\n            val decoded = Base64.decode(payload, Base64.DEFAULT)\r\n            return String(decoded)\r\n        }\r\n\r\n        // Function to fetch user id from JWT Token\r\n        fun getDataFromToken(context: Context, value: String): String? {\r\n            return Gson().fromJson(\r\n                decodeJWTToken(\r\n                    Authentication.getToken(context)!!\r\n                ), JsonObject::class.java\r\n            ).getAsJsonObject(\"data\")?.get(value)?.asString\r\n        }\r\n\r\n        // FetchJson data from response\r\n        fun fetchTokenFromJsonData(context: Context, response: String): String? {\r\n            val element = Gson().fromJson(response, JsonObject::class.java)\r\n            return element.get(\"token\").asString\r\n        }\r\n\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/nms/user/service/Authentication.kt b/app/src/main/java/com/nms/user/service/Authentication.kt
+--- a/app/src/main/java/com/nms/user/service/Authentication.kt	(revision f3d53379527d4898b55168284caf45b9a9634172)
++++ b/app/src/main/java/com/nms/user/service/Authentication.kt	(date 1677758812909)
+@@ -64,7 +64,7 @@
+         }
+ 
+         // FetchJson data from response
+-        fun fetchTokenFromJsonData(context: Context, response: String): String? {
++        fun fetchTokenFromJsonData(response: String): String? {
+             val element = Gson().fromJson(response, JsonObject::class.java)
+             return element.get("token").asString
+         }
+Index: app/src/main/java/com/nms/user/RegisterActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.nms.user\r\n\r\nimport android.annotation.SuppressLint\r\nimport android.content.Intent\r\nimport android.os.Bundle\r\nimport android.widget.EditText\r\nimport android.widget.TextView\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport androidx.appcompat.widget.AppCompatButton\r\nimport com.nms.user.models.UserModel\r\nimport com.nms.user.repo.AuthRepository\r\nimport com.nms.user.service.Authentication\r\nimport com.nms.user.utils.Helper\r\nimport kotlinx.coroutines.CoroutineScope\r\nimport kotlinx.coroutines.Dispatchers\r\nimport kotlinx.coroutines.launch\r\nimport kotlinx.coroutines.withContext\r\n\r\nclass RegisterActivity : AppCompatActivity() {\r\n\r\n    lateinit var txtFullName: EditText\r\n    lateinit var txtMobileNumber: EditText\r\n    lateinit var txtPassword: EditText\r\n    lateinit var txtConfirmPassword: EditText\r\n    lateinit var btnRegister: AppCompatButton\r\n    lateinit var tvLogin: TextView\r\n\r\n    @SuppressLint(\"MissingInflatedId\")\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        setContentView(R.layout.activity_register)\r\n\r\n        // check if user is already logged in\r\n        if (Authentication.isLoggedIn(this)) {\r\n            startActivity(Intent(this, MainActivity::class.java))\r\n            finish()\r\n        }\r\n\r\n        // Initialize views\r\n        initViews()\r\n\r\n        // Set on click listener on register button\r\n        btnRegister.setOnClickListener {\r\n            registerUser()\r\n        }\r\n\r\n        findViewById<TextView>(R.id.txtLogin).setOnClickListener {\r\n            startActivity(Intent(this, LoginActivity::class.java))\r\n            finish()\r\n        }\r\n    }\r\n\r\n    // Function to initialize views\r\n    private fun initViews() {\r\n        txtFullName = findViewById(R.id.txtFullName)\r\n        txtMobileNumber = findViewById(R.id.txtMobileNumber)\r\n        txtPassword = findViewById(R.id.txtPassword)\r\n        txtConfirmPassword = findViewById(R.id.txtConfirmPassword)\r\n        btnRegister = findViewById(R.id.btnRegister)\r\n        tvLogin = findViewById(R.id.txtLogin)\r\n    }\r\n\r\n    // Function to validate user input\r\n    private fun validateInput(): Boolean {\r\n        return when {\r\n            txtFullName.text.toString().isEmpty() -> {\r\n                txtFullName.error = \"Full Name is required\"\r\n                false\r\n            }\r\n            txtMobileNumber.text.toString().isEmpty() -> {\r\n                txtMobileNumber.error = \"Mobile Number is required\"\r\n                false\r\n            }\r\n\r\n            // Check if mobile number is valid or not\r\n            !validateMobileNumber() -> false\r\n\r\n            txtPassword.text.toString().isEmpty() -> {\r\n                txtPassword.error = \"Password is required\"\r\n                false\r\n            }\r\n            txtConfirmPassword.text.toString().isEmpty() -> {\r\n                txtConfirmPassword.error = \"Confirm Password is required\"\r\n                false\r\n            }\r\n            txtPassword.text.toString() != txtConfirmPassword.text.toString() -> {\r\n                txtConfirmPassword.error = \"Password and Confirm Password do not match\"\r\n                false\r\n            }\r\n            else -> true\r\n        }\r\n    }\r\n\r\n    // Function to validate mobile number\r\n    private fun validateMobileNumber(): Boolean {\r\n        return when {\r\n            txtMobileNumber.text.toString().length != 10 -> {\r\n                txtMobileNumber.error = \"Mobile Number is not valid\"\r\n                false\r\n            }\r\n            else -> true\r\n        }\r\n    }\r\n\r\n    // Function to register user\r\n    private fun registerUser() {\r\n        if (!validateInput()) {\r\n            // If input is not valid, return\r\n            Helper.showToast(this, \"Please enter valid input\")\r\n            return\r\n        }\r\n        val fullName = txtFullName.text.toString()\r\n        val mobileNumber = txtMobileNumber.text.toString()\r\n        val password = txtPassword.text.toString()\r\n        val confirmPassword = txtConfirmPassword.text.toString()\r\n        // User Model\r\n        val user = UserModel(\r\n            full_name = fullName,\r\n            phone = mobileNumber,\r\n            password = password,\r\n            confirm_password = confirmPassword\r\n        )\r\n\r\n        // Coroutine to register user\r\n        CoroutineScope(Dispatchers.IO).launch {\r\n            val response = AuthRepository.registerUser(user, this@RegisterActivity)\r\n            withContext(Dispatchers.Main) {\r\n                if (response.code == 201) {\r\n                    Helper.showToast(this@RegisterActivity, \"User registered successfully\")\r\n\r\n                    // Store Authentication Token\r\n                    response.data?.let { Authentication.storeToken(this@RegisterActivity, it) }\r\n\r\n                    startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))\r\n                    finish()\r\n                } else {\r\n                    response.message?.let { Helper.showToast(this@RegisterActivity, it) }\r\n                    response.data?.let { Helper.showToast(this@RegisterActivity, it) }\r\n                }\r\n            }\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/nms/user/RegisterActivity.kt b/app/src/main/java/com/nms/user/RegisterActivity.kt
+--- a/app/src/main/java/com/nms/user/RegisterActivity.kt	(revision f3d53379527d4898b55168284caf45b9a9634172)
++++ b/app/src/main/java/com/nms/user/RegisterActivity.kt	(date 1677759003186)
+@@ -123,7 +123,7 @@
+ 
+         // Coroutine to register user
+         CoroutineScope(Dispatchers.IO).launch {
+-            val response = AuthRepository.registerUser(user, this@RegisterActivity)
++            val response = AuthRepository.registerUser(user)
+             withContext(Dispatchers.Main) {
+                 if (response.code == 201) {
+                     Helper.showToast(this@RegisterActivity, "User registered successfully")
+Index: app/src/main/java/com/nms/user/utils/api/ApiRequest.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.nms.user.utils.api\r\n\r\nimport com.example.nmsadminapp.utils.api.ApiResponse\r\nimport okhttp3.MultipartBody\r\nimport okhttp3.OkHttpClient\r\nimport okhttp3.Request\r\nimport okhttp3.RequestBody.Companion.toRequestBody\r\n\r\nclass ApiRequest {\r\n    companion object {\r\n\r\n        // private const val BASE_URL = \"http://10.1.51.154/nms/api/\" // College IP\r\n        private const val BASE_URL = \"http://192.168.1.2/nms/api/\" // Home IP\r\n\r\n        // private const val BASE_URL = \"https://hardik.works/nms/api/\" // Personal IP\r\n        // Endpoints for AuthRepository\r\n        const val URL_LOGIN = \"${BASE_URL}auth/login.php\"\r\n        const val URL_REGISTER = \"${BASE_URL}auth/register.php\"\r\n        const val URL_FORGOT_PASSWORD = \"${BASE_URL}auth/forgot_password.php\"\r\n        const val URL_CHANGE_PASSWORD = \"${BASE_URL}auth/change_password.php\"\r\n\r\n        // Endpoints for Handling categories\r\n        const val URL_GET_CATEGORIES = \"${BASE_URL}category/fetch.php\"\r\n\r\n        // Endpoints for Handling addresses\r\n        const val URL_GET_ADDRESSES = \"${BASE_URL}address/fetch.php\"\r\n        const val URL_ADD_ADDRESS = \"${BASE_URL}address/insert.php\"\r\n        const val URL_UPDATE_ADDRESS = \"${BASE_URL}address/update.php\"\r\n        const val URL_DELETE_ADDRESS = \"${BASE_URL}address/delete.php\"\r\n\r\n        // Endpoints for Handling products\r\n        const val URL_GET_PRODUCTS = \"${BASE_URL}product/fetch.php\"\r\n        const val URL_GET_PRODUCT_BY_ID = \"${BASE_URL}product/fetch_by_id.php?id=\"\r\n\r\n        // Endpoints for Handling orders\r\n        const val URL_GET_ALL_ORDERS = \"${BASE_URL}order/fetch.php\"\r\n        const val URL_ADD_ORDER = \"${BASE_URL}order/insert.php\"\r\n        const val URL_UPDATE_ORDER = \"${BASE_URL}order/update.php\"\r\n        const val URL_CANCEL_ORDER = \"${BASE_URL}order/cancel_order.php\"\r\n\r\n        // Endpoints for Handling custom orders\r\n        const val URL_GET_CUSTOM_ORDERS = \"${BASE_URL}custom_order/fetch.php\"\r\n        const val URL_ADD_CUSTOM_ORDER = \"${BASE_URL}custom_order/insert.php\"\r\n        const val URL_UPDATE_CUSTOM_ORDER = \"${BASE_URL}custom_order/update.php\"\r\n        const val URL_DELETE_CUSTOM_ORDER = \"${BASE_URL}custom_order/delete.php\"\r\n        const val URL_GET_CUSTOM_ORDER_BY_ID = \"${BASE_URL}custom_order/fetch_by_id.php?id=\"\r\n        const val URL_GET_CUSTOM_ORDER_BY_USERID =\r\n            \"${BASE_URL}custom_order/fetch_by_user_id.php?user_id=\"\r\n\r\n        // Endpoints for Handling cart\r\n        const val URL_GET_CART_ITEMS = \"${BASE_URL}cart/fetch.php\"\r\n        const val URL_ADD_CART_ITEM = \"${BASE_URL}cart/insert.php\"\r\n        const val URL_UPDATE_CART_QUANTITY = \"${BASE_URL}cart/update_quantity.php\"\r\n        const val URL_DELETE_CART_ITEM = \"${BASE_URL}cart/delete.php\"\r\n\r\n        // Endpoints for Handling reviews\r\n        const val URL_GET_REVIEWS = \"${BASE_URL}review/fetch.php\"\r\n        const val URL_ADD_REVIEW = \"${BASE_URL}review/insert.php\"\r\n        const val URL_UPDATE_REVIEW = \"${BASE_URL}review/update.php\"\r\n        const val URL_DELETE_REVIEW = \"${BASE_URL}review/delete.php\"\r\n\r\n        // Endpoints for Handling Contact Us\r\n        const val URL_GET_CONTACT_US = \"${BASE_URL}contact/fetch.php\"\r\n        const val URL_ADD_CONTACT_US = \"${BASE_URL}contact/insert.php\"\r\n        const val URL_UPDATE_CONTACT_US = \"${BASE_URL}contact/update.php\"\r\n        const val URL_DELETE_CONTACT_US = \"${BASE_URL}contact/delete.php\"\r\n\r\n        // Endpoints for Handling Offers\r\n        const val URL_GET_OFFERS = \"${BASE_URL}offer/fetch.php\"\r\n\r\n        // Endpoints for Handling FAQ\r\n        const val URL_GET_FAQ = \"${BASE_URL}faq/fetch.php\"\r\n\r\n        // Endpoints for Handling Notifications\r\n        const val URL_GET_NOTIFICATIONS = \"${BASE_URL}notification/fetch.php\"\r\n\r\n        // Endpoints for Handling Upload Image\r\n        const val URL_UPLOAD_CATEGORY_IMAGE = \"${BASE_URL}store/upload_category_image.php\"\r\n\r\n        // Method to send get request\r\n        fun getRequest(url: String, token: String? = null): ApiResponse {\r\n            // Remove extra double quotes from token\r\n            return if (token == null) {\r\n                send(\r\n                    Request.Builder()\r\n                        .url(url)\r\n                        .build()\r\n                )\r\n            } else {\r\n                send(\r\n                    Request.Builder()\r\n                        .url(url)\r\n                        .addHeader(\"Authorization\", \"Bearer $token\")\r\n                        .build()\r\n                )\r\n            }\r\n        }\r\n\r\n        // Method to send post request\r\n        fun postRequest(url: String, body: String, token: String? = null): ApiResponse {\r\n            return if (token == null) {\r\n                send(Request.Builder().url(url).post(body.toRequestBody()).build())\r\n            } else {\r\n                send(\r\n                    Request.Builder()\r\n                        .url(url)\r\n                        .post(body.toRequestBody())\r\n                        .addHeader(\"Authorization\", \"Bearer $token\")\r\n                        .build()\r\n                )\r\n            }\r\n        }\r\n\r\n        // Post Request with image\r\n        fun postRequestWithImage(url: String, bodyData: MultipartBody, token: String): ApiResponse {\r\n            return send(\r\n                Request.Builder()\r\n                    .url(url)\r\n                    .post(bodyData)\r\n                    .addHeader(\"Authorization\", \"Bearer $token\")\r\n                    .build()\r\n            )\r\n        }\r\n\r\n        // Method to send request\r\n        private fun send(request: Request): ApiResponse {\r\n            val client = OkHttpClient()\r\n            val response = client.newCall(request).execute()\r\n            return ApiResponse(\r\n                response.code,\r\n                response.body?.string(),\r\n                response.message\r\n            )\r\n        }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/nms/user/utils/api/ApiRequest.kt b/app/src/main/java/com/nms/user/utils/api/ApiRequest.kt
+--- a/app/src/main/java/com/nms/user/utils/api/ApiRequest.kt	(revision f3d53379527d4898b55168284caf45b9a9634172)
++++ b/app/src/main/java/com/nms/user/utils/api/ApiRequest.kt	(date 1677758498290)
+@@ -10,9 +10,9 @@
+     companion object {
+ 
+         // private const val BASE_URL = "http://10.1.51.154/nms/api/" // College IP
+-        private const val BASE_URL = "http://192.168.1.2/nms/api/" // Home IP
++        // private const val BASE_URL = "http://192.168.1.2/nms/api/" // Home IP
++         private const val BASE_URL = "https://hardik.works/nms/api/" // Personal IP
+ 
+-        // private const val BASE_URL = "https://hardik.works/nms/api/" // Personal IP
+         // Endpoints for AuthRepository
+         const val URL_LOGIN = "${BASE_URL}auth/login.php"
+         const val URL_REGISTER = "${BASE_URL}auth/register.php"
+Index: app/src/main/java/com/nms/user/repo/AuthRepository.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.nms.user.repo\r\n\r\nimport android.content.Context\r\nimport com.example.nmsadminapp.utils.api.ApiResponse\r\nimport com.google.gson.Gson\r\nimport com.nms.user.models.UserModel\r\nimport com.nms.user.utils.api.ApiRequest\r\n\r\nclass AuthRepository {\r\n    companion object{\r\n        // Function to Register new User\r\n        fun registerUser(userModel: UserModel, context: Context) : ApiResponse {\r\n            return ApiRequest.postRequest(ApiRequest.URL_REGISTER, Gson().toJson(userModel))\r\n        }\r\n\r\n        // Function to Login User\r\n        fun loginUser(userModel: UserModel, context: Context) : ApiResponse {\r\n            return ApiRequest.postRequest(ApiRequest.URL_LOGIN, Gson().toJson(userModel))\r\n        }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/nms/user/repo/AuthRepository.kt b/app/src/main/java/com/nms/user/repo/AuthRepository.kt
+--- a/app/src/main/java/com/nms/user/repo/AuthRepository.kt	(revision f3d53379527d4898b55168284caf45b9a9634172)
++++ b/app/src/main/java/com/nms/user/repo/AuthRepository.kt	(date 1677758812897)
+@@ -9,12 +9,12 @@
+ class AuthRepository {
+     companion object{
+         // Function to Register new User
+-        fun registerUser(userModel: UserModel, context: Context) : ApiResponse {
++        fun registerUser(userModel: UserModel) : ApiResponse {
+             return ApiRequest.postRequest(ApiRequest.URL_REGISTER, Gson().toJson(userModel))
+         }
+ 
+         // Function to Login User
+-        fun loginUser(userModel: UserModel, context: Context) : ApiResponse {
++        fun loginUser(userModel: UserModel) : ApiResponse {
+             return ApiRequest.postRequest(ApiRequest.URL_LOGIN, Gson().toJson(userModel))
+         }
+     }
+Index: app/release/output-metadata.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/release/output-metadata.json b/app/release/output-metadata.json
+new file mode 100644
+--- /dev/null	(date 1677759039444)
++++ b/app/release/output-metadata.json	(date 1677759039444)
+@@ -0,0 +1,20 @@
++{
++  "version": 3,
++  "artifactType": {
++    "type": "APK",
++    "kind": "Directory"
++  },
++  "applicationId": "com.nms.user",
++  "variantName": "release",
++  "elements": [
++    {
++      "type": "SINGLE",
++      "filters": [],
++      "attributes": [],
++      "versionCode": 1,
++      "versionName": "1.0",
++      "outputFile": "app-release.apk"
++    }
++  ],
++  "elementType": "File"
++}
+\ No newline at end of file
+Index: .idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"GradleMigrationSettings\" migrationVersion=\"1\" />\r\n  <component name=\"GradleSettings\">\r\n    <option name=\"linkedExternalProjectsSettings\">\r\n      <GradleProjectSettings>\r\n        <option name=\"testRunner\" value=\"GRADLE\" />\r\n        <option name=\"distributionType\" value=\"DEFAULT_WRAPPED\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"gradleJvm\" value=\"Embedded JDK\" />\r\n        <option name=\"modules\">\r\n          <set>\r\n            <option value=\"$PROJECT_DIR$\" />\r\n            <option value=\"$PROJECT_DIR$/app\" />\r\n          </set>\r\n        </option>\r\n      </GradleProjectSettings>\r\n    </option>\r\n    <option name=\"offlineMode\" value=\"true\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/gradle.xml b/.idea/gradle.xml
+--- a/.idea/gradle.xml	(revision f3d53379527d4898b55168284caf45b9a9634172)
++++ b/.idea/gradle.xml	(date 1677759093424)
+@@ -16,6 +16,5 @@
+         </option>
+       </GradleProjectSettings>
+     </option>
+-    <option name="offlineMode" value="true" />
+   </component>
+ </project>
+\ No newline at end of file
