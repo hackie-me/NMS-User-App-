@@ -24,7 +24,7 @@ class NotificationAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
         holder.lblDescription.text = item.description
-        holder.lblDate.text = Helper.formatDate(item.date)
+        holder.lblDate.text = Helper.formatDate(item.created_at)
     }
 
     override fun getItemCount(): Int = items.size

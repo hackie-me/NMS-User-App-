@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.nms.user.R
@@ -33,8 +34,8 @@ class NotificationFragment : Fragment()
                 val notifications =
                     Gson().fromJson(response.data, Array<NotificationModel>::class.java)
                 withContext(Dispatchers.Main) {
-                    view.findViewById<RecyclerView>(R.id.lstNotification).adapter =
-                        NotificationAdapter(requireContext(), notifications)
+                    view.findViewById<RecyclerView>(R.id.lstNotification).layoutManager = GridLayoutManager(requireContext(), 1)
+                    view.findViewById<RecyclerView>(R.id.lstNotification).adapter = NotificationAdapter(requireContext(), notifications)
                 }
             }
         }
