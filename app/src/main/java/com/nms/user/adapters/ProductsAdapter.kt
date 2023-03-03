@@ -56,18 +56,8 @@ class ProductsAdapter(
 
 
         // if Product Image is Blank then set default image
-        if (itemsViewModel.image == "")
-        {
-            Glide.with(context)
-                .load("https://picsum.photos/200/300")
-                .into(holder.productImage)
-        }
-        else
-        {
-            Glide.with(context)
-                .load(itemsViewModel.image)
-                .into(holder.productImage)
-        }
+        Glide.with(holder.itemView.context).load(itemsViewModel.thumbnail)
+            .into(holder.productImage)
 
     }
 

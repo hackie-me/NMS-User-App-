@@ -3,7 +3,7 @@ package com.nms.user.models
 data class ProductModel(
     var id: String = "",
     var name: String = "",
-    var image: String = "",
+    var thumbnail: String = "",
     var price: String = "",
     var discount: String = "",
     var rating: String = "",

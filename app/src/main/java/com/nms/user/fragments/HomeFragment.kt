@@ -144,7 +144,7 @@ class HomeFragment : Fragment(), ProductsAdapter.ClickListener
                     // if products are not empty then set products
                     if (products.isNotEmpty()){
                         // layout manager
-                        rvProducts.layoutManager = GridLayoutManager(context,2)
+                        rvProducts.layoutManager = GridLayoutManager(context, 2)
                         rvProducts.adapter = ProductsAdapter(requireContext(), products, this@HomeFragment)
                     }
                 }

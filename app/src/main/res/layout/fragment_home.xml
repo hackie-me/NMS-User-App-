@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:background="@color/backgroundColor"
     android:orientation="vertical"
-    tools:context="com.nms.user.fragments.HomeFragment"
-    android:background="@color/backgroundColor">
+    tools:context="com.nms.user.fragments.HomeFragment">
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollViewScrollview"
@@ -18,216 +18,208 @@
         android:fillViewport="true"
         tools:ignore="SpeakableTextPresentCheck">
 
-            <LinearLayout
-                android:id="@+id/linearColumngroup3635"
+        <LinearLayout
+            android:id="@+id/linearColumngroup3635"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/frameStackgroup3635"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:gravity="start">
 
-                <FrameLayout
-                    android:id="@+id/frameStackgroup3635"
+                <LinearLayout
+                    android:id="@+id/linearRowgroup3635"
+                    style="@style/groupStylecornerRadius"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="start">
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|center"
+                    android:layout_marginBottom="@dimen/_10pxv"
+                    android:orientation="horizontal">
 
                     <LinearLayout
-                        android:id="@+id/linearRowgroup3635"
-                        style="@style/groupStylecornerRadius"
+                        style="@style/cardbg"
+                        android:layout_width="@dimen/_60pxh"
+                        android:layout_height="@dimen/_60pxh"
+                        android:layout_marginStart="22sp"
+                        android:layout_marginTop="30sp">
+
+                        <ImageView
+                            android:id="@+id/profileImage"
+                            android:layout_width="@dimen/_40pxh"
+                            android:layout_height="@dimen/_40pxh"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_9pxh"
+                            android:contentDescription="TODO"
+                            android:src="@drawable/ic_account" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/imageIcoNotification"
+                        android:layout_width="@dimen/_23pxh"
+                        android:layout_height="@dimen/_23pxh"
+                        android:layout_marginStart="@dimen/_180pxh"
+                        android:layout_marginTop="@dimen/_60pxv"
+                        android:layout_marginBottom="@dimen/_131pxv"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_notification_home"
+                        tools:ignore="ContentDescription" />
+
+                    <ImageView
+                        android:id="@+id/imageIcoShoppingBag"
+                        android:layout_width="@dimen/_23pxh"
+                        android:layout_height="@dimen/_23pxh"
+                        android:layout_marginStart="@dimen/_25pxh"
+                        android:layout_marginTop="@dimen/_60pxv"
+                        android:layout_marginEnd="@dimen/_29pxh"
+                        android:layout_marginBottom="@dimen/_132pxv"
+                        android:src="@drawable/ic_myorders_home"
+                        tools:ignore="ContentDescription" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/linearRowellipseeighteen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|start"
+                    android:layout_marginTop="@dimen/_61pxv"
+                    android:layout_marginBottom="@dimen/_61pxv"
+                    android:orientation="horizontal">
+
+
+                    <ImageView
+                        android:id="@+id/imageEllipseEighteen"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_120pxh"
+                        android:layout_gravity="start"
+                        android:scaleType="fitXY"
+                        tools:ignore="ContentDescription" />
+
+                    <LinearLayout
+                        android:id="@+id/linearColumnhiben"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="top|center"
-                        android:layout_marginBottom="@dimen/_10pxv"
-                        android:orientation="horizontal">
+                        android:layout_marginStart="@dimen/_6pxh"
+                        android:layout_marginTop="@dimen/_57pxv"
+                        android:layout_marginEnd="@dimen/_1pxh"
+                        android:layout_marginBottom="@dimen/_57pxv"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/txtFullName"
+                            style="@style/txtOverpassbold24_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10pxh"
+                            android:layout_marginEnd="@dimen/_10pxh"
+                            android:ellipsize="end"
+                            android:text="@string/lbl_hi_rahul" />
+
+                        <TextView
+                            android:id="@+id/txtWelcometoMedt"
+                            style="@style/txtOverpasslight16_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10pxh"
+
+                            android:ellipsize="end"
+                            android:gravity="center_horizontal"
+                            android:singleLine="true"
+                            android:text="@string/msg_welcome_to_medt" />
+
+                        <EditText
+                            android:id="@+id/txtsearch"
+                            android:layout_width="360dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="10dp"
+                            android:height="50dp"
+                            android:autofillHints=""
+                            android:background="@drawable/btn_white"
+                            android:drawableStart="@drawable/ic_search"
+                            android:hint="@string/search_medicine_products"
+                            android:inputType="text"
+                            android:padding="15dp"
+                            android:textColorHint="#546E7A"
+                            tools:ignore="TouchTargetSizeCheck" />
 
                         <LinearLayout
-                            android:layout_width="@dimen/_60pxh"
-                            android:layout_height="@dimen/_60pxh"
-                            android:layout_marginTop="30sp"
-                            android:layout_marginStart="22sp"
-                            style="@style/cardbg">
-                            <ImageView
-                                android:id="@+id/profileImage"
-                                android:layout_width="@dimen/_40pxh"
-                                android:layout_height="@dimen/_40pxh"
-                                android:src="@drawable/ic_account"
-                                android:layout_gravity="center"
-                                android:layout_marginStart="@dimen/_9pxh"
-                                android:contentDescription="TODO" />
-                        </LinearLayout>
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="-5dp"
+                            android:layout_gravity="center_horizontal"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
 
-                        <ImageView
-                            android:id="@+id/imageIcoNotification"
-                            android:layout_width="@dimen/_23pxh"
-                            android:layout_height="@dimen/_23pxh"
-                            android:layout_marginStart="@dimen/_180pxh"
-                            android:layout_marginTop="@dimen/_60pxv"
-                            android:layout_marginBottom="@dimen/_131pxv"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/ic_notification_home"
-                            tools:ignore="ContentDescription" />
-
-                        <ImageView
-                            android:id="@+id/imageIcoShoppingBag"
-                            android:layout_width="@dimen/_23pxh"
-                            android:layout_height="@dimen/_23pxh"
-                            android:layout_marginStart="@dimen/_25pxh"
-                            android:layout_marginTop="@dimen/_60pxv"
-                            android:layout_marginEnd="@dimen/_29pxh"
-                            android:layout_marginBottom="@dimen/_132pxv"
-                            android:src="@drawable/ic_myorders_home"
-                            tools:ignore="ContentDescription" />
-                    </LinearLayout>
-
-
-
-                    <LinearLayout
-                        android:id="@+id/linearRowellipseeighteen"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="top|start"
-                        android:layout_marginTop="@dimen/_61pxv"
-                        android:layout_marginBottom="@dimen/_61pxv"
-                        android:orientation="horizontal">
-
-
-                            <ImageView
-                                android:id="@+id/imageEllipseEighteen"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/_120pxh"
-                                android:layout_gravity="start"
-                                android:scaleType="fitXY"
-                                tools:ignore="ContentDescription" />
-
-                            <LinearLayout
-                                android:id="@+id/linearColumnhiben"
+                            <TextView
+                                android:id="@+id/lblTopCategories"
+                                style="@style/txtOverpassbold24_1"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="top|center"
-                                android:layout_marginStart="@dimen/_6pxh"
-                                android:layout_marginTop="@dimen/_57pxv"
-                                android:layout_marginEnd="@dimen/_1pxh"
-                                android:layout_marginBottom="@dimen/_57pxv"
-                                android:orientation="vertical">
+                                android:layout_marginStart="@dimen/_10pxh"
+                                android:layout_marginTop="@dimen/_14pxh"
+                                android:layout_marginEnd="@dimen/_10pxh"
+                                android:ellipsize="end"
+                                android:text="@string/lbl_top_categories"
+                                android:textColor="@color/black" />
 
-                                <TextView
-                                    android:id="@+id/txtFullName"
-                                    style="@style/txtOverpassbold24_1"
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/rvTopCategories"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginStart="@dimen/_10pxh"
-                                    android:layout_marginEnd="@dimen/_10pxh"
-                                    android:ellipsize="end"
-                                    android:text="@string/lbl_hi_rahul" />
-
-                                <TextView
-                                    android:id="@+id/txtWelcometoMedt"
-                                    style="@style/txtOverpasslight16_1"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="@dimen/_10pxh"
-
-                                    android:ellipsize="end"
-                                    android:gravity="center_horizontal"
-                                    android:singleLine="true"
-                                    android:text="@string/msg_welcome_to_medt"/>
-
-                                <EditText
-                                    android:id="@+id/txtsearch"
-                                    android:layout_width="360dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="10dp"
-                                     android:layout_gravity="center_horizontal"
-                                    android:height="50dp"
-                                    android:background="@drawable/btn_white"
-                                    android:drawableStart="@drawable/ic_search"
-                                    android:hint="@string/search_medicine_products"
-                                    android:inputType="text"
-                                    android:padding="15dp"
-                                    android:textColorHint="#546E7A"
-                                    tools:ignore="TouchTargetSizeCheck"
-                                    android:autofillHints="" />
-
-                                <LinearLayout
-                                    android:layout_width="407dp"
-                                    android:layout_height="match_parent"
-                                    android:orientation="vertical"
-                                    android:layout_marginStart="-5dp">
-
-                                    <TextView
-                                        android:id="@+id/lblTopCategories"
-                                        style="@style/txtOverpassbold24_1"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginStart="@dimen/_10pxh"
-                                        android:layout_marginTop="@dimen/_14pxh"
-                                        android:layout_marginEnd="@dimen/_10pxh"
-                                        android:ellipsize="end"
-                                        android:text="@string/lbl_top_categories"
-                                        android:textColor="@color/black" />
-
-                                   <LinearLayout
-                                       android:layout_width="match_parent"
-                                       android:layout_height="wrap_content"
-                                       android:orientation="horizontal">
-
-                                       <androidx.recyclerview.widget.RecyclerView
-                                           android:id="@+id/rvTopCategories"
-                                           android:layout_width="match_parent"
-                                           android:layout_height="wrap_content"
-                                           android:layout_marginTop="@dimen/_14pxh"
-                                           android:layout_marginStart="15sp"
-                                           app:reverseLayout="true"/>
-                                   </LinearLayout>
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        style="@style/sliderimage"
-                                        android:layout_marginTop="@dimen/_8pxh"
-                                        android:padding="@dimen/_5pxh">
-
-                                    <com.denzcoskun.imageslider.ImageSlider
-                                        android:id="@+id/offerImageSlider"
-                                        android:layout_marginStart="@dimen/_5pxh"
-                                        android:layout_marginEnd="@dimen/_5pxh"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="@dimen/_150pxh"
-                                        app:iss_auto_cycle="true"
-
-                                        app:iss_period="1000"
-                                        app:iss_delay="0"/>
-                                    </LinearLayout>
-
-                                    <TextView
-                                        android:id="@+id/lblCategories"
-                                        style="@style/txtOverpassbold24_1"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginStart="@dimen/_10pxh"
-                                        android:layout_marginTop="@dimen/_14pxh"
-                                        android:layout_marginEnd="@dimen/_10pxh"
-                                        android:ellipsize="end"
-                                        android:text="Deals of the Day"
-                                        android:textColor="@color/black" />
-
-                                    <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="match_parent"
-                                        android:layout_gravity="center"
-                                        android:orientation="vertical">
-
-                                        <androidx.recyclerview.widget.RecyclerView
-                                            android:id="@+id/rvProducts"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent"
-                                            android:layout_marginTop="@dimen/_14pxh"
-                                            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                                            app:spanCount="2" />
-                                    </LinearLayout>
-                                </LinearLayout>
+                                    android:layout_marginStart="15sp"
+                                    android:layout_marginTop="@dimen/_14pxh"
+                                    app:reverseLayout="true" />
                             </LinearLayout>
+
+                            <LinearLayout
+                                style="@style/sliderimage"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_8pxh"
+                                android:padding="@dimen/_5pxh">
+
+                                <com.denzcoskun.imageslider.ImageSlider
+                                    android:id="@+id/offerImageSlider"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_150pxh"
+                                    android:layout_marginStart="@dimen/_5pxh"
+                                    android:layout_marginEnd="@dimen/_5pxh"
+                                    app:iss_auto_cycle="true"
+                                    app:iss_delay="0"
+                                    app:iss_period="1000" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/lblCategories"
+                                style="@style/txtOverpassbold24_1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_10pxh"
+                                android:layout_marginTop="@dimen/_14pxh"
+                                android:layout_marginEnd="@dimen/_10pxh"
+                                android:ellipsize="end"
+                                android:text="Deals of the Day"
+                                android:textColor="@color/black" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rvProducts"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="@dimen/_14pxh" />
+                        </LinearLayout>
                     </LinearLayout>
-                </FrameLayout>
-            </LinearLayout>
-</androidx.core.widget.NestedScrollView>
-    </LinearLayout>
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

@@ -52,15 +52,9 @@ class CartAdapter(
                     holder.productPrice.text = "₹ ${product.price}"
                     productPrice = product.price.toInt()
                     // if Product Image is Blank then set default image
-                    if (product.image == "") {
-                        Glide.with(context)
-                            .load("https://picsum.photos/480")
-                            .into(holder.ivProductImage)
-                    } else {
-                        Glide.with(context)
-                            .load(product.image)
-                            .into(holder.ivProductImage)
-                    }
+                    Glide.with(context)
+                        .load(product.thumbnail)
+                        .into(holder.ivProductImage)
                 }
             }
         }
