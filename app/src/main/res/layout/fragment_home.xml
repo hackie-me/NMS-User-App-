@@ -7,7 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context="com.nms.user.fragments.HomeFragment"
-    android:background="@color/backgroundColor">
+    android:background="#F5D4FAFF">
                 <androidx.core.widget.NestedScrollView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
@@ -193,7 +193,9 @@
                                         android:ellipsize="end"
                                         android:text="Deals of the Day"
                                         android:textColor="@color/black" />
-
+                                            <LinearLayout
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="match_parent">
                                         <androidx.recyclerview.widget.RecyclerView
                                             android:id="@+id/rvProducts"
                                             android:layout_width="match_parent"
@@ -201,6 +203,7 @@
                                             android:layout_marginTop="@dimen/_14pxh"
                                             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                                             app:spanCount="2" />
+                                            </LinearLayout>
 
                                 </LinearLayout>
                             </LinearLayout>

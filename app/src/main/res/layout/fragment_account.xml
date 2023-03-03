@@ -11,7 +11,6 @@
     <LinearLayout
         android:id="@+id/MyProfile"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/_23pxv"
         android:layout_width="match_parent"
         android:orientation="vertical"
         style="@style/groupStylewhite_A700"
