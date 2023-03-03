@@ -36,7 +36,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|center"
-                    android:layout_marginBottom="@dimen/_10pxv"
                     android:orientation="horizontal">
 
                     <LinearLayout
@@ -86,7 +85,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|start"
                     android:layout_marginTop="@dimen/_61pxv"
-                    android:layout_marginBottom="@dimen/_61pxv"
                     android:orientation="horizontal">
 
 
