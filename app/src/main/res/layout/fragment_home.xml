@@ -7,7 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context="com.nms.user.fragments.HomeFragment"
-    android:background="#F5D4FAFF">
+    android:background="#C9E9F3F2">
                 <androidx.core.widget.NestedScrollView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
@@ -15,6 +15,7 @@
                     android:id="@+id/frameStackgroup3635"
                     android:layout_width="match_parent"
                     android:orientation="vertical"
+                    android:background="#C9E9F3F2"
                     android:layout_height="match_parent">
 
                     <LinearLayout
