@@ -136,7 +136,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     tools:ignore="NestedWeights"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_marginTop="@dimen/_10pxh">
 
                     <TextView
                         android:id="@+id/txtPaymentSummary"
@@ -165,12 +166,13 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.97"
+
                             android:orientation="horizontal">
 
                             <TextView
                                 android:id="@+id/lblOrderTotal"
                                 style="@style/txtHKGroteskmedium15"
-                                android:layout_width="0dp"
+                                android:layout_width="0sp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/_21pxh"
                                 android:layout_marginTop="@dimen/_2pxv"
@@ -207,7 +209,7 @@
                             <TextView
                                 android:id="@+id/txtItems_Discount"
                                 style="@style/txtHKGroteskmedium15"
-                                android:layout_width="0dp"
+                                android:layout_width="0sp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/_21pxh"
                                 android:layout_marginTop="@dimen/_2pxv"
@@ -236,7 +238,7 @@
 
                         <LinearLayout
                             android:id="@+id/linearRowShipping"
-                            android:layout_width="0dp"
+                            android:layout_width="0sp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.97"
                             android:orientation="horizontal">
@@ -244,7 +246,7 @@
                             <TextView
                                 android:id="@+id/txtShipping"
                                 style="@style/txtHKGroteskmedium15"
-                                android:layout_width="0dp"
+                                android:layout_width="0sp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/_21pxh"
                                 android:layout_marginTop="@dimen/_2pxv"
@@ -273,36 +275,43 @@
                         android:background="@color/black_900_0c" />
 
                     <LinearLayout
-                        android:id="@+id/linearRowTotal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_24pxh"
-                        android:layout_marginTop="@dimen/_15pxv"
-                        android:layout_marginEnd="@dimen/_24pxh"
+                        android:layout_marginStart="@dimen/_6pxh"
+                        android:layout_marginTop="@dimen/_10pxv"
+                        android:layout_marginEnd="@dimen/_25pxh"
+                        android:gravity="start"
                         android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/txtTotal"
-                            style="@style/txtOverpassregular16"
-                            android:layout_width="0dp"
+                        <LinearLayout
+
+                            android:layout_width="0sp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_2pxv"
-                            android:layout_weight="0.37"
-                            android:ellipsize="end"
-                            android:lineSpacingExtra="@dimen/_1pxh"
-                            android:singleLine="true"
-                            android:text="total" />
+                            android:layout_weight="0.97"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/txtTotal"
+                                style="@style/txtHKGroteskmedium15"
+                                android:layout_width="0sp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_21pxh"
+                                android:layout_marginTop="@dimen/_2pxv"
+                                android:layout_weight="0.84"
+                                android:lineSpacingExtra="@dimen/_1pxh"
+                                android:singleLine="true"
+                                android:textStyle="bold"
+                                android:textColor="@color/black"
+                                android:textSize="18sp"
+                                android:text="Total"/>
+                        </LinearLayout>
 
                         <TextView
                             android:id="@+id/txtTotalCartValue"
                             style="@style/txtOverpassbold16_1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_225pxh"
                             android:layout_marginBottom="@dimen/_1pxv"
-                            android:ellipsize="end"
-                            android:lineSpacingExtra="@dimen/_1pxh"
-                            android:singleLine="true"
                             android:text="185.0000"/>
 
                     </LinearLayout>

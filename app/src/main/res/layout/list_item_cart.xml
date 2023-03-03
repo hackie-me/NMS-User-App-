@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/_120pxh"
+    android:layout_height="@dimen/_130pxh"
     android:layout_marginTop="1dp"
     android:background="@color/white"
     app:cardCornerRadius="@dimen/_8pxh"
@@ -80,9 +80,9 @@
 
             <LinearLayout
                 android:id="@+id/linearRowprice"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_20pxv"
+                android:layout_marginTop="@dimen/_10pxv"
                 android:layout_marginEnd="@dimen/_5pxh"
                 android:orientation="horizontal">
 
@@ -100,8 +100,8 @@
                     android:id="@+id/linearRowvector"
                     style="@style/groupStylegray_105cornerRadius"
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/_32sp"
-                    android:layout_marginStart="@dimen/_50pxh"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_30pxh"
                     android:layout_weight="1.5"
                     android:orientation="horizontal">
 
