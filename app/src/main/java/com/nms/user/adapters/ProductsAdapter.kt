@@ -54,9 +54,8 @@ class ProductsAdapter(
             holder.productRating.text = itemsViewModel.rating
         }
 
-
         // if Product Image is Blank then set default image
-        Glide.with(holder.itemView.context).load("https://source.unsplash.com/random?{$itemsViewModel.name}")
+        Glide.with(holder.itemView.context).load("https://source.unsplash.com/random?${itemsViewModel.name}")
             .into(holder.productImage)
 
     }
