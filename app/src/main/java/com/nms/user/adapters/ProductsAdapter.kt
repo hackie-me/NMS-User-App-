@@ -56,7 +56,7 @@ class ProductsAdapter(
 
 
         // if Product Image is Blank then set default image
-        Glide.with(holder.itemView.context).load(itemsViewModel.thumbnail)
+        Glide.with(holder.itemView.context).load("https://source.unsplash.com/random?{$itemsViewModel.name}")
             .into(holder.productImage)
 
     }
