@@ -22,7 +22,6 @@
             android:layout_width="@dimen/_80pxh"
             android:layout_height="@dimen/_110pxh"
             android:scaleType="fitXY"
-            android:src="@drawable/img_card_items"
             tools:ignore="ContentDescription" />
 
         <LinearLayout
