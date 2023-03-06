@@ -58,7 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_29pxh"
             android:layout_marginEnd="@dimen/_29pxh"
-            android:layout_marginTop="@dimen/_100pxv"
+            android:layout_marginTop="@dimen/_80pxv"
             android:paddingStart="@dimen/_30pxh"
             android:paddingEnd="@dimen/_30pxh"
             android:singleLine="true"
