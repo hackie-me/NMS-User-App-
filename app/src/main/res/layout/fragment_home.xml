@@ -123,6 +123,8 @@
                                     android:layout_marginTop="10dp"
                                      android:layout_gravity="center_horizontal"
                                     android:height="50dp"
+                                    android:layout_marginStart="@dimen/_10pxh"
+                                    android:layout_marginEnd="@dimen/_10pxh"
                                     android:background="@drawable/btn_white"
                                     android:drawableStart="@drawable/ic_search"
                                     android:hint="@string/search_medicine_products"
