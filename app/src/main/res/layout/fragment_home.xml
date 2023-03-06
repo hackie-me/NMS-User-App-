@@ -7,7 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context="com.nms.user.fragments.HomeFragment"
-    android:background="#C9E9F3F2">
+    android:background="#FFFFFF">
                 <androidx.core.widget.NestedScrollView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
@@ -15,7 +15,7 @@
                     android:id="@+id/frameStackgroup3635"
                     android:layout_width="match_parent"
                     android:orientation="vertical"
-                    android:background="#C9E9F3F2"
+                    android:background="#C9FFFFFF"
                     android:layout_height="match_parent">
 
                     <LinearLayout
@@ -196,6 +196,7 @@
                                         android:textColor="@color/black" />
                                             <LinearLayout
                                                 android:layout_width="wrap_content"
+                                                android:layout_gravity="center_horizontal"
                                                 android:layout_height="match_parent">
                                         <androidx.recyclerview.widget.RecyclerView
                                             android:id="@+id/rvProducts"
@@ -205,7 +206,6 @@
                                             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                                             app:spanCount="2" />
                                             </LinearLayout>
-
                                 </LinearLayout>
                             </LinearLayout>
                     </LinearLayout>

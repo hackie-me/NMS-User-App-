@@ -9,7 +9,8 @@
     android:background="@color/white"
     app:cardCornerRadius="@dimen/_8pxh"
     app:cardPreventCornerOverlap="true"
-    app:cardUseCompatPadding="true">
+    app:cardUseCompatPadding="true"
+    android:backgroundTint="@color/white">
 
     <LinearLayout
         android:id="@+id/linearRowbottleof500p"

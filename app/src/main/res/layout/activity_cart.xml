@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:ignore="NestedWeights, HardcodedText"
-    tools:context=".CartActivity">
+    tools:context=".CartActivity"
+    android:background="@color/white">
 
     <ScrollView
         android:layout_width="match_parent"

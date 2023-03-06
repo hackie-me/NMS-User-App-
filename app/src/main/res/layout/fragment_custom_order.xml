@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="10sp"  tools:context="com.nms.user.fragments.HomeFragment">
+    android:padding="10sp"
+    android:background="@color/gray_50"
+    tools:context="com.nms.user.fragments.HomeFragment">
 
     <!-- task bar -->
     <LinearLayout
@@ -23,6 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Custom Order"
+            android:textColor="@color/textcolor"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -57,6 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Name"
+                android:textColor="@color/textcolor"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -66,6 +70,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10sp"
                 android:hint="Enter your name"
+                android:textColorHint="@color/textcolor"
+                android:textColor="@color/textcolor"
                 android:inputType="text" />
 
             <TextView
@@ -73,6 +79,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20sp"
                 android:text="Phone"
+                android:textColor="@color/textcolor"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -81,6 +88,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10sp"
+                android:textColor="@color/textcolor"
+                android:textColorHint="@color/textcolor"
                 android:hint="Enter your phone number"
                 android:inputType="phone" />
 
@@ -89,6 +98,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20sp"
                 android:text="Email"
+                android:textColor="@color/textcolor"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -98,6 +108,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10sp"
                 android:hint="Enter your email"
+                android:textColor="@color/textcolor"
+                android:textColorHint="@color/textcolor"
                 android:inputType="textEmailAddress" />
 
             <TextView
@@ -106,6 +118,7 @@
                 android:layout_marginTop="20sp"
                 android:text="Address"
                 android:textSize="20sp"
+                android:textColor="@color/textcolor"
                 android:textStyle="bold" />
 
             <EditText
@@ -113,6 +126,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10sp"
+                android:textColor="@color/textcolor"
+                android:textColorHint="@color/textcolor"
                 android:hint="Enter your address"
                 android:inputType="text" />
 
@@ -121,6 +136,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20sp"
                 android:text="City"
+                android:textColor="@color/textcolor"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -129,6 +145,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10sp"
+                android:textColor="@color/textcolor"
+                android:textColorHint="@color/textcolor"
                 android:hint="Enter your City"
                 android:inputType="text" />
 
@@ -137,6 +155,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20sp"
                 android:text="State"
+                android:textColor="@color/textcolor"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -145,6 +164,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10sp"
+                android:textColor="@color/textcolor"
+                android:textColorHint="@color/textcolor"
                 android:hint="Enter your State"
                 android:inputType="text" />
 
@@ -152,6 +173,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20sp"
+                android:textColor="@color/textcolor"
                 android:text="Zip"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -160,6 +182,8 @@
                 android:id="@+id/etZip"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/textcolor"
+                android:textColorHint="@color/textcolor"
                 android:layout_marginTop="10sp"
                 android:hint="Enter your Zip"
                 android:inputType="text" />
@@ -168,6 +192,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20sp"
+                android:textColor="@color/textcolor"
                 android:text="Product Name"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -177,6 +202,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10sp"
+                android:textColor="@color/textcolor"
+                android:textColorHint="@color/textcolor"
                 android:hint="Enter your Product Name"
                 android:inputType="text" />
 
@@ -184,6 +211,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20sp"
+                android:textColor="@color/textcolor"
                 android:text="Brand Name"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -193,6 +221,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10sp"
+                android:textColor="@color/textcolor"
+                android:textColorHint="@color/textcolor"
                 android:hint="Enter your Brand Name"
                 android:inputType="text" />
 
@@ -201,6 +231,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20sp"
                 android:text="Quantity"
+                android:textColor="@color/textcolor"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -209,6 +240,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10sp"
+                android:textColor="@color/textcolor"
+                android:textColorHint="@color/textcolor"
                 android:hint="Enter your Quantity"
                 android:inputType="text" />
 
@@ -217,6 +250,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20sp"
                 android:text="Notes"
+                android:textColor="@color/textcolor"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -225,6 +259,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10sp"
+                android:textColor="@color/textcolor"
+                android:textColorHint="@color/textcolor"
                 android:hint="Enter your Notes"
                 android:inputType="text" />
 

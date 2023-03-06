@@ -72,7 +72,8 @@
             android:inputType="number"
             android:hint="@string/enter_you_mobile_number"
             android:padding="15dp"
-            android:textColorHint="#546E7A" />
+            android:textColor="@color/black"
+            android:textColorHint="#090909" />
 
         <EditText
             android:id="@+id/txtPassword"
@@ -85,8 +86,9 @@
             android:hint="@string/enter_password"
             android:inputType="textPassword"
             android:padding="15dp"
+            android:textColor="@color/black"
             android:autofillHints="password"
-            android:textColorHint="#546E7A" />
+            android:textColorHint="#090909" />
 
         <TextView
             android:id="@+id/txt_2"

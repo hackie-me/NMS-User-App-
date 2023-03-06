@@ -16,6 +16,9 @@
         android:theme="@style/Theme.NMS"
         tools:targetApi="31">
         <activity
+            android:name=".MainActivity2"
+            android:exported="false" />
+        <activity
             android:name=".AddNewAddressActivity"
             android:exported="false" />
         <activity

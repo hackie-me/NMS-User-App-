@@ -1,0 +1,65 @@
+Index: app/src/main/res/values-night/colors.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<resources>\r\n    <color name=\"purple_200\">#FFBB86FC</color>\r\n    <color name=\"purple_500\">#FF6200EE</color>\r\n    <color name=\"purple_700\">#FF3700B3</color>\r\n    <color name=\"teal_200\">#FF03DAC5</color>\r\n    <color name=\"teal_700\">#FF018786</color>\r\n    <color name=\"black\">#C41F1F1F</color>\r\n    <color name=\"textcolor\">#ffffff</color>\r\n    <color name=\"Primary\">#4157FF</color>\r\n    <color name=\"primaryColor\">#457f</color>\r\n    <color name=\"appcolor\">#4157FF</color>\r\n    <color name=\"night_background\">#ffffff</color>\r\n    <color name=\"iconecolor\">#ffffff</color>\r\n    <color name=\"btncolor\">#000000</color>\r\n    <color name=\"nav_bar\">#ffffff</color>\r\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values-night/colors.xml b/app/src/main/res/values-night/colors.xml
+--- a/app/src/main/res/values-night/colors.xml	(revision 856957635a51dc2e9bdff14a18c0ab58aba40294)
++++ b/app/src/main/res/values-night/colors.xml	(date 1677822966815)
+@@ -14,4 +14,5 @@
+     <color name="iconecolor">#ffffff</color>
+     <color name="btncolor">#000000</color>
+     <color name="nav_bar">#ffffff</color>
++    <color name="backgroundColor">#C9E9F3F2</color>
+ </resources>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_login.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n\r\n<RelativeLayout\r\n    xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".LoginActivity\"\r\n    android:background=\"@color/backgroundColor\">\r\n\r\n    <ImageView\r\n        android:id=\"@+id/img_1\"\r\n        android:layout_width=\"200dp\"\r\n        android:layout_height=\"200dp\"\r\n        android:layout_alignParentStart=\"true\"\r\n        android:layout_alignParentTop=\"true\"\r\n        android:layout_marginStart=\"0dp\"\r\n        android:layout_marginTop=\"-10dp\"\r\n        android:contentDescription=\"@string/todo\"\r\n        android:src=\"@drawable/gambar1\"\r\n        tools:ignore=\"InvalidId,ImageContrastCheck\" />\r\n\r\n    <ImageView\r\n        android:id=\"@+id/iconleft\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:src=\"@drawable/back_arrow\"\r\n        android:layout_marginTop=\"35sp\"\r\n        android:layout_marginLeft=\"25sp\"\r\n        tools:ignore=\"contentDescription\"/>\r\n\r\n    <TextView\r\n        android:id=\"@+id/txt_1\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_below=\"@+id/iconleft\"\r\n        android:fontFamily=\"@font/poppinsbold\"\r\n       android:layout_centerHorizontal=\"true\"\r\n        android:layout_marginTop=\"60sp\"\r\n        android:text=\"@string/welcome_back\"\r\n        android:textColor=\"@color/black\"\r\n        android:textSize=\"22sp\" />\r\n\r\n    <ImageView\r\n        android:id=\"@+id/img_2\"\r\n        android:layout_width=\"200dp\"\r\n        android:layout_height=\"200dp\"\r\n        android:layout_below=\"@+id/txt_1\"\r\n        android:layout_marginTop=\"10dp\"\r\n        android:src=\"@drawable/gambar3\"\r\n        android:layout_centerHorizontal=\"true\"\r\n       tools:ignore=\"contentDescription\" />\r\n\r\n    <LinearLayout\r\n        android:id=\"@+id/ly_1\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"202dp\"\r\n        android:layout_below=\"@id/img_2\"\r\n        android:orientation=\"vertical\"\r\n        android:padding=\"20dp\">\r\n\r\n        <EditText\r\n            android:id=\"@+id/txtMobileNumber\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginTop=\"0dp\"\r\n            android:height=\"50dp\"\r\n            android:background=\"@drawable/btn_primary\"\r\n            android:backgroundTint=\"@color/white\"\r\n            android:autofillHints=\"phone\"\r\n            android:inputType=\"number\"\r\n            android:hint=\"@string/enter_you_mobile_number\"\r\n            android:padding=\"15dp\"\r\n            android:textColorHint=\"#546E7A\" />\r\n\r\n        <EditText\r\n            android:id=\"@+id/txtPassword\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginTop=\"20dp\"\r\n            android:height=\"50dp\"\r\n            android:background=\"@drawable/btn_primary\"\r\n            android:backgroundTint=\"@color/white\"\r\n            android:hint=\"@string/enter_password\"\r\n            android:inputType=\"textPassword\"\r\n            android:padding=\"15dp\"\r\n            android:autofillHints=\"password\"\r\n            android:textColorHint=\"#546E7A\" />\r\n\r\n        <TextView\r\n            android:id=\"@+id/txt_2\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_gravity=\"end\"\r\n            android:layout_marginTop=\"2sp\"\r\n            android:fontFamily=\"@font/poppinsregular\"\r\n            android:text=\"@string/forget_password\"\r\n            android:textColor=\"@color/black\"\r\n            android:textSize=\"15sp\" />\r\n    </LinearLayout>\r\n    <androidx.appcompat.widget.AppCompatButton\r\n        android:id=\"@+id/btnLogin\"\r\n        android:layout_width=\"310dp\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:text=\"@string/login\"\r\n        android:layout_marginTop=\"0sp\"\r\n        android:layout_below=\"@id/ly_1\"\r\n        android:layout_centerHorizontal=\"true\"\r\n        android:background=\"@drawable/btn_primary\"\r\n        android:textColor=\"@color/white\"\r\n        android:textSize=\"18sp\"/>\r\n    <LinearLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:orientation=\"horizontal\"\r\n        android:layout_below=\"@id/btnLogin\"\r\n        android:layout_marginTop=\"15sp\"\r\n        android:gravity=\"center\">\r\n        <TextView\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:text=\"@string/already_have_an_account\"\r\n            android:fontFamily=\"@font/poppinsregular\"\r\n            android:textSize=\"15sp\"\r\n            android:textColor=\"@color/black\"/>\r\n        <TextView\r\n            android:id=\"@+id/txtregister\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:text=\"@string/register\"\r\n            android:fontFamily=\"@font/poppinsregular\"\r\n            android:textSize=\"15sp\"\r\n            android:textColor=\"@color/Primary\"/>\r\n    </LinearLayout>\r\n\r\n</RelativeLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_login.xml b/app/src/main/res/layout/activity_login.xml
+--- a/app/src/main/res/layout/activity_login.xml	(revision 856957635a51dc2e9bdff14a18c0ab58aba40294)
++++ b/app/src/main/res/layout/activity_login.xml	(date 1677822966877)
+@@ -72,7 +72,7 @@
+             android:inputType="number"
+             android:hint="@string/enter_you_mobile_number"
+             android:padding="15dp"
+-            android:textColorHint="#546E7A" />
++            android:textColorHint="#090909" />
+ 
+         <EditText
+             android:id="@+id/txtPassword"
+@@ -86,7 +86,7 @@
+             android:inputType="textPassword"
+             android:padding="15dp"
+             android:autofillHints="password"
+-            android:textColorHint="#546E7A" />
++            android:textColorHint="#090909" />
+ 
+         <TextView
+             android:id="@+id/txt_2"
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\">\r\n\r\n    <uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />\r\n    <uses-permission android:name=\"android.permission.INTERNET\" />\r\n\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:dataExtractionRules=\"@xml/data_extraction_rules\"\r\n        android:fullBackupContent=\"@xml/backup_rules\"\r\n        android:icon=\"@drawable/logo_img\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@drawable/btn_white\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/Theme.NMS\"\r\n        tools:targetApi=\"31\">\r\n        <activity\r\n            android:name=\".AddNewAddressActivity\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".OrderPlacedActivity\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".CheckoutActivity\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".CartActivity\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".ProductDetailsActivity\"\r\n            android:exported=\"false\">\r\n            <meta-data\r\n                android:name=\"android.app.lib_name\"\r\n                android:value=\"\" />\r\n        </activity>\r\n        <activity\r\n            android:name=\".MainActivity\"\r\n            android:exported=\"false\">\r\n            <meta-data\r\n                android:name=\"android.app.lib_name\"\r\n                android:value=\"\" />\r\n        </activity>\r\n        <activity\r\n            android:name=\".SplashActivity\"\r\n            android:exported=\"true\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n\r\n            <meta-data\r\n                android:name=\"android.app.lib_name\"\r\n                android:value=\"\" />\r\n        </activity>\r\n        <activity\r\n            android:name=\".RegisterActivity\"\r\n            android:exported=\"false\">\r\n            <meta-data\r\n                android:name=\"android.app.lib_name\"\r\n                android:value=\"\" />\r\n        </activity>\r\n        <activity\r\n            android:name=\".LoginActivity\"\r\n            android:exported=\"false\">\r\n            <meta-data\r\n                android:name=\"android.app.lib_name\"\r\n                android:value=\"\" />\r\n        </activity>\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+--- a/app/src/main/AndroidManifest.xml	(revision 856957635a51dc2e9bdff14a18c0ab58aba40294)
++++ b/app/src/main/AndroidManifest.xml	(date 1677931318877)
+@@ -16,6 +16,9 @@
+         android:theme="@style/Theme.NMS"
+         tools:targetApi="31">
+         <activity
++            android:name=".MainActivity2"
++            android:exported="false" />
++        <activity
+             android:name=".AddNewAddressActivity"
+             android:exported="false" />
+         <activity

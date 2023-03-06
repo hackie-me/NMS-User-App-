@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".fragments.HomeFragment"
-    android:background="@color/backgroundColor">
+    android:background="#FFFFFF">
 
     <LinearLayout
         android:id="@+id/MyProfile"
@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:orientation="vertical"
         style="@style/groupStylewhite_A700"
-        android:background="@color/backgroundColor">
+        android:background="#FFFFFF">
 
         <LinearLayout
             android:id="@+id/LinearLayoutMyprofile"
@@ -40,6 +40,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/_10pxh"
                     android:layout_width="wrap_content"
+                    android:layout_marginTop="@dimen/_10pxh"
                     android:singleLine="true"
                     android:text="@string/lbl_my_profile"
                     style="@style/txtOverpassbold16_1"/>
