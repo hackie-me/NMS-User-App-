@@ -189,6 +189,7 @@
                     android:id="@+id/linearColumnpackagesize"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+
                     android:layout_marginTop="@dimen/_13pxv"
                     android:gravity="start"
                     android:orientation="vertical">
@@ -200,6 +201,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/_10pxh"
                         android:ellipsize="end"
+                        android:layout_marginStart="@dimen/_10sp"
                         android:singleLine="true"
                         android:text="@string/lbl_package_size" />
 
@@ -242,6 +244,7 @@
                         style="@style/txtOverpasssemibold16"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sp"
                         android:layout_marginTop="@dimen/_11pxv"
                         android:layout_marginEnd="@dimen/_10pxh"
                         android:ellipsize="end"
@@ -253,6 +256,7 @@
                         style="@style/txtOverpassregular14"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sp"
                         android:layout_marginTop="@dimen/_16pxv"
                         android:layout_marginEnd="@dimen/_1pxh"
                         android:lineSpacingExtra="@dimen/_5pxh"

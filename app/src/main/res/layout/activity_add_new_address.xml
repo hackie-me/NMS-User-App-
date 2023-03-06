@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#ffffff"
     tools:context=".AddNewAddressActivity">
 
     <com.google.android.material.appbar.MaterialToolbar
@@ -30,6 +31,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:textColorHint="@color/black"
+            android:textColor="@color/black"
             android:hint="Address"
             android:inputType="text" />
 
@@ -38,6 +41,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:textColorHint="@color/black"
+            android:textColor="@color/black"
             android:hint="City"
             android:inputType="text" />
 
@@ -47,7 +52,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:hint="State"
-
+            android:textColorHint="@color/black"
+            android:textColor="@color/black"
             android:inputType="text" />
 
         <EditText
@@ -55,6 +61,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:textColorHint="@color/black"
+            android:textColor="@color/black"
             android:hint="Pincode"
             android:inputType="number" />
 
@@ -67,6 +75,7 @@
             android:padding="8dp"
             android:text="Add Address"
             android:textColor="@color/white"
+
             android:textSize="16sp"
             android:textStyle="bold" />
     </LinearLayout>

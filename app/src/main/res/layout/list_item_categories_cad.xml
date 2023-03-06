@@ -13,7 +13,7 @@
         android:layout_marginStart="5sp"
         android:layout_marginTop="@dimen/_5pxh"
         android:layout_width="@dimen/_70sp"
-        android:layout_height="@dimen/_80pxv">
+        android:layout_height="@dimen/_85pxv">
 
         <ImageView
             android:id="@+id/imageCardItems"
@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_15pxv"
         android:layout_gravity="center"
-        android:textSize="@dimen/_16pxh"
+        android:textSize="@dimen/_10pxh"
         android:lineSpacingExtra="@dimen/_6pxh"
         android:text="Dental"
         android:textColor="@color/black" />
