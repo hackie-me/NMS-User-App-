@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".fragments.HomeFragment"
-    android:background="@color/backgroundColor">
+    android:background="#ffffff">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -19,6 +19,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:textColor="@color/black"
                 android:text="Tems &amp; Condition"
                 android:padding="@dimen/_10sp"
                 android:textSize="25sp"/>
@@ -31,6 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textSize="18sp"
+                android:textColor="@color/black"
                 android:justificationMode="inter_word"
                 android:padding="@dimen/_10sp"
                 android:maxLength="2198"

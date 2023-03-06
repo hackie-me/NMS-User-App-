@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditAccountFragment">
+    tools:context=".EditAccountFragment"
+    android:background="#ffffff">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
@@ -38,9 +39,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/name"
+            android:textColor="@color/black"
             android:textSize="20sp"/>
         <EditText
             android:id="@+id/txtName"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_15sp"
@@ -50,17 +54,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Mobile Number"
+            android:textColor="@color/black"
+
             android:layout_marginTop="@dimen/_15sp"
             android:textSize="20sp"/>
         <EditText
             android:id="@+id/txtMobileNumber"
             android:layout_width="match_parent"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_15sp"
             android:hint="Enter Number" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
+
             android:text="Email Address"
             android:layout_marginTop="@dimen/_15sp"
             android:textSize="20sp"/>
@@ -68,6 +78,8 @@
             android:id="@+id/txtEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             android:layout_marginTop="@dimen/_15sp"
             android:hint="@string/enter_email" />
 
