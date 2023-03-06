@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="10sp"
+    android:padding="5sp"
     android:background="@color/gray_50"
     tools:context="com.nms.user.fragments.HomeFragment">
 
@@ -48,11 +48,11 @@
      -->
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginTop="@dimen/_15pxh"
             android:orientation="vertical">
 
@@ -126,10 +126,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10sp"
-                android:textColor="@color/textcolor"
-                android:textColorHint="@color/textcolor"
                 android:hint="Enter your address"
-                android:inputType="text" />
+                android:inputType="text"
+                android:textColor="@color/textcolor"
+                android:textColorHint="@color/textcolor" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -271,6 +271,7 @@
                 android:layout_marginTop="20sp"
                 android:background="#FF0000"
                 android:text="Submit"
+                android:layout_marginBottom="@dimen/_10sp"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
                 android:textStyle="bold" />
